@@ -1,0 +1,37 @@
+
+Experiment directory:
+
+	"../results/lateral_pooler_mnist_7c466"
+
+{   u'boostStrength': 100.0,
+    u'columnDimensions': [1024, 1],
+    u'dutyCyclePeriod': 1000,
+    u'globalInhibition': True,
+    u'inputDimensions': [784, 1],
+    u'localAreaDensity': 0.02,
+    u'minPctOverlapDutyCycle': 0.001,
+    u'numActiveColumnsPerInhArea': 20,
+    u'potentialPct': 1.0,
+    u'potentialRadius': 1024,
+    u'seed': 1936,
+    u'stimulusThreshold': 1,
+    u'synPermActiveInc': 0.1,
+    u'synPermConnected': 0.5,
+    u'synPermInactiveDec': 0.02}
+Using lateral pooler.
+
+	desired sparsity: 0.01953125
+	desired code weight: 20
+
+Training (online, i.e. batch size = 1)...
+
+	e:2/1
+	e:2/2
+
+  rec_error    code_weight    mutual_info
+-----------  -------------  -------------
+    640.148          38.74     0.00087087
+    569.206          42.08     0.00101362
+
+Saving results to file...
+Done.
