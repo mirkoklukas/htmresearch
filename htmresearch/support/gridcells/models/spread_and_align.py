@@ -1,4 +1,3 @@
-
 # ----------------------------------------------------------------------
 # Numenta Platform for Intelligent Computing (NuPIC)
 # Copyright (C) 2018, Numenta, Inc.  Unless you have an agreement
@@ -66,17 +65,25 @@ class SpreadAndAlignModel(object):
     lim_hh=np.sqrt(6. / sum([num_h,num_h]))
     lim_hv=np.sqrt(6. / sum([num_h,num_v]))
 
+
+
     W_hx = tf.Variable(tf.random_uniform([num_h,num_x], minval= -lim_hx, maxval=lim_hx, dtype=tf.float32), name="Fwd_weights")
     W_hh = tf.Variable(tf.random_uniform([num_h,num_h], minval= -lim_hh, maxval=lim_hh, dtype=tf.float32), name="Rec_weights")
     W_hv = tf.Variable(tf.random_uniform([num_h,num_v], minval= -lim_hv, maxval=lim_hv, dtype=tf.float32), name="Vel_weights")
+
+    # W_hx = tf.Variable(tf.random_uniform([num_h,num_x], minval= 0, maxval=1, dtype=tf.float32), name="Fwd_weights")
+    # W_hh = tf.Variable(tf.random_uniform([num_h,num_h], minval= 0, maxval=1, dtype=tf.float32), name="Rec_weights")
+    # W_hv = tf.Variable(tf.random_uniform([num_h,num_v], minval= 0, maxval=1, dtype=tf.float32), name="Vel_weights")
     b_x = tf.Variable(tf.zeros([num_h,1]), name="biases")
     b_h = tf.Variable(tf.zeros([num_h,1]), name="biases")
 
     
     softmax = tf.nn.softmax
     sigmoid = tf.nn.sigmoid
-    h_fwd = softmax( tf.matmul( W_hx, x ) + b_x )
-    h_hat = softmax( tf.matmul( W_hh, h_) + tf.matmul( W_hv, v_ )  + b_h )
+    # h_fwd = tf.transpose(softmax(tf.transpose( tf.matmul( W_hx, x ) + b_x ) ))
+    # h_hat = tf.transpose(softmax(tf.transpose( tf.matmul( W_hh, h_) + tf.matmul( W_hv, v_ )  + b_h ) ))
+    h_fwd = sigmoid( tf.matmul( W_hx, x ) + b_x ) 
+    h_hat = sigmoid( tf.matmul( W_hh, h_) + tf.matmul( W_hv, v_ )  + b_x ) 
 
 
     # drop = tf.layers.dropout(
@@ -110,8 +117,12 @@ class SpreadAndAlignModel(object):
     # 
     self.loss_fn = self._loss_fn
     learning_rate = parameters["learning_rate"]
-    optimizer     = tf.train.GradientDescentOptimizer(learning_rate)
-    # optimizer = tf.train.AdamOptimizer()
+
+    if parameters["optimizer"] == "adam":
+        optimizer = tf.train.AdamOptimizer()
+    elif parameters["optimizer"] == "gradient":
+        optimizer = tf.train.GradientDescentOptimizer(learning_rate)
+
     self.train_step = optimizer.minimize(self.loss_fn)
 
 
@@ -129,24 +140,24 @@ class SpreadAndAlignModel(object):
     h_fwd      = self.h_fwd
     h_hat      = self.h_hat
     h_         = self.h_
-
+    v_         = self.v_
     # Prediction loss:
     # 
     #    < \hat h - h_t , \hat h - h_t >  =  | \hat h - h_t |^2
     # 
-    # diff =  tf.subtract(h_fwd, h_hat)
-    # prediction_loss = tf.tensordot(diff, diff, axes=2)
-    P = h_fwd
-    Q = h_hat
-
-    prediction_loss = tf.reduce_sum( tf.tensordot(P , tf.log(tf.divide(P, Q)), axes=2) )
+    diff =  tf.subtract(h_fwd, h_hat)
+    prediction_loss = tf.tensordot(diff, diff, axes=2)
+    # prediction_loss = - tf.reduce_sum( h_hat * tf.log(h_fwd) )
+    # prediction_loss =   tf.reduce_sum(h_fwd * tf.log(tf.divide(h_fwd, h_hat)) )
 
     # Sparse penalty:
     #     
     #     ( < h_t , h_t > - "code weight" )^2 
     # 
-    code_weight = parameters["code_weight"]
-    sparseness_loss = tf.pow( tf.tensordot( h_fwd, h_fwd, axes=2) - code_weight, 2)
+    code_weight     = parameters["code_weight"]
+    h_fwd_squared   = tf.tensordot( h_fwd, h_fwd, axes=2)
+    sparseness_loss = tf.pow( h_fwd_squared - code_weight, 2)
+    # sparseness_loss = - tf.reduce_sum( h_fwd * tf.log(h_fwd) )
 
 
     # Variability (or spread) loss:
@@ -154,9 +165,16 @@ class SpreadAndAlignModel(object):
     #     ( < h_t , h_{t+1} >  - "desired spread" )^2
     # 
     spread_weight = parameters["spread_weight"]
-    # spread_loss =  tf.pow(  tf.tensordot( h_, h_fwd, axes=2) - spread_weight, 2)
-    # spread_loss =  tf.pow(tf.reduce_sum( tf.pow(tf.subtract( h_, h_fwd), 2) ) - spread_weight,2)
-    spread_loss = tf.reduce_sum( tf.tensordot(h_fwd , tf.log(tf.divide(h_fwd, h_)), axes=2) )
+    h_squared = tf.tensordot( h_, h_, axes=2)
+    normalizer = h_squared*h_fwd_squared
+    v_sq = tf.tensordot( v_, v_, axes=2)
+    # spread_loss   = v_sq*tf.pow(  tf.tensordot( h_, h_fwd, axes=2) - normalizer*v_sq*spread_weight, 2)
+    diff =  tf.subtract(h_fwd, h_)
+    prediction_loss = tf.tensordot(diff, diff, axes=2) - normalizer*normalizer*v_sq
+    # spread_loss   = tf.pow(tf.reduce_sum( tf.pow(tf.subtract(h_, h_fwd), 2)) - spread_weight, 2)
+    # spread_loss = tf.reduce_sum( tf.tensordot(h_fwd , tf.log(tf.divide(h_fwd, h_)), axes=2) ) - 1
+    # spread_loss = - tf.reduce_sum( h_fwd * tf.log(tf.divide(h_fwd, h_)) )*(10.0*spread_weight)
+    spread_loss = tf.reduce_sum( h_fwd * tf.log(h_) )*spread_weight
 
 
     a = parameters["prediction_loss_weight"]
