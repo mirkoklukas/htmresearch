@@ -1,7 +1,6 @@
 import numpy as np
 
 
-
 class ContextLayer(object):
 
     def __init__(self, layer_shape, module_shape):
@@ -77,14 +76,17 @@ class ContextLayer(object):
 
         return self.layer
 
-    def extend(self, a, X, intersect=False):
+    def extend(self, a, X, dropout=0.0):
         """Extend the current context"""
 
         self.explore(a)
-        if not intersect:
-            self.add(X)
-        else:
-            self.intersect(X)
+
+        n, _, _   = self.shape
+        self.state = (self.state*np.random.sample(n**2) > dropout).astype(float)
+
+        self.add(X)
+
+
 
         return self.layer
 
