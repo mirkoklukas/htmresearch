@@ -66,7 +66,7 @@ def adjust(x, theta, speed):
 def smooth_torus_walk(num, start=None, min_speed=0.0, max_speed=0.04, sigma=0.5):
 
 	if start == None:
-		x = np.random.randn(2)
+		x = np.random.rand(2)
 	else:
 		x = np.array(start)
 
@@ -78,13 +78,15 @@ def smooth_torus_walk(num, start=None, min_speed=0.0, max_speed=0.04, sigma=0.5)
 
 	for t in range(1,num):
 		speed  = max_speed*np.random.sample()
-		dtheta = np.random.normal(loc=0.0, scale=sigma)
+		# dtheta = np.random.normal(loc=0.0, scale=sigma)
+		dtheta = np.random.rand()*np.pi*2
 		theta += dtheta
 
 		
-		vel   = speed*direction(theta)
-		x    += vel
-		x  %= 1
+		vel  = speed*direction(theta)
+		x   += vel
+		x   %= 1
+
 		X[t,:] = x[:]
 
 		V[t-1,:] = vel	

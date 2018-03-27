@@ -1,14 +1,21 @@
 import numpy as np
 
+from scipy.stats import entropy
+
+
+
 
 class ContextLayer(object):
 
-    def __init__(self, layer_shape, module_shape):
+    def __init__(self, layer_shape, module_shape, action_map, max_activity=10000):
         assert module_shape[0] == module_shape[1], "Check module dimensions, we want a square shape..."
-        assert np.prod(module_shape) == np.prod(layer_shape)
+        assert np.prod(module_shape) == np.prod(layer_shape), "Check layer dimensions..."
 
         self.layer_shape  = layer_shape
         self.module_shape = module_shape
+        self.max_activity = max_activity
+
+        self.action_map = action_map
 
         n, d, m   = self.shape
         self.perm = np.random.permutation(n**2)
@@ -36,7 +43,7 @@ class ContextLayer(object):
         _, d, m   = self.shape
         return self.state.reshape((d, m))
 
-    def explore(self, a, mentally=False):
+    def _explore(self, a, mentally=False):
         n, _, _   = self.shape
         perm_inv = self.perm_inv
         
@@ -55,6 +62,10 @@ class ContextLayer(object):
             return self.layer
         else:
             return C_.reshape(-1)[perm_inv].reshape(self.layer_shape)
+
+    def explore(self, a, mentally=False):
+        a = np.dot(a, self.action_map)
+        return self._explore(a, mentally)
 
     def intersect(self, X):
         assert X.shape == self.layer_shape
@@ -76,19 +87,53 @@ class ContextLayer(object):
 
         return self.layer
 
-    def extend(self, a, X, dropout=0.0):
+    def extend(self, a, X):
         """Extend the current context"""
 
-        self.explore(a)
+        a = np.dot(a, self.action_map)
+
+        self._explore(a)
 
         n, _, _   = self.shape
-        self.state = (self.state*np.random.sample(n**2) > dropout).astype(float)
+
+        active_bits = np.sum(self.state)
+        if active_bits > 0:
+            dropout = 1 - self.max_activity/active_bits
+        else:
+            dropout = -1
+            
+        if dropout > 0:
+            self.state = (self.state*np.random.sample(n**2) > dropout).astype(float)
 
         self.add(X)
 
-
-
         return self.layer
+
+
+    def decode(self, radius=10):
+        m = self.shape[2]
+        r = radius
+        feature_map = np.zeros((2*r + 1, 2*r + 1, m))
+        for x in range(-r,r + 1):
+            for y in range(-r ,r + 1):
+                prediction  = self.explore(np.array([x,y]), mentally=True)
+                feature_map[x + r, y + r] = np.sum(prediction, axis=0)
+
+        return feature_map
+
+    def decode_bw(self, radius=10):
+        r = radius
+        feature_map = self.decode(radius)
+        entropy_map = np.zeros((2*r + 1, 2*r + 1))
+        for x in range(-r,r + 1):
+            for y in range(-r ,r + 1):
+                prediction  = self.explore(np.array([x,y]), mentally=True)
+                counts = feature_map[x + r, y + r]
+                prob   = np.exp(counts)
+                prob  /= np.sum(prob)
+                entropy_map[x + r, y + r] = - entropy(prob, base=2)
+
+        return entropy_map
 
 
 
