@@ -8,7 +8,7 @@ from scipy.stats import entropy
 class ContextLayer(object):
 
     def __init__(self, layer_shape, module_shape, action_map, max_activity=10000):
-        assert module_shape[0] == module_shape[1], "Check module dimensions, we want a square shape..."
+        assert module_shape[1] == module_shape[2], "Check module dimensions, we want a square shaped modules..."
         assert np.prod(module_shape) == np.prod(layer_shape), "Check layer dimensions..."
 
         self.layer_shape  = layer_shape
@@ -17,43 +17,49 @@ class ContextLayer(object):
 
         self.action_map = action_map
 
-        n, d, m   = self.shape
-        self.perm = np.random.permutation(n**2)
-        self.perm_inv = np.zeros(n**2).astype(int)
-        for i in range(n**2):
+        c = np.prod(module_shape)
+        self.num_cells = c
+        self.perm = np.random.permutation(c)
+        self.perm_inv = np.zeros(c).astype(int)
+        for i in range(c):
             self.perm_inv[self.perm[i]] = i
 
-        self.state = np.zeros(n**2)
+        self.state = np.zeros(c)
 
     def clear(self):
         self.state[:] = 0
 
     @property
-    def shape(self):
-        return self.module_shape[0], self.layer_shape[0], self.layer_shape[1]
-
-    @property
     def module(self):
-        n, _, _   = self.shape
         perm = self.perm
-        return self.state[perm].reshape((n, n))
+        return self.state[perm].reshape(self.module_shape)
+
+    def set_individual_module(self, i, M):
+        perm     = self.perm
+        perm_inv = self.perm_inv
+        module =  self.state[perm].reshape(self.module_shape)
+        module[i] = M[:]
+        self.state = module.reshape(-1)[perm_inv]
+
 
     @property
     def layer(self):
-        _, d, m   = self.shape
-        return self.state.reshape((d, m))
+        return self.state.reshape(self.layer_shape)
 
-    def _explore(self, a, mentally=False):
-        n, _, _   = self.shape
-        perm_inv = self.perm_inv
-        
+    def _explore(self, A, mentally=False):
+
+        perm_inv = self.perm_inv        
         C  = self.module
-        C_ = np.zeros((n,n))
-        for x0 in range(n):
-            for x1 in range(n):
-                y0 =(x0 + a[0])%n
-                y1 =(x1 + a[1])%n
-                C_[y0,y1] += C[x0, x1]
+        C_ = np.zeros(self.module_shape)
+
+        m, n, _ = self.module_shape
+        for i in range(m):
+            for x0 in range(n):
+                for x1 in range(n):
+                    y0 =(x0 + A[i,0])%n
+                    y1 =(x1 + A[i,1])%n
+
+                    C_[i, y0, y1] += C[i, x0, x1]
         
         C_ = np.clip(C_, 0, 1)
 
@@ -64,14 +70,18 @@ class ContextLayer(object):
             return C_.reshape(-1)[perm_inv].reshape(self.layer_shape)
 
     def explore(self, a, mentally=False):
-        a = np.dot(a, self.action_map)
-        return self._explore(a, mentally)
+        m, n, _ = self.module_shape
+        A = np.zeros((m, 2)).astype(int)
+        for i in range(m):
+            A[i] = np.dot(self.action_map[i], a)
+
+        return self._explore(A, mentally)
 
     def intersect(self, X):
         assert X.shape == self.layer_shape
 
         self.state *= X.reshape(-1)
-        self.state = np.clip(self.state, 0,1)
+        self.state  = np.clip(self.state, 0,1)
 
         return self.layer
 
@@ -89,21 +99,24 @@ class ContextLayer(object):
 
     def extend(self, a, X):
         """Extend the current context"""
+        m, n, _ = self.module_shape
+        A = np.zeros((m, 2)).astype(int)
 
-        a = np.dot(a, self.action_map)
+        for i in range(m):
+            A[i] = np.dot(self.action_map[i], a)
 
-        self._explore(a)
+        self._explore(A)
 
-        n, _, _   = self.shape
 
         active_bits = np.sum(self.state)
+
         if active_bits > 0:
             dropout = 1 - self.max_activity/active_bits
         else:
             dropout = -1
             
         if dropout > 0:
-            self.state = (self.state*np.random.sample(n**2) > dropout).astype(float)
+            self.state = (self.state*np.random.sample(m*n*n) > dropout).astype(float)
 
         self.add(X)
 
@@ -111,15 +124,20 @@ class ContextLayer(object):
 
 
     def decode(self, radius=10):
-        m = self.shape[2]
+        m = self.layer_shape[1]
+        num_modules = self.module_shape[0]
         r = radius
         feature_map = np.zeros((2*r + 1, 2*r + 1, m))
         for x in range(-r,r + 1):
             for y in range(-r ,r + 1):
-                prediction  = self.explore(np.array([x,y]), mentally=True)
+                v = np.zeros(2*num_modules) 
+                v[0] = x
+                v[1] = y
+                prediction  = self.explore(v, mentally=True)
                 feature_map[x + r, y + r] = np.sum(prediction, axis=0)
 
         return feature_map
+
 
     def decode_bw(self, radius=10):
         r = radius
@@ -127,7 +145,6 @@ class ContextLayer(object):
         entropy_map = np.zeros((2*r + 1, 2*r + 1))
         for x in range(-r,r + 1):
             for y in range(-r ,r + 1):
-                prediction  = self.explore(np.array([x,y]), mentally=True)
                 counts = feature_map[x + r, y + r]
                 prob   = np.exp(counts)
                 prob  /= np.sum(prob)
@@ -136,6 +153,13 @@ class ContextLayer(object):
         return entropy_map
 
 
-
+    def __str__(self):
+        summary = "**Context Layer:**"\
+                  "\nNumber of cells:\t {self.num_cells}"\
+                  "\nLayer Shape:\t\t {self.layer_shape}"\
+                  "\nHyper-Module Shape:\t {self.module_shape}"\
+                  "\nActivity bound:\t\t {self.max_activity}".format(self=self)
+                  
+        return summary
 
 
