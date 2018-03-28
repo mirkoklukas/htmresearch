@@ -8,7 +8,7 @@ from scipy.stats import entropy
 class ContextLayer(object):
 
     def __init__(self, layer_shape, module_shape, action_map, max_activity=10000):
-        assert module_shape[1] == module_shape[2], "Check module dimensions, we want a square shaped modules..."
+        assert module_shape[1]       == module_shape[2],      "Check module dimensions, we want a square shaped modules..."
         assert np.prod(module_shape) == np.prod(layer_shape), "Check layer dimensions..."
 
         self.layer_shape  = layer_shape
