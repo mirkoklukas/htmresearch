@@ -1,89 +1,118 @@
 import numpy as np
-
 from scipy.stats import entropy
+
+
 
 
 
 
 class ContextLayer(object):
 
-    def __init__(self, layer_shape, module_shape, action_map, max_activity=10000):
-        assert module_shape[1]       == module_shape[2],      "Check module dimensions, we want a square shaped modules..."
-        assert np.prod(module_shape) == np.prod(layer_shape), "Check layer dimensions..."
+    def __init__(self, layer_height, module_shapes, action_map, max_activity=10000):
 
-        self.layer_shape  = layer_shape
-        self.module_shape = module_shape
+        m  = len(module_shapes)
+        gc =  np.sum([ np.prod(module_shapes[i])  for i in range(m)  ])
+        d  = layer_height
+        l  = gc//d + gc%d 
+        c  = d*l
+        self.layer_shape   = (d, l)
+        self.num_grid_cells= gc
+        self.num_cells     = c
+        self.module_shapes = module_shapes
+        self.num_modules   = m
+        self.module_bounds = np.zeros(m+1).astype(int)
+        for i in range(1,m+1):
+            self.module_bounds[i] = self.module_bounds[i-1] + np.prod(module_shapes[i-1])
+
+
+
         self.max_activity = max_activity
+        self.action_map   = action_map
 
-        self.action_map = action_map
 
-        c = np.prod(module_shape)
-        self.num_cells = c
-        self.perm = np.random.permutation(c)
+        
+        self.perm     = np.random.permutation(c)
         self.perm_inv = np.zeros(c).astype(int)
         for i in range(c):
             self.perm_inv[self.perm[i]] = i
 
-        self.state = np.zeros(c)
+        self.state = np.zeros(d*l)
 
     def clear(self):
         self.state[:] = 0
 
-    @property
-    def module(self):
-        perm = self.perm
-        return self.state[perm].reshape(self.module_shape)
+    def get_module(self, i):
+        perm    = self.perm
+        b1      = self.module_bounds[i]
+        b2      = self.module_bounds[i+1]
+        m_shape = self.module_shapes[i]
+        m_state = self.state[perm]
+        return m_state[b1:b2].reshape(m_shape)
 
-    def set_individual_module(self, i, M):
+    def highlight_module(self, i):
         perm     = self.perm
         perm_inv = self.perm_inv
-        module =  self.state[perm].reshape(self.module_shape)
-        module[i] = M[:]
-        self.state = module.reshape(-1)[perm_inv]
+        state = np.zeros(self.state.shape)
+        b1 = self.module_bounds[i]
+        b2 = self.module_bounds[i+1]
+        m_state = self.state[perm]
+        m_state[b1:b2] = 1.
+        return m_state[perm_inv].reshape(self.layer_shape)
 
+    def highlight_unused_states(self):
+        perm     = self.perm
+        perm_inv = self.perm_inv
+        m  = self.num_modules
+        bm = self.module_bounds[m]
+        m_state = self.state[perm]
+        m_state[bm:] = 1
+        return m_state[perm_inv].reshape(self.layer_shape)
 
     @property
     def layer(self):
         return self.state.reshape(self.layer_shape)
 
+
     def _explore(self, A, mentally=False):
 
-        perm_inv = self.perm_inv        
-        C  = self.module
-        C_ = np.zeros(self.module_shape)
+        perm     = self.perm  
+        perm_inv = self.perm_inv            
+        m        = self.num_modules
+        m_state    = self.state[perm]
 
-        m, n, _ = self.module_shape
         for i in range(m):
-            for x0 in range(n):
-                for x1 in range(n):
-                    y0 =(x0 + A[i,0])%n
-                    y1 =(x1 + A[i,1])%n
+            n1, n2 = self.module_shapes[i]
+            b1     = self.module_bounds[i]
+            b2     = self.module_bounds[i+1]
+            C      = self.get_module(i)
+            C_     = np.zeros((n1,n2))
+            
+            for x0 in range(n1):
+                for x1 in range(n2):
+                    y0 =(x0 + A[i,0])%n1
+                    y1 =(x1 + A[i,1])%n2
 
-                    C_[i, y0, y1] += C[i, x0, x1]
+                    C_[y0, y1] += C[x0, x1]
         
-        C_ = np.clip(C_, 0, 1)
+            C_ = np.clip(C_, 0, 1)
+            m_state[b1:b2] = C_.reshape(-1)[:]
+
 
         if mentally == False:
-            self.state = C_.reshape(-1)[perm_inv]
+            self.state = m_state[perm_inv] 
             return self.layer
         else:
-            return C_.reshape(-1)[perm_inv].reshape(self.layer_shape)
+            return m_state[perm_inv].reshape(self.layer_shape)
+
+
 
     def explore(self, a, mentally=False):
-        m, n, _ = self.module_shape
+        m = self.num_modules
         A = np.zeros((m, 2)).astype(int)
         for i in range(m):
             A[i] = np.dot(self.action_map[i], a)
 
         return self._explore(A, mentally)
-
-    def intersect(self, X):
-        assert X.shape == self.layer_shape
-
-        self.state *= X.reshape(-1)
-        self.state  = np.clip(self.state, 0,1)
-
-        return self.layer
 
     def add(self, X):
         """
@@ -97,9 +126,10 @@ class ContextLayer(object):
 
         return self.layer
 
+
     def extend(self, a, X):
         """Extend the current context"""
-        m, n, _ = self.module_shape
+        m = self.num_modules
         A = np.zeros((m, 2)).astype(int)
 
         for i in range(m):
@@ -116,7 +146,7 @@ class ContextLayer(object):
             dropout = -1
             
         if dropout > 0:
-            self.state = (self.state*np.random.sample(m*n*n) > dropout).astype(float)
+            self.state = (self.state*np.random.sample(self.num_cells) > dropout).astype(float)
 
         self.add(X)
 
@@ -124,13 +154,15 @@ class ContextLayer(object):
 
 
     def decode(self, radius=10):
-        m = self.layer_shape[1]
-        num_modules = self.module_shape[0]
+        l = self.layer_shape[1]
+        m = self.num_modules
         r = radius
-        feature_map = np.zeros((2*r + 1, 2*r + 1, m))
+
+        feature_map = np.zeros((2*r + 1, 2*r + 1, l))
+
         for x in range(-r,r + 1):
             for y in range(-r ,r + 1):
-                v = np.zeros(2*num_modules) 
+                v = np.zeros(2*m) 
                 v[0] = x
                 v[1] = y
                 prediction  = self.explore(v, mentally=True)
@@ -139,16 +171,27 @@ class ContextLayer(object):
         return feature_map
 
 
-    def decode_bw(self, radius=10):
+    def decode_bw(self, radius=10, normalize=True, threshold=None, softmax=False):
         r = radius
         feature_map = self.decode(radius)
         entropy_map = np.zeros((2*r + 1, 2*r + 1))
         for x in range(-r,r + 1):
             for y in range(-r ,r + 1):
                 counts = feature_map[x + r, y + r]
-                prob   = np.exp(counts)
+                if softmax==True:
+                    prob   = np.exp(counts)
+                else:
+                    prob = counts
                 prob  /= np.sum(prob)
                 entropy_map[x + r, y + r] = - entropy(prob, base=2)
+
+        if normalize==True:
+            entropy_map -= np.amin(entropy_map)
+            if np.amax(entropy_map) > 0:
+                entropy_map /= np.amax(entropy_map)
+                
+        if threshold != None:
+            entropy_map = (entropy_map >= threshold).astype(float)
 
         return entropy_map
 
@@ -157,7 +200,8 @@ class ContextLayer(object):
         summary = "**Context Layer:**"\
                   "\nNumber of cells:\t {self.num_cells}"\
                   "\nLayer Shape:\t\t {self.layer_shape}"\
-                  "\nHyper-Module Shape:\t {self.module_shape}"\
+                  "\nHyper-Module Shape:\t {self.module_shapes}"\
+                  "\nModule bounds: {self.module_bounds}"\
                   "\nActivity bound:\t\t {self.max_activity}".format(self=self)
                   
         return summary
