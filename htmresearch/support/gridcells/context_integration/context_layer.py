@@ -7,9 +7,27 @@ from scipy.stats import entropy
 
 
 class ContextLayer(object):
-
+    """
+    An experimental L6 implementation that accumulates sensory inputs and whose
+    activity encodes spatial context of the inputs....
+    """
     def __init__(self, layer_height, module_shapes, action_map, max_activity=10000):
-
+        """
+        Args
+        ----
+            layer_height: 
+                The number of cells in a "minicolumn" of the layer.
+            module_shapes: 
+                An array of shape (m,2) describing the dimensions 
+                of m grid cell modules.
+            action_map: 
+                An array of shape (m,2,2*m) where the i'th entry action_map[i]
+                is a matrix translating 2m-dimensional motorcommand into 2-dimensional
+                positional updates that can be consumed by the i'th grid module.
+            max_activity: 
+                The maximal number of active bits in the layer. If the number of active bits
+                exceeds this bound random dropout will be applied.
+        """
         m  = len(module_shapes)
         gc =  np.sum([ np.prod(module_shapes[i])  for i in range(m)  ])
         d  = layer_height
@@ -122,7 +140,7 @@ class ContextLayer(object):
         assert X.shape == self.layer_shape
 
         self.state += X.reshape(-1)
-        self.state = np.clip(self.state, 0,1)
+        self.state  = np.clip(self.state, 0,1)
 
         return self.layer
 
@@ -197,12 +215,15 @@ class ContextLayer(object):
 
 
     def __str__(self):
-        summary = "**Context Layer:**"\
+        summary = "\n**Context Layer:**"\
+                  "\n------------------"\
                   "\nNumber of cells:\t {self.num_cells}"\
                   "\nLayer Shape:\t\t {self.layer_shape}"\
-                  "\nHyper-Module Shape:\t {self.module_shapes}"\
+                  "\nHyper-Module Shapes:\n{self.module_shapes}"\
                   "\nModule bounds: {self.module_bounds}"\
-                  "\nActivity bound:\t\t {self.max_activity}".format(self=self)
+                  "\nNumber of grid cells:\t {self.num_grid_cells}"\
+                  "\nActivity bound:\t\t {self.max_activity}"\
+                  "\n------------------".format(self=self)
                   
         return summary
 
