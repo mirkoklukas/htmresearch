@@ -23,24 +23,35 @@ def get_3d_actions(m):
     dz[0:3] = np.array([0,0,1])
     return dx,dy,dz
 
+def get_4d_actions(m):
+    dx   = np.zeros(2*m)
+    dy   = np.zeros(2*m)
+    dz   = np.zeros(2*m)
+    dw   = np.zeros(2*m)
+
+    dx[0] = 1
+    dy[1] = 1
+    dz[2] = 1
+    dw[3] = 1
+    return dx,dy,dz,dw
+
+def get_actions(m, k):
+    return np.eye(2*m)[:k]
+
+
 def create_action_tensor(m):
     action_tensor = np.zeros((m, 2, 2*m))
     for i in range(m):
-        theta = np.random.sample()*np.pi*2
-        theta2 = np.random.sample()*np.pi*2
-        theta3 = np.random.sample()*np.pi*2
-        sixty = np.pi/3 + np.random.randn()*0.0
-        phi   = np.random.sample()*np.pi*2
-        s1     = 3 + np.random.sample()*3
-        s2     = 3 + np.random.sample()*3.
-        s3     = 3 + np.random.sample()*3.
-        
-        action_tensor[i,:,0:3] = np.array([
-            [ s1*np.cos(theta), s2*np.cos(theta2), s3*np.cos(theta3)],
-            [ s1*np.sin(theta), s2*np.sin(theta2), s3*np.cos(theta3)]  
-        ]).astype(int)
+        for j in range(2*m):
+            theta = np.random.sample()*np.pi*2
+            s     = 3 + np.random.sample()*3
+            
+            action_tensor[i,:,j] = s*np.array([
+                np.cos(theta),
+                np.sin(theta)
+            ])
 
-    return action_tensor
+    return action_tensor.astype(int)
 
 def create_env_nbh_tensor(environment, radius):
     env = environment
@@ -103,6 +114,20 @@ def get_closed_3d_path(num_samples=20, radius=10):
     X[-1] = X[0]
     return X, V
 
+def get_closed_4d_path(num_samples=20, radius=10):
+    R = radius
+    X = np.zeros((num_samples+1,4))
+    V = np.zeros((num_samples,4))
+
+    for i in range(num_samples):
+        x = np.random.randint(-R,R, size=(4))
+        X[i] = x[:]
+
+    for i in range(num_samples):
+        V[i] = X[(i+1)%num_samples] - X[i]
+
+    X[-1] = X[0]
+    return X, V
 
 
 

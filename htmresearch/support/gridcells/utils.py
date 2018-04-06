@@ -55,5 +55,5 @@ def map_to_quotient(X, B, v=np.array([0.,0.])):
 	return Y
 
 def compute_grid(B, r=10):
-	L = np.array([ x*B[:,0] + y*B[:,1] for x in range(-r,r) for y in range(-r,r)])
+	L = np.array([ x*B[:,0] + y*B[:,1] for x in range(-r,r+1) for y in range(-r,r+1)])
 	return L

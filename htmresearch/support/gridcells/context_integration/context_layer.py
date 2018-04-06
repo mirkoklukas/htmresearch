@@ -130,6 +130,7 @@ class ContextLayer(object):
         for i in range(m):
             A[i] = np.dot(self.action_map[i], a)
 
+
         return self._explore(A, mentally)
 
     def add(self, X):
