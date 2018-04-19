@@ -1,4 +1,23 @@
-
+# ----------------------------------------------------------------------
+# Numenta Platform for Intelligent Computing (NuPIC)
+# Copyright (C) 2018, Numenta, Inc.  Unless you have an agreement
+# with Numenta, Inc., for a separate license for this software code, the
+# following terms and conditions apply:
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero Public License version 3 as
+# published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the GNU Affero Public License for more details.
+#
+# You should have received a copy of the GNU Affero Public License
+# along with this program.  If not, see http://www.gnu.org/licenses.
+#
+# http://numenta.org/licenses/
+# ----------------------------------------------------------------------
 import numpy as np
 import tensorflow as tf
 from scipy.special import expit as sigmoid
@@ -138,8 +157,10 @@ class LateralKSparseAutoencoder(object):
             e = np.dot(self.weights, x).reshape(-1)
             E[t,:] = e
 
-            score  = e
-            # score = b*sigmoid(e)
+            if with_boosting==True:
+                score = b*e
+            else:
+                score  = e
 
             if with_lateral:
                 Y[t,:] = self._inhibitColumnsWithLateral(score, self.lateralConnections).reshape(-1)
@@ -157,8 +178,8 @@ class LateralKSparseAutoencoder(object):
 
     def _get_boostfactor(self, strength=100):
         alpha = np.clip(self.mean_activity,0.000001,1)
-        boo = (1./alpha).reshape((-1,1))
-        # boo = np.exp( - strength*self.mean_activity ).reshape((-1,1))
+        # boo = (1./alpha).reshape((-1,1))
+        boo = np.exp( - strength*self.mean_activity ).reshape((-1,1))
         return boo
 
 

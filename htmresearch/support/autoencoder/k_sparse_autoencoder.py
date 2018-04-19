@@ -1,4 +1,23 @@
-
+# ----------------------------------------------------------------------
+# Numenta Platform for Intelligent Computing (NuPIC)
+# Copyright (C) 2018, Numenta, Inc.  Unless you have an agreement
+# with Numenta, Inc., for a separate license for this software code, the
+# following terms and conditions apply:
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero Public License version 3 as
+# published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the GNU Affero Public License for more details.
+#
+# You should have received a copy of the GNU Affero Public License
+# along with this program.  If not, see http://www.gnu.org/licenses.
+#
+# http://numenta.org/licenses/
+# ----------------------------------------------------------------------
 import numpy as np
 import tensorflow as tf
 
@@ -31,20 +50,20 @@ class kSparseAutoencoder(object):
         # 
         self.x        = tf.placeholder(tf.float64, shape=[m, 1], name="x")
         self.hot_topk = tf.placeholder(tf.float64, shape=[n, 1], name="active_units")
-        self.score    = tf.placeholder(tf.float64, shape=[n, 1], name="active_units")
+        self.score    = tf.placeholder(tf.float64, shape=[n, 1], name="score")
 
         self.W  = tf.Variable(tf.random_normal([n,m], dtype=tf.float64), name="Fwd_weights")
-        self.bn = tf.Variable(tf.zeros([n,1], dtype=tf.float64), name="bn")
-        self.bm = tf.Variable(tf.zeros([m,1], dtype=tf.float64), name="bm")
+        self.bn = tf.Variable(0.2*tf.ones([n,1], dtype=tf.float64), name="bn")
+        self.bm = tf.Variable(0.2*tf.ones([m,1], dtype=tf.float64), name="bm")
 
         if self.train_only_decoder == True:
             z = self.score
         else:
-            z = tf.matmul(self.W, self.x) + self.bn
+            z = tf.matmul(self.W, self.x)
 
         z_sparse = z*self.hot_topk
 
-        self.x_hat = tf.matmul(self.W, z_sparse, transpose_a=True) + self.bm
+        self.x_hat = tf.matmul(self.W, z_sparse, transpose_a=True) 
 
         self.loss  = tf.reduce_mean(tf.square( tf.subtract(self.x, self.x_hat))) 
 
