@@ -124,3 +124,30 @@ def smooth_walk(num, start=None, min_speed=0.0, max_speed=0.04, sigma=0.5):
 
 	return X, V
 
+
+
+
+def smooth_circle_walk(num, start=None, min_speed=0.0, max_speed=0.04):
+
+	if start == None:
+		x = np.random.rand(1)
+	else:
+		x = np.array(start)
+
+	X     = np.zeros((num,1))
+	X[0]  = x[:]  
+	V     = np.zeros((num,1))
+
+
+
+	for t in range(1,num):
+		speed  = min_speed + (max_speed - min_speed)*np.random.sample()
+		vel = np.random.choice([-1,1])*speed
+		x   += vel
+		x   %= 1
+
+		X[t,:] = x[:]
+
+		V[t-1,:] = vel
+
+	return X, V

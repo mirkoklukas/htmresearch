@@ -53,6 +53,9 @@ class SpreadAndAlignModel(object):
     self.num_grid_cells     = parameters["num_grid_cells"]
     self.num_velocity_cells = parameters["num_velocity_cells"]
 
+    self.beta = parameters["beta"]
+    self.mean_activity = np.zeros((self.num_grid_cells,1))
+
     # 
     # The Graph
     # 
@@ -60,6 +63,9 @@ class SpreadAndAlignModel(object):
     x    = tf.placeholder(tf.float32, shape=[num_x, 1], name="x")
     v_   = tf.placeholder(tf.float32, shape=[num_v, 1], name="v_")
     h_   = tf.placeholder(tf.float32, shape=[num_h, 1], name="h_")
+
+    boost= tf.placeholder(tf.float32, shape=[num_h, 1], name="boost")
+    self.boost = boost
 
     lim_hx=np.sqrt(6. / sum([num_h,num_x]))
     lim_hh=np.sqrt(6. / sum([num_h,num_h]))
@@ -82,7 +88,9 @@ class SpreadAndAlignModel(object):
     sigmoid = tf.nn.sigmoid
     # h_fwd = tf.transpose(softmax(tf.transpose( tf.matmul( W_hx, x ) + b_x ) ))
     # h_hat = tf.transpose(softmax(tf.transpose( tf.matmul( W_hh, h_) + tf.matmul( W_hv, v_ )  + b_h ) ))
-    h_fwd = sigmoid( tf.matmul( W_hx, x ) + b_x ) 
+
+    z = tf.matmul( W_hx, x ) + b_x
+    h_fwd = boost * sigmoid( z  ) 
     h_hat = sigmoid( tf.matmul( W_hh, h_) + tf.matmul( W_hv, v_ )  + b_x ) 
 
 
@@ -165,16 +173,16 @@ class SpreadAndAlignModel(object):
     #     ( < h_t , h_{t+1} >  - "desired spread" )^2
     # 
     spread_weight = parameters["spread_weight"]
-    h_squared = tf.tensordot( h_, h_, axes=2)
-    normalizer = h_squared*h_fwd_squared
-    v_sq = tf.tensordot( v_, v_, axes=2)
+    # h_squared = tf.tensordot( h_, h_, axes=2)
+    # normalizer = h_squared*h_fwd_squared
+    # v_sq = tf.tensordot( v_, v_, axes=2)
     # spread_loss   = v_sq*tf.pow(  tf.tensordot( h_, h_fwd, axes=2) - normalizer*v_sq*spread_weight, 2)
-    diff =  tf.subtract(h_fwd, h_)
-    prediction_loss = tf.tensordot(diff, diff, axes=2) - normalizer*normalizer*v_sq
-    # spread_loss   = tf.pow(tf.reduce_sum( tf.pow(tf.subtract(h_, h_fwd), 2)) - spread_weight, 2)
+    # diff =  tf.subtract(h_fwd, h_)
+    # prediction_loss = tf.tensordot(diff, diff, axes=2) - normalizer*normalizer*v_sq
+    spread_loss   = tf.pow(tf.reduce_sum( tf.pow(tf.subtract(h_, h_fwd), 2)) - spread_weight, 2)
     # spread_loss = tf.reduce_sum( tf.tensordot(h_fwd , tf.log(tf.divide(h_fwd, h_)), axes=2) ) - 1
     # spread_loss = - tf.reduce_sum( h_fwd * tf.log(tf.divide(h_fwd, h_)) )*(10.0*spread_weight)
-    spread_loss = tf.reduce_sum( h_fwd * tf.log(h_) )*spread_weight
+    # spread_loss = tf.reduce_sum( h_fwd * tf.log(h_) )*spread_weight
 
 
     a = parameters["prediction_loss_weight"]
@@ -207,6 +215,11 @@ class SpreadAndAlignModel(object):
       W = self.W_hx.eval(session=self.sess)
     return W
 
+  def get_boost(self):
+    """
+    """
+    return np.exp( - 100*self.mean_activity )
+
   def fit(self, data):
     """
     """
@@ -214,6 +227,7 @@ class SpreadAndAlignModel(object):
     V = data["V"]
     d = X.shape[0]
 
+    beta = self.beta
     num_h  = self.num_grid_cells
     h_prev = np.zeros((num_h, 1))
     losses = []
@@ -222,9 +236,14 @@ class SpreadAndAlignModel(object):
       feed_dict = {
           self.x : X[[t]].T,
           self.v_: V[[t]].T,
-          self.h_: h_prev
+          self.h_: h_prev,
+          self.boost: np.exp( - 100*self.mean_activity )
       }
       _, loss_value, h_prev = self.sess.run([self.train_step, self.loss_fn, self.h_fwd], feed_dict = feed_dict)
+
+
+      self.mean_activity = (1-beta)*self.mean_activity + beta*h_prev
+      
 
       losses.append(loss_value)
 
