@@ -68,8 +68,12 @@ class LateralKSparseAutoencoder(object):
 
         self.e = tf.placeholder(tf.float64, shape=[n, 1], name="e")
 
+        
 
-        y = self.e*self.y_
+        if self.enforce_binary_output==True:
+            y = self.e*self.y_
+        else:
+            y = self.y_
 
 
         x_hat = tf.matmul(self.W, y, transpose_a=True)
@@ -178,8 +182,8 @@ class LateralKSparseAutoencoder(object):
 
     def _get_boostfactor(self, strength=100):
         alpha = np.clip(self.mean_activity,0.000001,1)
-        # boo = (1./alpha).reshape((-1,1))
-        boo = np.exp( - strength*self.mean_activity ).reshape((-1,1))
+        boo = (1./alpha).reshape((-1,1))
+        # boo = np.exp( - strength*self.mean_activity ).reshape((-1,1))
         return boo
 
 
