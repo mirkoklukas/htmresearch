@@ -35,6 +35,7 @@ def get_4d_actions(m):
     dw[3] = 1
     return dx,dy,dz,dw
 
+
 def get_actions(m, k):
     return np.eye(2*m)[:k]
 

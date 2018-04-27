@@ -30,7 +30,18 @@ class LateralKSparseAutoencoder(object):
     An experimental implementation of a k-sparse autoencoder
     with learned lateral inhibitory connections.
     """
-    def __init__(self, num_inputs, num_outputs, code_weight, beta, learning_rate, enable_boosting=True, enforce_binary_output=False, enforce_code_weight=True, with_lateral=True):
+    def __init__(self, 
+                num_inputs, 
+                num_outputs, 
+                code_weight, 
+                beta, 
+                learning_rate, 
+                enable_boosting=True, 
+                enforce_binary_output=False, 
+                enforce_code_weight=True, 
+                with_lateral=True, 
+                fixed_lateral_connections=False):
+
 
         n, m = num_outputs, num_inputs
 
@@ -41,49 +52,38 @@ class LateralKSparseAutoencoder(object):
         self.beta          = beta 
         self.learning_rate         = learning_rate
         self.learning_rate_lateral = learning_rate
-
         self.num_trained = 0
-
-
         self.enforce_binary_output = enforce_binary_output
-        self.enable_boosting = enable_boosting
-        self.enforceDesiredWeight = enforce_code_weight
-        self.enforce_code_weight  = enforce_code_weight
-        self.with_lateral = with_lateral
+        self.enable_boosting       = enable_boosting
+        self.enforce_desired_weight = enforce_code_weight
+        self.enforce_code_weight    = enforce_code_weight
+        self.with_lateral          = with_lateral
+        self.fixed_lateral_connections = fixed_lateral_connections
 
-
-        self.lateralConnections = np.ones((n,n))/float(n-1)
-        np.fill_diagonal(self.lateralConnections, 0.0)
+        self.lateral_connections = np.ones((n,n))/float(n-1)
+        np.fill_diagonal(self.lateral_connections, 0.0)
 
         
         self.mean_activity    = np.ones(n)*self.sparsity
         self.avgActivityPairs = np.ones((n,n))*(self.sparsity**2)
 
 
-        self.x  = tf.placeholder(tf.float64, shape=[m, 1], name="x")
-        # self.e  = tf.placeholder(tf.float64, shape=[n, 1], name="e")
-        self.y_ = tf.placeholder(tf.float64, shape=[n, 1], name="y_binary")
+        self.x  = tf.placeholder(tf.float64, shape=[m, 1], name="input")
+        self.y_ = tf.placeholder(tf.float64, shape=[n, 1], name="hot_topk")
+        self.e  = tf.placeholder(tf.float64, shape=[n, 1], name="energy")
 
         self.W = tf.Variable(tf.random_normal([n,m], dtype=tf.float64), name="Fwd_weights")
 
-        self.e = tf.placeholder(tf.float64, shape=[n, 1], name="e")
-
-        
-
-        if self.enforce_binary_output==True:
+        if enforce_binary_output==False:
             y = self.e*self.y_
         else:
-            y = self.y_
-
+            y = self.y_ 
 
         x_hat = tf.matmul(self.W, y, transpose_a=True)
 
         
-        # Reconstruction error
+
         self.loss  = tf.reduce_mean(tf.square( tf.subtract(self.x, x_hat))) 
-        # self.loss  = tf.reduce_mean(tf.abs( tf.subtract(self.x, x_hat))) 
-        # self.loss = tf.reduce_mean( tf.square(  tf.subtract(x,tf.sigmoid(x_hat)) ))
-        # self.loss = tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(labels=x, logits=x_hat))
 
         optimizer = tf.train.GradientDescentOptimizer(self.learning_rate)
         self.train_step = optimizer.minimize(self.loss)
@@ -107,18 +107,16 @@ class LateralKSparseAutoencoder(object):
             b = self._get_boostfactor()
             # x = X[t].reshape((-1,1))
 
-
             e = np.dot(self.weights, X[[t]].T)
 
             if self.enable_boosting:
-                score = b*e
+                score = b*sigmoid(e)
             else:
                 score = e
 
 
             if self.with_lateral:
-                Y[t,:] = self._inhibitColumnsWithLateral(score, self.lateralConnections).reshape(-1)
-
+                Y[t,:] = self._inhibitColumnsWithLateral(score, self.lateral_connections).reshape(-1)
             else:
                 sortedIndices = np.argsort( score.reshape(-1), kind='mergesort')[::-1]
                 Y[t,sortedIndices[:k]] = 1.0
@@ -129,10 +127,11 @@ class LateralKSparseAutoencoder(object):
             _, loss, e = self.sess.run([self.train_step, self.loss, self.e], feed_dict = feed_dict)
 
 
-            self._updateAvgActivityPairs(Y[t])
-            # epsilon = self.learning_rate_lateral
-            epsilon = 1.0
-            self._updateLateralConnections(epsilon, self.avgActivityPairs)
+            self._update_avg_activity_pairs(Y[t])
+
+            if self.fixed_lateral_connections == False:
+                self._updateLateralConnections(self.avgActivityPairs, 0.1)
+
             self._update_mean_activity(Y[t])
 
             E[t,:] = e[:,0]
@@ -149,7 +148,18 @@ class LateralKSparseAutoencoder(object):
 
 
 
-    def encode(self, X, with_boosting=False, with_lateral=True, enforce_binary_output=True):
+    def encode(self, X, with_boosting=None, with_lateral=None, enforce_binary_output=None):
+        
+        if with_boosting==None:
+            with_boosting = self.enable_boosting
+
+        if with_lateral==None:
+            with_lateral = self.with_lateral
+
+        if enforce_binary_output==None:
+            enforce_binary_output=self.enforce_binary_output
+
+
         d = len(X)
         Y = np.zeros((d, self.num_outputs))
         E = np.zeros((d, self.num_outputs))
@@ -162,13 +172,12 @@ class LateralKSparseAutoencoder(object):
             E[t,:] = e
 
             if with_boosting==True:
-                score = b*e
+                score = b*sigmoid(e)
             else:
                 score  = e
 
             if with_lateral:
-                Y[t,:] = self._inhibitColumnsWithLateral(score, self.lateralConnections).reshape(-1)
-
+                Y[t,:] = self._inhibitColumnsWithLateral(score, self.lateral_connections).reshape(-1)
             else:
                 sortedIndices = np.argsort( score, kind='mergesort')[::-1]
                 Y[[t],sortedIndices[:k]] = 1.0
@@ -187,71 +196,72 @@ class LateralKSparseAutoencoder(object):
         return boo
 
 
-    def _inhibitColumnsWithLateral(self, overlaps, lateralConnections):
+    def _inhibitColumnsWithLateral(self, score, lateral_connections):
         """
         Performs an experimentatl local inhibition. Local inhibition is 
         iteratively performed on a column by column basis.
         """
-        n = self.num_outputs
-        overlaps = overlaps.reshape(-1)
-        y   = np.zeros(n)
-        s   = self.sparsity
-        L   = lateralConnections
+        score = score.reshape(-1)
+        sparsity = self.sparsity
+        y = np.zeros(self.num_outputs)
+        L = lateral_connections
 
-        desiredWeight = self.code_weight
-        inhSignal     = np.zeros(n)
-        sortedIndices = np.argsort(overlaps, kind='mergesort')[::-1]
+        k = self.code_weight
+        inh_signal     = np.zeros(self.num_outputs)
+        sorted_indices = np.argsort(score, kind='mergesort')[::-1]
 
-        currentWeight = 0
-        for i in sortedIndices:
+        current_weight = 0
+        for i in sorted_indices:
 
-          inhTooStrong = ( inhSignal[i] >= s )
+          inh_too_strong = ( inh_signal[i] >= sparsity )
 
-          if not inhTooStrong:
+          if not inh_too_strong:
             y[i]              = 1.
-            currentWeight    += 1
-            inhSignal[:]     += L[i,:]
+            current_weight    += 1
+            inh_signal[:]     += L[i,:]
 
-          if self.enforceDesiredWeight and currentWeight == desiredWeight:
+          if self.enforce_code_weight and current_weight == k:
             break
-
-        # activeColumns = np.where(y==1.0)[0]
 
         return y.reshape((-1,1))
 
 
-    def _updateAvgActivityPairs(self, activeArray):
+
+    def _update_avg_activity_pairs(self, activeArray):
         """
         Updates the average firing activity of pairs of 
         columns.
         """
         n = self.num_outputs
         m = self.num_inputs
-        Y    = activeArray.reshape((n,1))
+        Y = activeArray.reshape((-1,1))
         beta = self.beta
-
         Q = np.dot(Y, Y.T) 
 
         self.avgActivityPairs = (1.0-beta)*self.avgActivityPairs + beta*Q
+
+
 
     def _update_mean_activity(self, y):
         b = self.beta
         self.mean_activity = (1.0-b)*self.mean_activity + b*y
 
-    def _updateLateralConnections(self, epsilon, avgActivityPairs):
+
+
+    def _updateLateralConnections(self, avgActivityPairs, epsilon=1.0):
         """
         Sets the weights of the lateral connections based on 
         average pairwise activity of the SP's columns. Intuitively: The more 
         two columns fire together on average the stronger the inhibitory
         connection gets. 
         """
-        oldL = self.lateralConnections
+        oldL = self.lateral_connections
         newL = avgActivityPairs.copy()
         np.fill_diagonal(newL, 0.0)
         newL = newL/np.sum(newL, axis=1, keepdims=True)
 
-        self.lateralConnections[:,:] = (1.0 - epsilon)*oldL + epsilon*newL
-        np.fill_diagonal(self.lateralConnections, 0.0)
+        self.lateral_connections[:,:] = (1.0 - epsilon)*oldL + epsilon*newL
+        np.fill_diagonal(self.lateral_connections, 0.0)
 
 
     @property

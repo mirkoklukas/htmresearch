@@ -86,14 +86,15 @@ class kSparseAutoencoder(object):
 
 
         for t in range(d):
+            x = X[[t]].T
             W = self.weights
-            s = np.dot(W, X[[t]].T)
+            s = np.dot(W, x)
             y = np.zeros((n,1))
             sortedIndices = np.argsort(s[:,0], kind='mergesort')[::-1]
             y[sortedIndices[:k],0] = 1.0
 
             feed_dict = {
-                self.x : X[[t]].T,
+                self.x : x,
                 self.hot_topk: y,
                 self.score: s
             }
@@ -115,9 +116,10 @@ class kSparseAutoencoder(object):
 
     def encode(self, X):
         W  = self.weights
+        k  = self.code_weight 
         S  = np.dot(W,X.T)
         S_ = np.sort(S, axis=0)
-        S[np.where(S < S_[[-self.code_weight],:])] = 0.
+        S[np.where(S < S_[[-k],:])] = 0.
 
         return S.T
 

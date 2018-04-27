@@ -46,18 +46,30 @@ class ContextLayer(object):
 
         self.max_activity = max_activity
         self.action_map   = action_map
-
-
         
         self.perm     = np.random.permutation(c)
         self.perm_inv = np.zeros(c).astype(int)
         for i in range(c):
             self.perm_inv[self.perm[i]] = i
 
-        self.state = np.zeros(d*l)
+        self.state        = np.zeros(d*l)
+        self.state_counts = np.zeros(d*l)
 
     def clear(self):
         self.state[:] = 0
+
+    def get_random_anchor(self):
+        m = self.num_modules
+        A = np.zeros(self.num_cells)
+        perm_inv = self.perm_inv
+        for i in range(1,m+1):
+            b1 = self.module_bounds[i-1]
+            b2 = self.module_bounds[i]
+            r = np.random.randint(b1, b2)
+            A[r] = 1.0
+
+        return A[perm_inv].reshape(self.layer_shape)
+
 
     def get_module(self, i):
         perm    = self.perm
@@ -91,12 +103,18 @@ class ContextLayer(object):
         return self.state.reshape(self.layer_shape)
 
 
+    @property
+    def layer_of_counts(self):
+        return self.state_counts.reshape(self.layer_shape)
+
+
     def _explore(self, A, mentally=False):
 
         perm     = self.perm  
         perm_inv = self.perm_inv            
         m        = self.num_modules
-        m_state    = self.state[perm]
+        m_state  = self.state[perm]
+        m_state_counts = self.state[perm]
 
         for i in range(m):
             n1, n2 = self.module_shapes[i]
@@ -122,6 +140,35 @@ class ContextLayer(object):
         else:
             return m_state[perm_inv].reshape(self.layer_shape)
 
+    def _explore2(self, A, mentally=False):
+
+        perm     = self.perm  
+        perm_inv = self.perm_inv            
+        m        = self.num_modules
+        m_state  = self.state_counts[perm]
+
+        for i in range(m):
+            n1, n2 = self.module_shapes[i]
+            b1     = self.module_bounds[i]
+            b2     = self.module_bounds[i+1]
+            C      = self.get_module(i)
+            C_     = np.zeros((n1,n2))
+            
+            for x0 in range(n1):
+                for x1 in range(n2):
+                    y0 =(x0 + A[i,0])%n1
+                    y1 =(x1 + A[i,1])%n2
+
+                    C_[y0, y1] = C[x0, x1]
+        
+            m_state[b1:b2] = C_.reshape(-1)[:]
+
+
+        if mentally == False:
+            self.state = m_state[perm_inv] 
+            return self.layer
+        else:
+            return m_state[perm_inv].reshape(self.layer_shape)
 
 
     def explore(self, a, mentally=False):
@@ -130,8 +177,15 @@ class ContextLayer(object):
         for i in range(m):
             A[i] = np.dot(self.action_map[i], a)
 
-
         return self._explore(A, mentally)
+
+    def explore2(self, a, mentally=False):
+        m = self.num_modules
+        A = np.zeros((m, 2)).astype(int)
+        for i in range(m):
+            A[i] = np.dot(self.action_map[i], a)
+
+        return self._explore2(A, mentally)
 
     def add(self, X):
         """
@@ -144,6 +198,17 @@ class ContextLayer(object):
         self.state  = np.clip(self.state, 0,1)
 
         return self.layer
+
+    def add_to_counts(self, X):
+        """
+        Extend the current context 
+        (or state respectively)
+        """
+        assert X.shape == self.layer_shape
+
+        self.state_counts += X.reshape(-1)
+
+        return self.layer_of_counts
 
 
     def extend(self, a, X):
@@ -168,9 +233,14 @@ class ContextLayer(object):
             self.state = (self.state*np.random.sample(self.num_cells) > dropout).astype(float)
 
         self.add(X)
-
+        
         return self.layer
 
+    def feed_bottom_up(self, column_indices):
+        d, l = self.layer_shape 
+        X = np.zeros((d,l))
+        X[:,column_indices] = 1.0
+        self.add(X) 
 
     def decode(self, radius=10):
         l = self.layer_shape[1]
