@@ -45,7 +45,7 @@ def create_action_tensor(m):
     for i in range(m):
         for j in range(2*m):
             theta = np.random.sample()*np.pi*2
-            s     = 3 + np.random.sample()*3
+            s     = 5 + np.random.sample()*3
             
             action_tensor[i,:,j] = s*np.array([
                 np.cos(theta),

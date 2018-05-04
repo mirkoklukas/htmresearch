@@ -42,13 +42,12 @@ class ContextLayer(object):
         for i in range(1,m+1):
             self.module_bounds[i] = self.module_bounds[i-1] + np.prod(module_shapes[i-1])
 
-
-
         self.max_activity = max_activity
         self.action_map   = action_map
         
         self.perm     = np.random.permutation(c)
         self.perm_inv = np.zeros(c).astype(int)
+
         for i in range(c):
             self.perm_inv[self.perm[i]] = i
 
@@ -79,13 +78,20 @@ class ContextLayer(object):
         m_state = self.state[perm]
         return m_state[b1:b2].reshape(m_shape)
 
+    def get_module_counts(self, i):
+        perm    = self.perm
+        b1      = self.module_bounds[i]
+        b2      = self.module_bounds[i+1]
+        m_shape = self.module_shapes[i]
+        m_state = self.state_counts[perm]
+        return m_state[b1:b2].reshape(m_shape)
+
     def highlight_module(self, i):
         perm     = self.perm
         perm_inv = self.perm_inv
-        state = np.zeros(self.state.shape)
+        m_state = np.zeros(self.state.shape)
         b1 = self.module_bounds[i]
         b2 = self.module_bounds[i+1]
-        m_state = self.state[perm]
         m_state[b1:b2] = 1.
         return m_state[perm_inv].reshape(self.layer_shape)
 
@@ -107,6 +113,31 @@ class ContextLayer(object):
     def layer_of_counts(self):
         return self.state_counts.reshape(self.layer_shape)
 
+
+    def sparsify(self, k):
+        perm     = self.perm  
+        perm_inv = self.perm_inv            
+        m        = self.num_modules
+        state_counts = self.state_counts[perm]
+        for i in range(m):
+            n1, n2 = self.module_shapes[i]
+            b1     = self.module_bounds[i]
+            b2     = self.module_bounds[i+1]
+
+            m_counts = (self.state_counts[perm])[b1:b2]
+
+            num_active = np.sum(m_counts!=0)
+            k = min(k, num_active)
+            m_counts_ = np.zeros(m_counts.shape).reshape(-1)
+            sorted_args = np.argsort(m_counts.reshape(-1))[::-1]
+            top_k = sorted_args[:k]
+            m_counts_[top_k] = 1.
+            state_counts[b1:b2] = m_counts_[:]
+            
+        np.clip(state_counts,0,1,state_counts)
+        self.state[:] = state_counts[perm_inv]
+
+        return self.layer
 
     def _explore(self, A, mentally=False):
 
@@ -151,7 +182,7 @@ class ContextLayer(object):
             n1, n2 = self.module_shapes[i]
             b1     = self.module_bounds[i]
             b2     = self.module_bounds[i+1]
-            C      = self.get_module(i)
+            C      = self.get_module_counts(i)
             C_     = np.zeros((n1,n2))
             
             for x0 in range(n1):
@@ -165,7 +196,7 @@ class ContextLayer(object):
 
 
         if mentally == False:
-            self.state = m_state[perm_inv] 
+            self.state_counts = m_state[perm_inv] 
             return self.layer
         else:
             return m_state[perm_inv].reshape(self.layer_shape)
@@ -294,6 +325,7 @@ class ContextLayer(object):
                   "\nModule bounds: {self.module_bounds}"\
                   "\nNumber of grid cells:\t {self.num_grid_cells}"\
                   "\nActivity bound:\t\t {self.max_activity}"\
+                  "\nAction map shape:\t\t {self.action_map.shape}"\
                   "\n------------------".format(self=self)
                   
         return summary
