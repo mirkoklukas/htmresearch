@@ -6,12 +6,43 @@ from scipy.ndimage.interpolation import shift
 
 def oja(W, X, learning_rate=0.1, non_negative=False):
 
+
+	ONES = np.ones((W.shape[0],W.shape[0]))
+
+
+	L = - np.tril(ONES, k=1)
+	np.fill_diagonal(L, 1.0)
 	for t in range(len(X)):
 
 		x  = X[[t]].T
-		y  = np.dot(W,x)
+		y  = np.dot(W,x) 
 
-		dW = y*(x.T) - (y*y)*W 
+		dW = np.zeros(W.shape)
+		for i in range(W.shape[0]):
+			for j in range(W.shape[1]):
+				c = np.sum( W[k,j]*y[k,0] for k in range(i+1)) 
+				dW[i,j] = y[i,0]*x[j,0] - y[i,0]*c 
+
+
+		W[:,:] = W + learning_rate*dW
+
+		if non_negative:
+			W[:,:] = np.maximum(W,0.0)[:,:]
+
+
+
+
+def oja_w1(W, X, learning_rate=0.1, non_negative=False):
+
+
+	for t in range(len(X)):
+
+		x  = X[[t]].T
+		y  = np.dot(W,x) 
+
+
+		dW = y*x.T - y*y*W 
+
 
 		W[:,:] = W + learning_rate*dW
 
