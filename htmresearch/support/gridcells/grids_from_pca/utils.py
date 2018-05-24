@@ -1,5 +1,6 @@
 import numpy as np
 from scipy.ndimage.interpolation import shift
+from scipy.special import expit as sigmoid
 
 
 
@@ -34,6 +35,52 @@ def oja(W, X, learning_rate=0.1, non_negative=False):
 
 def oja_w1(W, X, learning_rate=0.1, non_negative=False):
 
+	l = []
+	for t in range(len(X)):
+
+		x  = X[[t]].T
+		y  = np.dot(W,x)
+		dW = y*x.T - y*y*W 
+
+		W[:,:] = W + learning_rate*dW
+
+		if non_negative:
+			W[:,:] = np.maximum(W,0.0)[:,:]
+
+		l.append(np.sum(dW*dW))
+
+	return l
+
+
+def mca(W, X, learning_rate=0.1, non_negative=False):
+
+
+	l = []
+
+	for t in range(len(X)):
+
+		x  = X[[t]].T
+		# y  = np.maximum(np.dot(W,x),0.0)
+		y = np.dot(W,x)
+
+		N = np.sum(W*W)
+		# dW = - np.sum(W*W)*y*x.T + y*y*W
+		# dW  = - y*x.T  + y*W
+		dW  = - y*x.T  + (y*y)*W/(N)
+
+		l.append(np.sum(dW*dW))
+
+		W[:,:] = W + learning_rate*dW
+
+		if non_negative:
+			W[:,:] = np.maximum(W,0.0)[:,:]
+			# W = sigmoid(W)
+
+	return l
+
+
+def dalbis_kempter(W, X, learning_rate=0.1, non_negative=False):
+
 
 	for t in range(len(X)):
 
@@ -41,13 +88,15 @@ def oja_w1(W, X, learning_rate=0.1, non_negative=False):
 		y  = np.dot(W,x) 
 
 
-		dW = y*x.T - y*y*W 
-
+		dW = y*x.T - 5*y*y*W 
+		# dW = y*x.T + 4.1*(22.1 - y*y*W)
+		# dW = y*x.T + 10000.*(0. - W)
 
 		W[:,:] = W + learning_rate*dW
 
 		if non_negative:
 			W[:,:] = np.maximum(W,0.0)[:,:]
+
 
 
 
@@ -89,10 +138,13 @@ def create_transition_matrix(n_, wrap=True, sigma= 2., with_diagonal=False):
 	n = n_**2
 	T = np.zeros((n,n))
 
-	enc = gaussian_encoder((n_,n_), wrap, sigma)
+	enc  = gaussian_encoder((n_,n_), wrap, 5*sigma)
+	enc2 = gaussian_encoder((n_,n_), wrap, 4.*sigma)
 
 	for t in range(n):
-		T[t] = enc(t)
+		# T[t] = enc(t)*(1. - enc2(t))
+		T[t] = enc(t) - enc2(t)
+		T[t] -= np.amin(T[t])
 
 
 	for t in range(n):
@@ -115,4 +167,5 @@ def create_random_walk_from_transition_fct(transition_fct, encoding_fct, n, num_
 		i    = T(i)
 
 	return X
+
 

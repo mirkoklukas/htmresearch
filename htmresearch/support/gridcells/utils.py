@@ -46,14 +46,51 @@ def Lp_dist(X,Y, p=2):
 		return np.sqrt(dx**2 + dy**2)
 
 
-
-
 def map_to_quotient(X, B, v=np.array([0.,0.])):
 	X_ = X - v
 	Y = np.dot(X_, np.linalg.inv(B).T)
 	Y %= 1
 	return Y
 
+	
+
 def compute_grid(B, r=10):
 	L = np.array([ x*B[:,0] + y*B[:,1] for x in range(-r,r+1) for y in range(-r,r+1)])
 	return L
+
+
+
+
+
+def cross_correlate(left, right):
+	nrows, ncols = left.shape
+	di_cap = nrows - 1
+	dj_cap = ncols - 1
+	ci = di_cap - 1
+	cj = dj_cap - 1
+	corr = np.zeros((2*di_cap - 1, 2*dj_cap - 1), dtype="float")
+
+	for di in xrange(di_cap):
+		for dj in xrange(dj_cap):
+			  # Spatial lag: up, left
+			  corr[ci - di, cj - dj] = np.corrcoef(
+			    left[di:, dj:].flat,
+			    right[:nrows-di, :ncols-dj].flat)[0,1]
+			  # Spatial lag: up, right
+			  corr[ci - di, cj + dj] = np.corrcoef(
+			    left[di:, :ncols-dj].flat,
+			    right[:nrows-di, dj:].flat)[0,1]
+			  # Spatial lag: down, left
+			  corr[ci + di, cj - dj] = np.corrcoef(
+			    left[:nrows-di, dj:].flat,
+			    right[di:, :ncols-dj].flat)[0,1]
+			  # Down right
+			  corr[ci + di, cj + dj] = np.corrcoef(
+			    left[:nrows-di, :ncols-dj].flat,
+			    right[di:, dj:].flat)[0,1]
+
+	return corr
+
+
+
+

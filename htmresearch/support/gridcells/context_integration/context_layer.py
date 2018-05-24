@@ -3,9 +3,6 @@ from scipy.stats import entropy
 
 
 
-
-
-
 class ContextLayer(object):
     """
     An experimental L6 implementation that accumulates sensory inputs and whose
