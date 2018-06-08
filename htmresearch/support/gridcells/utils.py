@@ -24,11 +24,20 @@ import numpy as np
 def exp_i(theta):
 	return np.array([np.cos(theta), np.sin(theta)])
 
+
 def hexagonal_basis(theta, psi=np.pi/3.0):
 	return np.array([
 		[np.cos(theta), np.cos(theta + psi)],
 		[np.sin(theta), np.sin(theta + psi)]
 	])
+
+
+def create_basis(theta, psi):
+	return np.array([
+		[np.cos(theta), np.cos(theta + psi)],
+		[np.sin(theta), np.sin(theta + psi)]
+	])
+
 
 def Lp_dist(X,Y, p=2):
 	assert(p<=2)
@@ -53,10 +62,10 @@ def map_to_quotient(X, B, v=np.array([0.,0.])):
 	return Y
 
 	
-
 def compute_grid(B, r=10):
 	L = np.array([ x*B[:,0] + y*B[:,1] for x in range(-r,r+1) for y in range(-r,r+1)])
 	return L
+
 
 
 
