@@ -3,8 +3,8 @@ import numpy as np
 
 def create_orthogonal_basis(theta=0.):
     return np.array([
-        [np.cos(theta), np.cos(theta + np.pi/2.)],
-        [np.sin(theta), np.sin(theta + np.pi/2.)]
+        [np.cos(theta), np.cos(theta + np.pi/3.)],
+        [np.sin(theta), np.sin(theta + np.pi/3.)]
     ])
 
 
