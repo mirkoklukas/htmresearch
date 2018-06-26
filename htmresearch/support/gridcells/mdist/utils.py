@@ -105,6 +105,12 @@ def M_dist(P, Q, S=None):
 
     return md 
 
+def M_dist_max(P, Q, S=None):
+    mdc = M_dist_comp(P, Q, S)
+    md = np.amax(mdc, axis=1)
+
+    return md 
+
 
 def M_dist_comp_unskewed(P, Q, B, S=None):
 
