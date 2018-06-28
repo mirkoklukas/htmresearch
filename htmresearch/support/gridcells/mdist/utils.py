@@ -10,18 +10,8 @@ def create_orthogonal_basis(theta=0.):
 
 
 
-def create_module_basis(m, k, scale=None):
-
-
-    V = np.random.multivariate_normal(mean=np.zeros(k), cov=100.*np.eye(k), size=m)
+def create_module_basis(m, k, S):
     B = np.zeros((m, k, k))
-    S = np.zeros(m)
-    
-    for i in range(m):
-        if scale is not None:
-            S[i] = scale[i]
-        else:
-            S[i] = np.sqrt(2)**i
 
     for i in range(m):
         theta = np.random.sample()*2*np.pi
@@ -30,7 +20,7 @@ def create_module_basis(m, k, scale=None):
         for l in range(2,k):
             b  = np.random.randn(k)
             b /= np.linalg.norm(b)
-            B[i,:,l] = S[i]*b
+            B[i,:,l] = b
 
         
     return B
@@ -85,8 +75,6 @@ def map_to_hypertorus(B, X):
     return Y
 
 
-
-
 def M_dist_comp(P, Q, S=None):
 
     D = np.minimum( np.absolute(P - Q), 1. - np.absolute(P-Q))
@@ -101,34 +89,17 @@ def M_dist_comp(P, Q, S=None):
 
 def M_dist(P, Q, S=None):
     mdc = M_dist_comp(P, Q, S)
-    md = np.linalg.norm(mdc, axis=1)
+    md  = np.linalg.norm(mdc, axis=1)
 
     return md 
+
+
 
 def M_dist_max(P, Q, S=None):
     mdc = M_dist_comp(P, Q, S)
-    md = np.amax(mdc, axis=1)
+    md  = np.amax(mdc, axis=1)
 
     return md 
-
-
-def M_dist_comp_unskewed(P, Q, B, S=None):
-
-    T,  _ = P.shape
-    dist = np.zeros(T)
-    offsets = np.array([(0.,0.), (1.,0.), (1.,1.),(0.,1.),(-1.,1.),(-1.,0.),(-1.,-1.),(0.,-1.), (1.,-1.)])
-    for t in range(T):
-            p = P[t]
-            q = Q[t]
-            p_ = np.dot(p, B.T)
-            Q_ = np.dot(q + offsets, B.T)
-            D = Q_ - p_
-
-            L = np.linalg.norm(D, axis=1)
-            dist[t] = np.amin(L)
-            # l = np.argmin(L)
-
-    return dist
 
 
 
