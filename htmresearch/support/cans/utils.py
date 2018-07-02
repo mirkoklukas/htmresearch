@@ -86,8 +86,7 @@ def optical_flow(I1g, I2g, window_size):
     return (u,v)
 
 
-def mean_flow(U, t, w=200):
-    return np.mean(U[t:t+w], axis=0)
+
 
 def flow_to_color(u,v):
     n = len(u)
@@ -99,6 +98,34 @@ def flow_to_color(u,v):
     c[:,1] = (np.sin(np.angle(u + v*1j))  + 1.)/2.
     return c
 
+
+
+def get_data_flow_and_color_maps(S, nx, ny, t_step = 10):
+    n = nx*ny
+    T = len(S)
+    S_ = S[np.arange(0, T, step=t_step)]
+    S_ = S_.reshape((-1,nx,ny))
+
+
+
+    C = np.zeros((len(S_)-100, n, 3))
+    V = np.zeros((len(S_)-100, n,2))
+
+    for t in range(len(S_)  - 100):
+        vx, vy = optical_flow(S_[t], S_[t + 10], window_size=3)
+        vx = vx.reshape(-1)
+        vy = vy.reshape(-1)
+        V[t,:,0] = vx
+        V[t,:,1] = vy
+        
+        mu = np.mean(V[t:t+99], axis=0)
+
+        C[t] = flow_to_color(mu[:,0],mu[:,1])
+
+
+
+    return S_[:-100].reshape((-1,n)), V, C
+    
 
 
 
