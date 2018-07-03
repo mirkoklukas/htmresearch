@@ -22,10 +22,10 @@ def W_zero(x):
 
 
 
-def create_W(J, D, s=1.0):
+def create_W(J, D):
     n = D.shape[0]
     W = np.zeros(D.shape)
-    W = J(s*D) 
+    W = J(D) 
 
     np.fill_diagonal(W, 0.0)
     
@@ -45,12 +45,12 @@ def normalize(x):
     return x_
 
 
-def optical_flow(I1g, I2g, window_size):
+def optical_flow(I1g, I2g, pixels, w=1):
     
     kernel_x = np.array([[-1., 1.], [-1., 1.]])
     kernel_y = np.array([[-1., -1.], [1., 1.]])
     kernel_t = np.array([[1., 1.], [1., 1.]])
-    w = window_size/2 
+
 
     # Implement Lucas Kanade
     # for each point, calculate I_x, I_y, I_t
@@ -62,9 +62,9 @@ def optical_flow(I1g, I2g, window_size):
     u = np.zeros(I1g.shape)
     v = np.zeros(I1g.shape)
 
-
-    for i in range(w, I1g.shape[0]-w):
-        for j in range(w, I1g.shape[1]-w):
+    for i,j in pixels:
+    # for i in range(w, I1g.shape[0]-w, 5):
+        # for j in range(w, I1g.shape[1]-w, 5):
             Ix = fx[i-w:i+w+1, j-w:j+w+1].flatten()
             Iy = fy[i-w:i+w+1, j-w:j+w+1].flatten()
             It = ft[i-w:i+w+1, j-w:j+w+1].flatten()
@@ -79,52 +79,102 @@ def optical_flow(I1g, I2g, window_size):
             b[1,0] = - np.sum(Iy*It)
             A_ = np.linalg.pinv(A)
             nu = np.dot(A_, np.dot(A.T,b) )
-            u[i,j]=nu[0]
-            v[i,j]=nu[1]
+            u[i,j]=nu[0,0]
+            v[i,j]=nu[1,0]
  
 
     return (u,v)
 
+def cw(theta):
+    s = theta / (2.*np.pi)
 
+    if s <= 1./3.:
+        s_ = s*3.
+        return (1-s_,s_,0)
+    if s <= 2./3.:
+        s_ = (s - 1./3.)*3.
+        return (0,1-s_,s_)
+    if s <= 3./3.:
+        s_ = (s - 2./3.)*3.
+        return (s_,0,1-s_)
+    
 
 
 def flow_to_color(u,v):
     n = len(u)
-    sin_angle = np.sin(np.angle(u + v*1j)) + np.cos(np.angle(u + v*1j))
-    cos_angle = np.sin(np.angle(u + v*1j)) + np.cos(np.angle(u + v*1j))
-
+    
     c = np.zeros((n, 3))
-    c[:,0] = (np.cos(np.angle(u + v*1j))  + 1.)/2.
-    c[:,1] = (np.sin(np.angle(u + v*1j))  + 1.)/2.
+    theta = np.angle(u + v*1j) % (2.*np.pi)
+
+    norm = np.sqrt(u**2 + v**2)
+
+    for i in range(n):
+        c[i] = cw(theta[i])
+
     return c
 
 
+def add_padding(arr, val=0., w=1):
+    arr[  :w,   : ] = val
+    arr[-w: ,   : ] = val
+    arr[  : ,   :w] = val
+    arr[  : , -w: ] = val
 
-def get_data_flow_and_color_maps(S, nx, ny, t_step = 10):
-    n = nx*ny
-    T = len(S)
+def get_active_pixels(mask):
+    return np.array(np.where(mask==1.)).reshape((2,-1)).T
+
+def get_data_flow_and_color_maps(S, nx, ny, pixel_mask, t_step = 10):
+
+    T, n = S.shape
     S_ = S[np.arange(0, T, step=t_step)]
-    S_ = S_.reshape((-1,nx,ny))
+    S_ = S_.reshape((-1,nx,ny))     # Subsample of activity array
+
+    T_ = S_.shape[0]
+    C  = np.zeros((T_, n, 3))       # RGB Color array
+    V  = np.zeros((T_, nx, ny, 2))  # Flow velocity
+    V_ = np.zeros((T_, nx, ny, 2))  # Processed velocity
+
+
+    w = 1
+    add_padding(pixel_mask, 0., w)
+    pixels = get_active_pixels(pixel_mask)
+
+    for t in np.arange(T_  - 10):
+        vx, vy = optical_flow(S_[t], S_[t + 10], pixels, w)
+        V[t,:,:,0] = vx
+        V[t,:,:,1] = vy
+
+
+    w = 4
+    for t in np.arange(T_  - 10):
+
+        for i in np.arange(w, nx-w):
+            for j in np.arange(w, ny-w):
+                W = V[t, i-w:i+w, j-w:j+w].reshape((-1,2))
+                normW = np.linalg.norm(W, axis=1)
+                max_ind = np.argmax(normW)
+                V_[t, i, j] = W[max_ind]
+
+    V_ = V_.reshape((-1,n,2))
+    for t in range(T_  - 10):
+        C[t] = flow_to_color(V_[t,:,0],V_[t,:,1])  
 
 
 
-    C = np.zeros((len(S_)-100, n, 3))
-    V = np.zeros((len(S_)-100, n,2))
+    C = C.reshape((T_,nx,ny,3))
+    C[:,:w,:,:]  = 1.
+    C[:,-w:,:,:] = 1.
+    C[:,:,:w,:]  = 1.
+    C[:,:,-w:,:] = 1.
+    # C[:, pixel_mask==0.] = 0.
 
-    for t in range(len(S_)  - 100):
-        vx, vy = optical_flow(S_[t], S_[t + 10], window_size=3)
-        vx = vx.reshape(-1)
-        vy = vy.reshape(-1)
-        V[t,:,0] = vx
-        V[t,:,1] = vy
-        
-        mu = np.mean(V[t:t+99], axis=0)
+    C = C.reshape((T_,n,3))
+    S_ = S_[:T_ - 10].reshape((-1,n))
+    V  = V [:T_ - 10]
+    C  = C [:T_ - 10]
+    V_ = V_[:T_ - 10]
 
-        C[t] = flow_to_color(mu[:,0],mu[:,1])
-
-
-
-    return S_[:-100].reshape((-1,n)), V, C
+    return S_, V_, C
     
 
 
