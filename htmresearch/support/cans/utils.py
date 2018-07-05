@@ -1,5 +1,21 @@
 import numpy as np
 from scipy import signal
+import os
+
+
+
+
+
+def mkdir(directory):
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+
+
+
+def save_data(data, filename, expid):
+    for key in data:
+        with open(filename.format(expid, key), "w") as f:
+            np.save(f, data[key])
 
 
 
