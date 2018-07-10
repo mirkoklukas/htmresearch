@@ -38,15 +38,16 @@ def W_zero(x):
 
 
 
-def create_W(J, D):
+def create_W(J, D, normalize=True):
     n = D.shape[0]
     W = np.zeros(D.shape)
     W = J(D) 
 
     np.fill_diagonal(W, 0.0)
     
-    for i in range(n):
-        W[i,:] -= np.mean(W[i,:])
+    if normalize:
+        for i in range(n):
+            W[i,:] -= np.mean(W[i,:])
     
     return W 
 
