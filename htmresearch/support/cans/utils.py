@@ -20,7 +20,7 @@ def save_data(data, filename, expid):
 
 
 def mexican_hat(x, sigma=1.):
-    a = 2./ ( np.sqrt(3*sigma) * np.power(np.pi,0.25 ) )
+    a = 2./ ( np.sqrt(3*sigma) * np.power(np.pi, 0.25 ) )
     b = (1. - (x/sigma)**2 )
     c = np.exp( - x**2/(2.*sigma**2))
     return a*b*c
@@ -38,7 +38,7 @@ def W_zero(x):
 
 
 
-def create_W(J, D, normalize=True):
+def create_recurrent_weights(J, D, normalize=True):
     n = D.shape[0]
     W = np.zeros(D.shape)
     W = J(D) 
@@ -50,6 +50,7 @@ def create_W(J, D, normalize=True):
             W[i,:] -= np.mean(W[i,:])
     
     return W 
+
 
 
 def normalize(x):

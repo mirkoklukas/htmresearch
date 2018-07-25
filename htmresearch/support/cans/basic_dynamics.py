@@ -24,9 +24,6 @@ def evolve_step(W, b, s, beta=0., mask=1.):
 
 
 
-
-
-
 def create_envelope(n, steepness, delta):
     x  = np.linspace(0.,1.,num=n)
     x_ = np.absolute(x - 0.5)/delta - 0.5/delta + 1
@@ -37,14 +34,9 @@ def create_envelope(n, steepness, delta):
     return A
 
 
-def evolve_I(W, b, s, A=1., beta=0.):
-    n    = W.shape[0]
-    dt   = 0.05  
-    tau  = 3.    
-    f    = relu
+def evolve(W, b, s, A=1., dt=0.05, tau=3., f=relu):
 
-    I  = (np.dot(W,s) + b + beta)
-
+    I  = A*(np.dot(W,s) + b )
     ds = dt*(f(I) - s/tau)
     s_ = s + ds
 
