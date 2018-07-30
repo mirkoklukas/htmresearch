@@ -9,7 +9,7 @@ def relu(x):
 def evolve_step(W, b, s, beta=0., mask=1.):
     n     = W.shape[0]
     dt    = 0.01
-    tau   = 1.0
+    tau   = 2.0
     f     = relu
     noise = np.random.randn(n)*0.001
     # noise = np.zeros(n)
@@ -34,7 +34,8 @@ def create_envelope(n, steepness, delta):
     return A
 
 
-def evolve(W, b, s, A=1., dt=0.05, tau=3., f=relu):
+def evolve(W, b, s, A=1., dt=0.01, tau=.03, f=relu):
+# def evolve(W, b, s, A=1., dt=0.05, tau=3., f=relu):
 
     I  = A*(np.dot(W,s) + b )
     ds = dt*(f(I) - s/tau)
