@@ -19,6 +19,7 @@
 # ----------------------------------------------------------------------
 
 from collections import defaultdict
+import pickle
 import math
 import time
 
@@ -52,10 +53,10 @@ def doRandomModuleExperiment(ms, ks):
   return A, results
 
 
-def experiment1():
-  ms = range(1, 8)
-  ks = range(1, 7)
-  numTrials = 10
+def experiment1(m_max = 3, k_max = 3, numTrials = 10):
+  ms = range(1, m_max)
+  ks = range(1, k_max)
+
 
   allResultsByParams = defaultdict(list)
   for _ in xrange(numTrials):
@@ -75,6 +76,7 @@ def experiment1():
     x = []
     y = []
     for k in ks:
+      print "m={}, k={}".format(m, k)
       x.append(k)
       y.append(meanResultByParams[(m,k)])
     plt.plot(x, y, marker='o')
@@ -84,7 +86,7 @@ def experiment1():
   plt.ylabel("Diameter of unique hypercube")
   plt.legend(["{} module{}".format(m, "" if m == 0 else "s")
               for m in ms])
-  filename = "Diameter_%s.pdf" % timestamp
+  filename = "results/Diameter_%s.pdf" % timestamp
   print "Saving", filename
   plt.savefig(filename)
 
@@ -103,10 +105,15 @@ def experiment1():
   plt.ylabel("Volume of unique hypercube")
   plt.legend(["{} module{}".format(m, "" if m == 0 else "s")
               for m in ms])
-  filename = "Volume_%s.pdf" % timestamp
+  filename = "results/Volume_%s.pdf" % timestamp
   print "Saving", filename
   plt.savefig(filename)
 
 
+
+
 if __name__ == "__main__":
   experiment1()
+
+
+
