@@ -30,8 +30,9 @@ from htmresearch_core.experimental import computeGridUniquenessHypercube
 
 
 
-def doRandomModuleExperiment(ms, ks):
-  scales = [1.*(math.sqrt(2)**s) for s in xrange(max(ms))]
+def doRandomModuleExperiment(ms, ks, scales):
+
+
   phase_resolution = 0.2
 
   A = np.zeros((len(scales), 2, max(ks)), dtype="float")
@@ -57,10 +58,11 @@ def experiment1(m_max = 3, k_max = 3, numTrials = 10):
   ms = range(1, m_max)
   ks = range(1, k_max)
 
-
+  scales = [1.*(math.sqrt(2)**s) for s in xrange(max(ms))]
+  
   allResultsByParams = defaultdict(list)
   for _ in xrange(numTrials):
-    A, resultsByParams = doRandomModuleExperiment(ms, ks)
+    A, resultsByParams = doRandomModuleExperiment(ms, ks, scales)
     for params, v in resultsByParams.iteritems():
       allResultsByParams[params].append(v)
 
