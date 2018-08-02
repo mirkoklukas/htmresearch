@@ -1,4 +1,9 @@
 import numpy as np
+from scipy.special import gamma as Gamma
+
+
+def ball_volume(k, r=1.):
+    return np.pi**(k/2.) / Gamma(k/2. + 1) * (r**k)
 
 
 def create_orthogonal_basis(theta=0.):
@@ -104,6 +109,21 @@ def M_dist_max(P, Q, S=None):
     md  = np.amax(mdc, axis=1)
 
     return md 
+
+
+def M_dist_2(P, Q, S=None):
+
+    D = np.minimum( np.absolute(P - Q), 1. - np.absolute(P-Q))
+
+    if S is not None:
+        D *= S.reshape((1,-1,1))
+
+    D = D.reshape((-1, D.shape[1]*D.shape[2]))
+    D = np.amax(D, axis=1)
+
+    return D
+
+
 
 
 
