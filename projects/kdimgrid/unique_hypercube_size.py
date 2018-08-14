@@ -30,18 +30,34 @@ from htmresearch_core.experimental import computeGridUniquenessHypercube
 
 
 
-def doRandomModuleExperiment(ms, ks, scales):
+def create_random_A(m, k, S):
+
+    A = np.zeros((m,2,k))
+    for i, s in enumerate(S):
+        for l in xrange(k):
+            a  = np.random.randn(2)
+            a /= np.linalg.norm(a)
+            A[i,:,l] = a / s
+
+    return A
 
 
-  phase_resolution = 0.2
 
+def doRandomModuleExperiment(ms, ks, scales, phase_resolution = 0.2):
+
+
+
+
+  
   A = np.zeros((len(scales), 2, max(ks)), dtype="float")
 
-  for iModule, s in enumerate(scales):
-    for iDim in xrange(max(ks)):
-      a  = np.random.randn(2)
-      a /= np.linalg.norm(a)
-      A[iModule,:,iDim] = a / s
+
+  A = create_random_A(len(scales), max(ks), scales)
+  # for iModule, s in enumerate(scales):
+    # for iDim in xrange(max(ks)):
+      # a  = np.random.randn(2)
+      # a /= np.linalg.norm(a)
+      # A[iModule,:,iDim] = a / s
 
   results = {}
 
@@ -50,6 +66,8 @@ def doRandomModuleExperiment(ms, ks, scales):
       A_ = A[:m,:,:k]
       result = computeGridUniquenessHypercube(A_, phase_resolution, 0.5)
       results[(m, k)] = result[0]
+
+
 
   return A, results
 

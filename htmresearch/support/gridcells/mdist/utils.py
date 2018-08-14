@@ -13,6 +13,18 @@ def create_orthogonal_basis(theta=0.):
     ])
 
 
+def create_random_A(m,k,S):
+
+    A = np.zeros((m, 2, k))
+    for i, s in enumerate(S):
+        for l in xrange(k):
+            a  = np.random.randn(2)
+            a /= np.linalg.norm(a)
+            A[i,:,l] = a / s
+
+    return A
+
+ 
 
 
 def create_module_basis(m, k, S):
@@ -21,14 +33,19 @@ def create_module_basis(m, k, S):
 
     for i in range(m):
         theta = np.random.sample()*2*np.pi
-        B[i, :2, :2] = S[i]*create_orthogonal_basis(theta)
+        if k>1:
+            B[i, :2, :2] = S[i]*create_orthogonal_basis(theta)
+        else:
+            B[i, 0, 0] = S[i]*np.random.choice([-1.,1.])
 
         for l in range(2,k):
             b  = np.random.randn(2)
             b /= np.sqrt(np.sum(b**2))
+            
             B[i,:2,l] = S[i]*b[:]
 
             B[i,l,l] = S[i]
+            # B[i,l,l] = 1.
 
 
         
@@ -72,6 +89,13 @@ def map_to_quotient(X, B):
     return Y[:,:2]
 
 
+def map_to_quotient_A(X, A):
+    X_ = X 
+    Y = np.dot(X_, A.T)
+    Y %= 1
+    return Y
+
+
 
 def map_to_hypertorus(B, X):
     m = len(B)
@@ -80,6 +104,16 @@ def map_to_hypertorus(B, X):
     
     for i in range(m):
         Y[:,i,:] = map_to_quotient(X, B[i])
+        
+    return Y
+
+def map_to_hypertorus_A(A, X):
+    m = len(A)
+    T = len(X)
+    Y = np.zeros((T, m, 2))
+    
+    for i in range(m):
+        Y[:,i,:] = map_to_quotient_A(X, A[i])
         
     return Y
 
