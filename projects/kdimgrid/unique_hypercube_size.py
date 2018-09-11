@@ -86,16 +86,18 @@ def create_random_A(m, k, S):
 
 
 
-def doRandomModuleExperiment(ms, ks, scales, phase_resolution = 0.2):
-
+def doRandomModuleExperiment(ms, ks, scales, phase_resolution = 0.2, action_tensor = None):
 
 
 
   
+    
   A = np.zeros((len(scales), 2, max(ks)), dtype="float")
-
-
-  A = create_random_A(len(scales), max(ks), scales)
+  
+  if action_tensor is None:
+    A = create_random_A(len(scales), max(ks), scales)
+  else: 
+    A = action_tensor
   
   # for iModule, s in enumerate(scales):
     # for iDim in xrange(max(ks)):
@@ -107,10 +109,11 @@ def doRandomModuleExperiment(ms, ks, scales, phase_resolution = 0.2):
 
   for m in ms:
     for k in ks:
-      # A_ = A[:m,:,:k]
+      print m, k
+      A_ = A[:m,:,:k]
       # A_ = create_block_A(m, k, scales)
       # A_ = create_random_A_shuffled(m,k,scales)
-      A_ = create_random_A_normal(m, k)
+      # A_ = create_random_A_normal(m, k)
       result = computeGridUniquenessHypercube(A_, phase_resolution, 0.5)
       results[(m, k)] = result[0]
 
