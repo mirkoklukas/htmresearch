@@ -94,7 +94,7 @@ def doRandomModuleExperiment(ms, ks, scales, phase_resolution = 0.2, action_tens
     
   A = np.zeros((len(scales), 2, max(ks)), dtype="float")
   
-  if action_tensor is None:
+  if action_tensor == None:
     A = create_random_A(len(scales), max(ks), scales)
   else: 
     A = action_tensor
