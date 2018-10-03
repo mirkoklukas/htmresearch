@@ -151,3 +151,40 @@ def smooth_circle_walk(num, start=None, min_speed=0.0, max_speed=0.04):
 		V[t-1,:] = vel
 
 	return X, V
+
+
+
+
+def explore_environment(num, obs):
+	X     = np.zeros((num,2)).astype(int)
+
+	while True:
+		X[0,1] = np.random.randint(obs.shape[0])
+		X[0,0] = np.random.randint(obs.shape[1])
+		if obs[X[0,0], X[0,1]] != 1:
+			break
+	vel = np.array([
+			[-1,1],
+			[0,1],
+			[1,1],
+			[-1,0],
+			[ 1,0],
+			[-1,-1],
+			[0,-1],
+			[1,-1]
+	])
+	for t in range(1,num):
+			while True:
+				v = vel[np.random.choice(8)]
+				X[t,:] = (X[t-1,:] + v)
+				X[t,:] = X[t,:]% obs.shape
+				if obs[X[t,0], X[t,1]] != 1:
+					break
+
+
+	return X.astype(int)
+
+
+
+
+

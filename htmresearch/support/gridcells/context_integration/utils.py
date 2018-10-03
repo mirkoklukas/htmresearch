@@ -56,16 +56,18 @@ def create_action_tensor(m):
 
 def create_env_nbh_tensor(environment, radius):
     env = environment
-    e0   = env.shape[0]
-    e1   = env.shape[1]
+    num_features = env.shape[0]
+    e0  = env.shape[1]
+    e1  = env.shape[2]
     r   = radius
-    env_tensor = np.zeros((e0,e1,2*r + 1, 2*r + 1))
-    for x in range(env.shape[0]):
-        for y in range(env.shape[1]):
-            xs = [  k%e0 for k in range(x - r ,x + r + 1 )]
-            ys = [  k%e1 for k in range(y - r ,y + r + 1 )] 
-            env_snip = env[xs,:][:,ys]
-            env_tensor[x,y,:,:] = env_snip[:,:]
+    env_tensor = np.zeros((num_features, e0,e1,2*r + 1, 2*r + 1))
+    for f in range(num_features):
+        for x in range(env.shape[1]):
+            for y in range(env.shape[2]):
+                xs = [  k%e0 for k in range(x - r ,x + r + 1 )]
+                ys = [  k%e1 for k in range(y - r ,y + r + 1 )] 
+                env_snip = env[f,xs,:][:,ys]
+                env_tensor[f,x,y,:,:] = env_snip[:,:]
 
     return env_tensor
 
@@ -145,7 +147,6 @@ def load_digit_features(w, shape):
         F[i,:,encode(i%10, l, w)] = 1
 
     return F
-    
 
 
 
