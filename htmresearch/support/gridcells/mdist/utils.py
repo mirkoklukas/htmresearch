@@ -63,6 +63,7 @@ def create_kd_hyper_module(m, k, scale=None):
 
     for i in range(m):
         theta = np.random.sample()*2*np.pi
+        theta=0.
         B[i, :2, :2] = S[i]*create_orthogonal_basis(theta)
 
         # theta = np.random.sample()*2*np.pi
