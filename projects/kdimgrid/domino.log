@@ -10768,3 +10768,1829 @@ $(function() {
 2018-09-12 12:50:47,722 PDT DEBUG FileStructureRepo - Push to origin complete: local/master = Some(AnyObjectId[d949b4126322b3a8e84c17b99ad487db32a379a5]), origin/master = Some(AnyObjectId[d949b4126322b3a8e84c17b99ad487db32a379a5]).
 2018-09-12 12:50:47,722 PDT DEBUG FileStructureRepoSynchronizer - Push to origin result: Succeeded.
 2018-09-12 12:50:47,723 PDT DEBUG FileSyncClient - Push result: Succeeded.
+2018-10-18 09:54:44,817 PDT  INFO Domino - ================================================================================
+2018-10-18 09:54:44,824 PDT  INFO Domino - Starting client. BuildInfo=name: common-core, version: 3.1.0, scalaVersion: 2.11.11, sbtVersion: 0.13.15, buildNumber: 897e279a-3b12-4de0-96fb-63b067081316, gitCommit: 72e45e002a71e87d257c63c88fa8d33047ca114a, buildTime: 2018-10-12T22:02:53Z
+2018-10-18 09:54:44,825 PDT DEBUG Domino - CWD = /Users/mklukas/nta/htmresearch/projects/kdimgrid
+2018-10-18 09:54:44,825 PDT  INFO Domino - executing command: upload
+2018-10-18 09:54:44,918 PDT  INFO Domino - Verifying that the cloud update URL isn't being used.
+2018-10-18 09:54:44,931 PDT  INFO Domino - Cloud update URL not in use.
+2018-10-18 09:54:45,190 PDT DEBUG PoolingHttpClientConnectionManager - Closing expired connections
+2018-10-18 09:54:45,191 PDT DEBUG PoolingHttpClientConnectionManager - Closing connections idle longer than 30 SECONDS
+2018-10-18 09:54:45,221 PDT DEBUG DefaultTransport - Issuing request to https://app.dominodatalab.com/client/checkMessage (full request = ApacheHttpClientRequest(https://app.dominodatalab.com/client/checkMessage,GET,Map(),Map(User-Agent -> domino-cli/3.1.0),1 minute,1 minute,true,EmptyBody,domino.common.util.http.HttpService@4e928fbf))
+2018-10-18 09:54:45,228 PDT DEBUG RequestAddCookies - CookieSpec selected: standard
+2018-10-18 09:54:45,232 PDT DEBUG RequestAuthCache - Auth cache not set in the context
+2018-10-18 09:54:45,233 PDT DEBUG PoolingHttpClientConnectionManager - Connection request: [route: {s}->https://app.dominodatalab.com:443][total kept alive: 0; route allocated: 0 of 10; total allocated: 0 of 30]
+2018-10-18 09:54:45,241 PDT DEBUG PoolingHttpClientConnectionManager - Connection leased: [id: 0][route: {s}->https://app.dominodatalab.com:443][total kept alive: 0; route allocated: 1 of 10; total allocated: 1 of 30]
+2018-10-18 09:54:45,242 PDT DEBUG MainClientExec - Opening connection {s}->https://app.dominodatalab.com:443
+2018-10-18 09:54:45,294 PDT DEBUG DefaultHttpClientConnectionOperator - Connecting to app.dominodatalab.com/54.148.109.138:443
+2018-10-18 09:54:45,294 PDT DEBUG SSLConnectionSocketFactory - Connecting socket to app.dominodatalab.com/54.148.109.138:443 with timeout 60000
+2018-10-18 09:54:45,472 PDT DEBUG SSLConnectionSocketFactory - Enabled protocols: [TLSv1, TLSv1.1, TLSv1.2]
+2018-10-18 09:54:45,472 PDT DEBUG SSLConnectionSocketFactory - Enabled cipher suites:[TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256, TLS_RSA_WITH_AES_128_CBC_SHA256, TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256, TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256, TLS_DHE_RSA_WITH_AES_128_CBC_SHA256, TLS_DHE_DSS_WITH_AES_128_CBC_SHA256, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_RSA_WITH_AES_128_CBC_SHA, TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDH_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_DSS_WITH_AES_128_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256, TLS_RSA_WITH_AES_128_GCM_SHA256, TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256, TLS_DHE_RSA_WITH_AES_128_GCM_SHA256, TLS_DHE_DSS_WITH_AES_128_GCM_SHA256, TLS_ECDHE_ECDSA_WITH_3DES_EDE_CBC_SHA, TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA, SSL_RSA_WITH_3DES_EDE_CBC_SHA, TLS_ECDH_ECDSA_WITH_3DES_EDE_CBC_SHA, TLS_ECDH_RSA_WITH_3DES_EDE_CBC_SHA, SSL_DHE_RSA_WITH_3DES_EDE_CBC_SHA, SSL_DHE_DSS_WITH_3DES_EDE_CBC_SHA, TLS_EMPTY_RENEGOTIATION_INFO_SCSV]
+2018-10-18 09:54:45,472 PDT DEBUG SSLConnectionSocketFactory - Starting handshake
+2018-10-18 09:54:45,565 PDT DEBUG SSLConnectionSocketFactory - Secure session established
+2018-10-18 09:54:45,565 PDT DEBUG SSLConnectionSocketFactory -  negotiated protocol: TLSv1.2
+2018-10-18 09:54:45,565 PDT DEBUG SSLConnectionSocketFactory -  negotiated cipher suite: TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+2018-10-18 09:54:45,566 PDT DEBUG SSLConnectionSocketFactory -  peer principal: CN=*.dominodatalab.com
+2018-10-18 09:54:45,566 PDT DEBUG SSLConnectionSocketFactory -  peer alternative names: [*.dominodatalab.com, *.app.dominodatalab.com, dominodatalab.com]
+2018-10-18 09:54:45,566 PDT DEBUG SSLConnectionSocketFactory -  issuer principal: CN=Amazon, OU=Server CA 1B, O=Amazon, C=US
+2018-10-18 09:54:45,569 PDT DEBUG DefaultHttpClientConnectionOperator - Connection established 172.16.190.171:52653<->54.148.109.138:443
+2018-10-18 09:54:45,570 PDT DEBUG DefaultManagedHttpClientConnection - http-outgoing-0: set socket timeout to 60000
+2018-10-18 09:54:45,570 PDT DEBUG MainClientExec - Executing request GET /client/checkMessage HTTP/1.1
+2018-10-18 09:54:45,570 PDT DEBUG MainClientExec - Target auth state: UNCHALLENGED
+2018-10-18 09:54:45,570 PDT DEBUG MainClientExec - Proxy auth state: UNCHALLENGED
+2018-10-18 09:54:45,571 PDT DEBUG headers - http-outgoing-0 >> GET /client/checkMessage HTTP/1.1
+2018-10-18 09:54:45,571 PDT DEBUG headers - http-outgoing-0 >> User-Agent: domino-cli/3.1.0
+2018-10-18 09:54:45,571 PDT DEBUG headers - http-outgoing-0 >> X-Requested-With: domino.common.util.http.HttpService
+2018-10-18 09:54:45,571 PDT DEBUG headers - http-outgoing-0 >> Host: app.dominodatalab.com
+2018-10-18 09:54:45,571 PDT DEBUG headers - http-outgoing-0 >> Connection: Keep-Alive
+2018-10-18 09:54:45,571 PDT DEBUG headers - http-outgoing-0 >> Accept-Encoding: gzip,deflate
+2018-10-18 09:54:45,612 PDT DEBUG headers - http-outgoing-0 << HTTP/1.1 404 Not Found
+2018-10-18 09:54:45,613 PDT DEBUG headers - http-outgoing-0 << Server: nginx
+2018-10-18 09:54:45,613 PDT DEBUG headers - http-outgoing-0 << Date: Thu, 18 Oct 2018 16:54:45 GMT
+2018-10-18 09:54:45,613 PDT DEBUG headers - http-outgoing-0 << Content-Type: text/html; charset=utf-8
+2018-10-18 09:54:45,613 PDT DEBUG headers - http-outgoing-0 << Transfer-Encoding: chunked
+2018-10-18 09:54:45,613 PDT DEBUG headers - http-outgoing-0 << Connection: keep-alive
+2018-10-18 09:54:45,613 PDT DEBUG headers - http-outgoing-0 << Set-Cookie: PLAY_SESSION=e7fbc3ed78f03d2fc5bd539747983cb61558a4b0-csrfToken=9d3e7be123a785ac5f9e8739ff60071e703603d4-1539881685605-7275446e03b271ca7dd8f3ae; Path=/; Secure; HTTPOnly
+2018-10-18 09:54:45,613 PDT DEBUG headers - http-outgoing-0 << Cache-Control: no-cache, no-store, must-revalidate, max-age=0
+2018-10-18 09:54:45,613 PDT DEBUG headers - http-outgoing-0 << Play-Processing-Time: 4
+2018-10-18 09:54:45,613 PDT DEBUG headers - http-outgoing-0 << X-Frame-Options: DENY
+2018-10-18 09:54:45,613 PDT DEBUG headers - http-outgoing-0 << Content-Encoding: gzip
+2018-10-18 09:54:45,617 PDT DEBUG MainClientExec - Connection can be kept alive indefinitely
+2018-10-18 09:54:45,628 PDT DEBUG ResponseProcessCookies - Cookie accepted [PLAY_SESSION="e7fbc3ed78f03d2fc5bd539747983cb61558a4b0-csrfToken=9d3e7be123a785ac5f9e8739ff60071e703603d4-15398816...", version:0, domain:app.dominodatalab.com, path:/, expiry:null]
+2018-10-18 09:54:45,645 PDT DEBUG ApacheHttpClientRequest - Got an error: request = ApacheHttpClientRequest(https://app.dominodatalab.com/client/checkMessage,GET,Map(),Map(User-Agent -> domino-cli/3.1.0),1 minute,1 minute,true,EmptyBody,domino.common.util.http.HttpService@4e928fbf), response: status = 404, statusText = Not Found, headers = Transfer-Encoding -> List(chunked), Server -> List(nginx), X-Frame-Options -> List(DENY), Play-Processing-Time -> List(4), Connection -> List(keep-alive), Cache-Control -> List(no-cache, no-store, must-revalidate, max-age=0), Content-Type -> List(text/html; charset=utf-8), Date -> List(Thu, 18 Oct 2018 16:54:45 GMT), Set-Cookie -> List(PLAY_SESSION=e7fbc3ed78f03d2fc5bd539747983cb61558a4b0-csrfToken=9d3e7be123a785ac5f9e8739ff60071e703603d4-1539881685605-7275446e03b271ca7dd8f3ae; Path=/; Secure; HTTPOnly), body = 
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+
+<!--[if lte IE 9]>
+  <html class="support-banner-container">
+<![endif]-->
+<!--[if !IE]><!-->
+  <html>
+<!--<![endif]-->
+    
+
+<head>
+    <title>Not Found - Domino</title>
+    <meta charset="utf-8">
+
+
+    <meta name="google" content="notranslate">
+    <meta property="og:image" content="/assets/images/domino_logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+      
+<script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"VQQGUV5aABABU1VXAwYHUw=="};window.NREUM||(NREUM={}),__nr_require=function(t,n,e){function r(e){if(!n[e]){var o=n[e]={exports:{}};t[e][0].call(o.exports,function(n){var o=t[e][1][n];return r(o||n)},o,o.exports)}return n[e].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<e.length;o++)r(e[o]);return r}({1:[function(t,n,e){function r(t){try{s.console&&console.log(t)}catch(n){}}var o,i=t("ee"),a=t(16),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,n,e){r(e.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,n){return t}).join(", ")))},{}],2:[function(t,n,e){function r(t,n,e,r,s){try{p?p-=1:o(s||new UncaughtException(t,n,e),!0)}catch(f){try{i("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,n,e){this.message=t||"Uncaught error with no additional information",this.sourceURL=n,this.line=e}function o(t,n){var e=n?null:c.now();i("err",[t,e])}var i=t("handle"),a=t(17),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,l="nr@seenError",p=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(8),t(7),"addEventListener"in window&&t(5),c.xhrWrappable&&t(9),d=!0)}s.on("fn-start",function(t,n,e){d&&(p+=1)}),s.on("fn-err",function(t,n,e){d&&!e[l]&&(f(e,l,function(){return!0}),this.thrown=!0,o(e))}),s.on("fn-end",function(){d&&!this.thrown&&p>0&&(p-=1)}),s.on("internal-error",function(t){i("ierr",[t,c.now(),!0])})},{}],3:[function(t,n,e){t("loader").features.ins=!0},{}],4:[function(t,n,e){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(8),s=t(7),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",l="resource",p="-start",h="-end",m="fn"+p,v="fn"+h,w="bstTimer",y="pushState",g=t("loader");g.features.stn=!0,t(6);var b=NREUM.o.EV;o.on(m,function(t,n){var e=t[0];e instanceof b&&(this.bstStart=g.now())}),o.on(v,function(t,n){var e=t[0];e instanceof b&&i("bst",[e,n,this.bstStart,g.now()])}),a.on(m,function(t,n,e){this.bstStart=g.now(),this.bstType=e}),a.on(v,function(t,n){i(w,[n,this.bstStart,g.now(),this.bstType])}),s.on(m,function(){this.bstStart=g.now()}),s.on(v,function(t,n){i(w,[n,this.bstStart,g.now(),"requestAnimationFrame"])}),o.on(y+p,function(t){this.time=g.now(),this.startPath=location.pathname+location.hash}),o.on(y+h,function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,{passive:!0}),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],5:[function(t,n,e){function r(t){for(var n=t;n&&!n.hasOwnProperty(u);)n=Object.getPrototypeOf(n);n&&o(n)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,n){return t[1]}var a=t("ee").get("events"),s=t(19)(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";n.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,n){var e=t[1],r=c(e,"nr@wrapped",function(){function t(){if("function"==typeof e.handleEvent)return e.handleEvent.apply(e,arguments)}var n={object:t,"function":e}[typeof e];return n?s(n,"fn-",null,n.name||"anonymous"):e});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],6:[function(t,n,e){var r=t("ee").get("history"),o=t(19)(r);n.exports=r,o.inPlace(window.history,["pushState","replaceState"],"-")},{}],7:[function(t,n,e){var r=t("ee").get("raf"),o=t(19)(r),i="equestAnimationFrame";n.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],8:[function(t,n,e){function r(t,n,e){t[0]=a(t[0],"fn-",null,e)}function o(t,n,e){this.method=e,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,e)}var i=t("ee").get("timer"),a=t(19)(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";n.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],9:[function(t,n,e){function r(t,n){d.inPlace(n,["onreadystatechange"],"fn-",s)}function o(){var t=this,n=u.context(t);t.readyState>3&&!n.resolved&&(n.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,y,"fn-",s)}function i(t){g.push(t),h&&(x?x.then(a):v?v(a):(E=-E,O.data=E))}function a(){for(var t=0;t<g.length;t++)r([],g[t]);g.length&&(g=[])}function s(t,n){return n}function c(t,n){for(var e in t)n[e]=t[e];return n}t(5);var f=t("ee"),u=f.get("xhr"),d=t(19)(u),l=NREUM.o,p=l.XHR,h=l.MO,m=l.PR,v=l.SI,w="readystatechange",y=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],g=[];n.exports=u;var b=window.XMLHttpRequest=function(t){var n=new p(t);try{u.emit("new-xhr",[n],n),n.addEventListener(w,o,!1)}catch(e){try{u.emit("internal-error",[e])}catch(r){}}return n};if(c(p,b),b.prototype=p.prototype,d.inPlace(b.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,n){r(t,n),i(n)}),u.on("open-xhr-start",r),h){var x=m&&m.resolve();if(!v&&!m){var E=1,O=document.createTextNode(E);new h(a).observe(O,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===w||a()})},{}],10:[function(t,n,e){function r(t){var n=this.params,e=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<d;r++)t.removeEventListener(u[r],this.listener,!1);if(!n.aborted){if(e.duration=a.now()-this.startTime,4===t.readyState){n.status=t.status;var i=o(t,this.lastSize);if(i&&(e.rxSize=i),this.sameOrigin){var c=t.getResponseHeader("X-NewRelic-App-Data");c&&(n.cat=c.split(", ").pop())}}else n.status=0;e.cbTime=this.cbTime,f.emit("xhr-done",[t],t),s("xhr",[n,e,this.startTime])}}}function o(t,n){var e=t.responseType;if("json"===e&&null!==n)return n;var r="arraybuffer"===e||"blob"===e||"json"===e?t.response:t.responseText;return h(r)}function i(t,n){var e=c(n),r=t.params;r.host=e.hostname+":"+e.port,r.pathname=e.pathname,t.sameOrigin=e.sameOrigin}var a=t("loader");if(a.xhrWrappable){var s=t("handle"),c=t(11),f=t("ee"),u=["load","error","abort","timeout"],d=u.length,l=t("id"),p=t(14),h=t(13),m=window.XMLHttpRequest;a.features.xhr=!0,t(9),f.on("new-xhr",function(t){var n=this;n.totalCbs=0,n.called=0,n.cbTime=0,n.end=r,n.ended=!1,n.xhrGuids={},n.lastSize=null,p&&(p>34||p<10)||window.opera||t.addEventListener("progress",function(t){n.lastSize=t.loaded},!1)}),f.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),f.on("open-xhr-end",function(t,n){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&n.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),f.on("send-xhr-start",function(t,n){var e=this.metrics,r=t[0],o=this;if(e&&r){var i=h(r);i&&(e.txSize=i)}this.startTime=a.now(),this.listener=function(t){try{"abort"===t.type&&(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof n.onload))&&o.end(n)}catch(e){try{f.emit("internal-error",[e])}catch(r){}}};for(var s=0;s<d;s++)n.addEventListener(u[s],this.listener,!1)}),f.on("xhr-cb-time",function(t,n,e){this.cbTime+=t,n?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof e.onload||this.end(e)}),f.on("xhr-load-added",function(t,n){var e=""+l(t)+!!n;this.xhrGuids&&!this.xhrGuids[e]&&(this.xhrGuids[e]=!0,this.totalCbs+=1)}),f.on("xhr-load-removed",function(t,n){var e=""+l(t)+!!n;this.xhrGuids&&this.xhrGuids[e]&&(delete this.xhrGuids[e],this.totalCbs-=1)}),f.on("addEventListener-end",function(t,n){n instanceof m&&"load"===t[0]&&f.emit("xhr-load-added",[t[1],t[2]],n)}),f.on("removeEventListener-end",function(t,n){n instanceof m&&"load"===t[0]&&f.emit("xhr-load-removed",[t[1],t[2]],n)}),f.on("fn-start",function(t,n,e){n instanceof m&&("onload"===e&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),f.on("fn-end",function(t,n){this.xhrCbStart&&f.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,n],n)})}},{}],11:[function(t,n,e){n.exports=function(t){var n=document.createElement("a"),e=window.location,r={};n.href=t,r.port=n.port;var o=n.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=n.hostname||e.hostname,r.pathname=n.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!n.protocol||":"===n.protocol||n.protocol===e.protocol,a=n.hostname===document.domain&&n.port===e.port;return r.sameOrigin=i&&(!n.hostname||a),r}},{}],12:[function(t,n,e){function r(){}function o(t,n,e){return function(){return i(t,[f.now()].concat(s(arguments)),n?null:this,e),n?void 0:this}}var i=t("handle"),a=t(16),s=t(17),c=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",p=l+"ixn-";a(d,function(t,n){u[n]=o(l+n,!0,"api")}),u.addPageAction=o(l+"addPageAction",!0),u.setCurrentRouteName=o(l+"routeName",!0),n.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,n){var e={},r=this,o="function"==typeof n;return i(p+"tracer",[f.now(),t,e],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],e),o)try{return n.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],e),t}finally{c.emit("fn-end",[f.now()],e)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,n){h[n]=o(p+n)}),newrelic.noticeError=function(t){"string"==typeof t&&(t=new Error(t)),i("err",[t,f.now()])}},{}],13:[function(t,n,e){n.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(n){return}}}},{}],14:[function(t,n,e){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),n.exports=r},{}],15:[function(t,n,e){function r(t,n){if(!o)return!1;if(t!==o)return!1;if(!n)return!0;if(!i)return!1;for(var e=i.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==e[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var s=navigator.userAgent,c=s.match(a);c&&s.indexOf("Chrome")===-1&&s.indexOf("Chromium")===-1&&(o="Safari",i=c[1])}n.exports={agent:o,version:i,match:r}},{}],16:[function(t,n,e){function r(t,n){var e=[],r="",i=0;for(r in t)o.call(t,r)&&(e[i]=n(r,t[r]),i+=1);return e}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],17:[function(t,n,e){function r(t,n,e){n||(n=0),"undefined"==typeof e&&(e=t?t.length:0);for(var r=-1,o=e-n||0,i=Array(o<0?0:o);++r<o;)i[r]=t[n+r];return i}n.exports=r},{}],18:[function(t,n,e){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],19:[function(t,n,e){function r(t){return!(t&&t instanceof Function&&t.apply&&!t[a])}var o=t("ee"),i=t(17),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;n.exports=function(t,n){function e(t,n,e,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof e?e(r,a):e||{}}catch(f){l([f,"",[r,a,o],s])}u(n+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(d){throw u(n+"err",[r,a,d],s),d}finally{u(n+"end",[r,a,c],s)}}return r(t)?t:(n||(n=""),nrWrapper[a]=t,d(t,nrWrapper),nrWrapper)}function f(t,n,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<n.length;c++)s=n[c],a=t[s],r(a)||(t[s]=e(a,f?s+o:o,i,s))}function u(e,r,o){if(!c||n){var i=c;c=!0;try{t.emit(e,r,o,n)}catch(a){l([a,e,r,o])}c=i}}function d(t,n){if(Object.defineProperty&&Object.keys)try{var e=Object.keys(t);return e.forEach(function(e){Object.defineProperty(n,e,{get:function(){return t[e]},set:function(n){return t[e]=n,n}})}),n}catch(r){l([r])}for(var o in t)s.call(t,o)&&(n[o]=t[o]);return n}function l(n){try{t.emit("internal-error",n)}catch(e){}}return t||(t=o),e.inPlace=f,e.flag=a,e}},{}],ee:[function(t,n,e){function r(){}function o(t){function n(t){return t&&t instanceof r?t:t?c(t,s,i):i()}function e(e,r,o,i){if(!l.aborted||i){t&&t(e,r,o);for(var a=n(o),s=m(e),c=s.length,f=0;f<c;f++)s[f].apply(a,r);var d=u[g[e]];return d&&d.push([b,e,r,a]),a}}function p(t,n){y[t]=m(t).concat(n)}function h(t,n){var e=y[t];if(e)for(var r=0;r<e.length;r++)e[r]===n&&e.splice(r,1)}function m(t){return y[t]||[]}function v(t){return d[t]=d[t]||o(e)}function w(t,n){f(t,function(t,e){n=n||"feature",g[e]=n,n in u||(u[n]=[])})}var y={},g={},b={on:p,addEventListener:p,removeEventListener:h,emit:e,get:v,listeners:m,context:n,buffer:w,abort:a,aborted:!1};return b}function i(){return new r}function a(){(u.api||u.feature)&&(l.aborted=!0,u=l.backlog={})}var s="nr@context",c=t("gos"),f=t(16),u={},d={},l=n.exports=o();l.backlog=u},{}],gos:[function(t,n,e){function r(t,n,e){if(o.call(t,n))return t[n];var r=e();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(t,n,e){function r(t,n,e,r){o.buffer([t],r),o.emit(t,n,e)}var o=t("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(t,n,e){function r(t){var n=typeof t;return!t||"object"!==n&&"function"!==n?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");n.exports=r},{}],loader:[function(t,n,e){function r(){if(!E++){var t=x.info=NREUM.info,n=p.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&n))return u.abort();f(g,function(n,e){t[n]||(t[n]=e)}),c("mark",["onload",a()+x.offset],null,"api");var e=p.createElement("script");e.src="https://"+t.agent,n.parentNode.insertBefore(e,n)}}function o(){"complete"===p.readyState&&i()}function i(){c("mark",["domContent",a()+x.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(s=Math.max((new Date).getTime(),s))-x.offset}var s=(new Date).getTime(),c=t("handle"),f=t(16),u=t("ee"),d=t(15),l=window,p=l.document,h="addEventListener",m="attachEvent",v=l.XMLHttpRequest,w=v&&v.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:v,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var y=""+location,g={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1099.min.js"},b=v&&w&&w[h]&&!/CriOS/.test(navigator.userAgent),x=n.exports={offset:s,now:a,origin:y,features:{},xhrWrappable:b,userAgent:d};t(12),p[h]?(p[h]("DOMContentLoaded",i,!1),l[h]("load",r,!1)):(p[m]("onreadystatechange",o),l[m]("onload",r)),c("mark",["firstbyte",s],null,"api");var E=0,O=t(18)},{}]},{},["loader",2,10,4,3]);</script>
+    
+    <link rel="shortcut icon" type="image/png" href="/assets/images/favicon.png?v3">
+
+    
+    
+        <script src="//cdn.optimizely.com/js/2853210246.js"></script>
+    
+
+
+    
+      <script src="/assets/thirdparty/jquery-1.10.2.min.js"></script>
+      <script src="/assets/thirdparty/jquery.form.min.js"></script>
+
+      <script src="/assets/thirdparty/bootstrap/js/bootstrap.min.js"></script>
+      <script src="/assets/thirdparty/underscore.min.js"></script>
+    
+
+    <script src="/assets/javascripts/domino.js?c=72e45e002a71e87d257c63c88fa8d33047ca114a" type="text/javascript"></script>
+    <script src="/assets/thirdparty/jquery.noty.packaged.min.js"></script>
+    <script src="/assets/javascripts/common/util/userAlert.js?c=72e45e002a71e87d257c63c88fa8d33047ca114a" type="text/javascript"></script>
+    <script src="/assets/thirdparty/moment.min.js"></script>
+    <script src="/assets/javascripts/common/util.js?c=72e45e002a71e87d257c63c88fa8d33047ca114a" type="text/javascript"></script>
+    <script src="/assets/javascripts/common/widgets/contentEditable.js?c=72e45e002a71e87d257c63c88fa8d33047ca114a" type="text/javascript"></script>
+
+
+    <!-- select2 -->
+    <script src="/assets/thirdparty/select2.full.min.js"></script>
+    <link rel="stylesheet" media="all" href="/assets/thirdparty/select2.min.css">
+
+    <!-- Replace Bootstrap with Flatly -->
+    <link rel="stylesheet" media="screen" href="/assets/thirdparty/bootstrap/css/bootstrap.min.css">
+    
+
+    <!-- typeahead extra -->
+    <script src="/assets/thirdparty/typeahead.min.js"></script>
+    <link rel="stylesheet" media="all" href="/assets/thirdparty/typeahead-bootstrap.css">
+
+
+    <link rel="stylesheet" media="all" href="/assets/thirdparty/jquery.atwho.min.css">
+    <script src="/assets/thirdparty/jquery.caret.min.js"></script>
+    <script src="/assets/thirdparty/jquery.atwho.min.js"></script>
+
+    <!-- autofocus for modal content -->
+    <script src="/assets/javascripts/common/views/autofocus.js?c=72e45e002a71e87d257c63c88fa8d33047ca114a" type="text/javascript"></script>
+
+    <link rel="stylesheet" media="all" href="/assets/thirdparty/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" media="all" href="/assets/thirdparty/ss-gizmo/ss-gizmo.css">
+    <link rel="stylesheet" media="all" href="/assets/stylesheets/sass-bootstrap-domino.min.css">
+    <link rel="stylesheet" media="all" href="/assets/stylesheets/webapp.css">
+
+    <!-- Data Tables -->
+    <link rel="stylesheet" type="text/css" href="/assets/thirdparty/datatables/datatables.css"/>
+    <script type="text/javascript" src="/assets/thirdparty/datatables/datatables.min.js"></script>
+
+    <!-- google code prettify -->
+    <link rel="stylesheet" media="all" href="/assets/thirdparty/google-code-prettify/prettify.css">
+
+    <!-- ReactComponents -->
+    <script type="text/javascript" src="/assets/react/js/f94eab22ab3b3533251f.manifest.js"></script>
+    <script type="text/javascript" src="/assets/react/js/f94eab22ab3b3533251f.vendor.js"></script>
+    <link rel="stylesheet" media="all" type="text/css" href="/assets/react/css/f94eab22ab3b3533251f.ReactComponents.css">
+    <script type="text/javascript" src="/assets/react/js/f94eab22ab3b3533251f.ReactComponents.js"></script>
+
+    
+    <script>
+    
+        var thirdPartyRoot = '/assets/thirdparty/';
+
+        var require = {
+            shim: {
+                'underscore': {
+                    exports: '_'
+                },
+                'backbone': {
+                    deps: ['underscore'],
+                    exports: 'Backbone'
+                },
+                'remaining' : {
+                    exports: 'remaining'
+                },
+                'backbone_paginator': {
+                    deps: ['backbone', 'underscore'],
+                    exports: 'Backbone.Paginator'
+                },
+                'backgrid' : {
+                    deps: ['backbone', 'underscore'],
+                    exports: 'Backgrid'
+                } ,
+                'backgrid_filter' : {
+                    deps: ['backgrid', 'lunr'],
+                    exports: 'BackgridFilter'
+                },
+                'noty' : {
+                    exports: 'noty'
+                },
+                'validator' : {
+                    exports: 'validator'
+                },
+                'userAlert' : {
+                    exports: 'UserAlert'
+                },
+                'userAlertUtils': {
+                    exports: 'UserAlertUtils'
+                },
+                'highcharts': {
+                    exports: 'Highcharts'
+                }
+            },
+
+            baseUrl: '/assets/javascripts',
+
+            paths: {
+                common:             '/assets/javascripts/common',
+                thirdparty :        thirdPartyRoot,
+                backstretch:        thirdPartyRoot + 'jquery.backstretch.min',
+                backgrid:           thirdPartyRoot + 'backgrid/backgrid.min',
+                backgrid_filter:    thirdPartyRoot + 'backgrid/extensions/filter/backgrid-filter',
+                lunr:               thirdPartyRoot + 'lunr.min',
+                underscore:         thirdPartyRoot + 'underscore.min',
+                backbone:           thirdPartyRoot + 'backbone-min',
+                validator:          thirdPartyRoot + 'bootstrap/js/bootstrap-validator',
+                moment:             thirdPartyRoot + 'moment.min',
+                remaining:          thirdPartyRoot + 'remaining',
+                backbone_paginator: thirdPartyRoot + 'backbone.paginator.min',
+                userAlert:          '/assets/javascripts/common/util/userAlert',
+                noty:               thirdPartyRoot + 'jquery.noty.packaged.min',
+                highcharts:         thirdPartyRoot + 'highcharts'
+            }
+        };
+    
+    </script>
+
+    
+    
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-43833030-1', 'auto');
+
+      // send Optimizely data into GA
+      window.optimizely = window.optimizely || [];
+      window.optimizely.push("activateUniversalAnalytics");
+
+      ga('send', 'pageview');
+
+    </script>
+    
+
+
+        <!-- Suppressing IE11's tile configuration -->
+    <meta name="msapplication-config" content="none" />
+
+    
+
+
+
+
+  <script type="text/javascript">
+  window.MIXPANEL_CUSTOM_LIB_URL = "/assets/javascripts/mixpanel-browser/mixpanel.min.js";
+  (function(e,a){if(!a.__SV){var b=window;try{var c,l,i,j=b.location,g=j.hash;c=function(a,b){return(l=a.match(RegExp(b+"=([^&]*)")))?l[1]:null};g&&c(g,"state")&&(i=JSON.parse(decodeURIComponent(c(g,"state"))),"mpeditor"===i.action&&(b.sessionStorage.setItem("_mpcehash",g),history.replaceState(i.desiredHash||"",e.title,j.pathname+j.search)))}catch(m){}var k,h;window.mixpanel=a;a._i=[];a.init=function(b,c,f){function e(b,a){var c=a.split(".");2==c.length&&(b=b[c[0]],a=c[1]);b[a]=function(){b.push([a].concat(Array.prototype.slice.call(arguments,
+  0)))}}var d=a;"undefined"!==typeof f?d=a[f]=[]:f="mixpanel";d.people=d.people||[];d.toString=function(b){var a="mixpanel";"mixpanel"!==f&&(a+="."+f);b||(a+=" (stub)");return a};d.people.toString=function(){return d.toString(1)+".people (stub)"};k="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config reset people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+  for(h=0;h<k.length;h++)e(d,k[h]);a._i.push([b,c,f])};a.__SV=1.2;b=e.createElement("script");b.type="text/javascript";b.async=!0;b.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";c=e.getElementsByTagName("script")[0];c.parentNode.insertBefore(b,c)}})(document,window.mixpanel||[]);
+  mixpanel.init("a8873acdc08507d2ac6f95399536cc32", {cross_subdomain_cookie:false});
+
+
+  mixpanel.register_once({ "Domino Version": "3.1.0", "Domino Build Number": "897e279a-3b12-4de0-96fb-63b067081316", "Domino Build Git Commit": "72e45e002a71e87d257c63c88fa8d33047ca114a", "stage": "prod" });
+    
+  mixpanel.track('Viewed page', {'Page': 'Not Found'});
+    
+  </script>
+
+
+    
+    
+    
+
+    <script>
+    $(function() {
+      window.UserAlert.flashMessages();
+    });
+    </script>
+
+    
+
+    
+        
+                <script>/*<![CDATA[*/ window.zEmbed || function(e, t){var n, o, d, i, s, a=[], r=document.createElement("iframe"); window.zEmbed=function(){a.push(arguments)}, window.zE=window.zE || window.zEmbed, r.src="javascript:false", r.title="", r.role="presentation", (r.frameElement || r).style.cssText="display: none", d=document.getElementsByTagName("script"), d=d[d.length - 1], d.parentNode.insertBefore(r, d), i=r.contentWindow, s=i.document; try{o=s}catch (e){n=document.domain, r.src='javascript:var d=document.open();d.domain="' + n + '";void(0);', o=s}o.open()._l=function(){var o=this.createElement("script"); n && (this.domain=n), o.id="js-iframe-async", o.src=e, this.t=+new Date, this.zendeskHost=t, this.zEQueue=a, this.body.appendChild(o)}, o.write('<body onload="document._l();">'), o.close()}("https://assets.zendesk.com/embeddable_framework/main.js", "dominoup.zendesk.com"); /*]]>*/</script><script>zE(function(){zE.identify({name: window.intercomSettings.name, email: window.intercomSettings.email});});</script><script>window.intercomSettings.hide_default_launcher=true; Intercom('boot', window.intercomSettings)</script><script type="text/javascript">(function() {var walkme = document.createElement('script'); walkme.type = 'text/javascript'; walkme.async = true; walkme.src = 'https://cdn.walkme.com/users/274a1297004e4b8aa687bb9b7b3366ff/test/walkme_274a1297004e4b8aa687bb9b7b3366ff_https.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(walkme, s); window._walkmeConfig = {smartLoad:true}; })();</script>
+            
+    
+
+
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- by putting the message content in its own script tag, we avoid issues that arise when the content has quotation marks  -->
+
+
+<script>
+/**
+* Render timestamps with clients locale.
+*/
+
+$(function() {
+    window.domino = window.domino || {};
+
+    window.domino.utils = window.domino.utils || {};
+
+    window.domino.utils.defaultTimestampFormat  = window.domino.utils.defaultTimestampFormat  || "MMM DD, YYYY @ hh:mm a";
+
+    window.domino.utils.renderTimestamps = window.domino.utils.renderTimestamps || function renderTimestamps() {
+        $(".timestamp").each(function (index, element) {
+            var $element = $(element);
+            var timestamp = $element.data('millis');
+
+            var format = window.domino.utils.defaultTimestampFormat;
+
+            if ($element.data('format')) {
+                format = $element.data('format');
+            }
+
+            var renderedTimestamp = moment(timestamp).format(format);
+            $element.html(renderedTimestamp);
+        });
+    }
+
+    window.domino.utils.renderTimestamps();
+
+    window.domino.utils.updateLocationOnTabClicked = window.domino.utils.updateLocationOnTabClicked || function() {
+        $('[role=tablist] a').on('shown.bs.tab', function (e) {
+            if(history.pushState) {
+                history.pushState(null, null, e.target.hash);
+            }
+            else {
+                location.hash = e.target.hash;
+            }
+        })
+    };
+
+    window.domino.utils.selectNavigationTabFromUrl = window.domino.utils.selectNavigationTabFromUrl || function() {
+        var hash = window.location.hash;
+        if (hash) {
+            $("[role=tablist] a[href$='" + hash + "']").tab('show') ;
+        }
+    };
+
+    window.domino.utils.selectNavigationTabFromUrl();
+    window.domino.utils.updateLocationOnTabClicked();
+
+    window.addEventListener("hashchange", window.domino.utils.selectNavigationTabFromUrl, false);
+});
+</script>
+
+
+    
+
+    <!-- This class will add and override bootstrap looks -->
+    <body class="domino-webapp ">
+      
+          
+    
+        
+
+
+
+<!--[if lte IE 10]>
+  <div class="support-banner">
+    <strong>This version of Internet Explorer is not currently supported.</strong>
+    We recommend you use another modern browser.
+  </div>
+<![endif]-->
+
+<nav class="navbar navbar-default navbar-fixed-top webapp-navbar nav-alternate" role="navigation">
+
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="container-fluid">
+
+            <!-- Includes the logo and navigation to the overview page -->
+        <div class="navbar-header alt">
+          <a class="navbar-logo" href="http://www.dominodatalab.com">
+            <img src="/assets/images/logos/webapp-navbar-logo.svg"/>
+          </a>
+        </div>
+
+
+        <!-- project path + section path + section main action buttons -->
+        <div class="no-collapse">
+
+          
+
+          
+          <ul class="nav navbar-nav navbar-left">
+            <li><a class="data-set-nav" href="/dataSets/overview">Data</a></li>
+            <li>
+              <a href="http://www.dominodatalab.com">
+                Projects
+              </a>
+            </li>
+            
+            
+            
+            
+          </ul>
+          
+          <script>
+              $(function() {
+                 mixpanel.track_links('.data-set-nav', "Clicked Data Nav Item");
+              });
+          </script>
+          
+        
+
+          
+          <!-- Align the navigation to the right -->
+          <ul class="nav navbar-nav navbar-right nav-utility noauth">
+              
+              
+                      
+                          <li>
+                              <a class="btn btn-success btn-sm" href="https://app.dominodatalab.com/signup" class="username">
+                                  <span>Sign Up</span>
+                              </a>
+                          </li>
+                      
+                      <li>
+                          <a target="_blank" href="http://support.dominodatalab.com"><span>Help</span></a>
+                      </li>
+                      <li>
+                          <a class="logout-btn" href="/login"><span>Log In</span></a>
+                      </li>
+                  
+          </ul>
+        </div>
+    </div>
+</nav>
+
+    
+
+        
+
+        
+        <!-- Container fluid needs to wrap the webapp -->
+        <div class=" container  no-webapp">
+        
+          
+
+            
+    <div class="container-fluid set-padding">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>404: The page you were looking for couldn't be found.</h1>
+
+                <p>Please <a href="mailto:support@dominodatalab.com">contact us</a> if you need any support.</p>
+            </div>
+        </div>
+
+
+    </div>
+
+
+            
+          
+
+        
+        </div>
+        
+
+        
+        <div class="container no-webapp">
+            
+
+
+<div class="footer ">
+    
+    <div class="row mark-container">
+        <div class="col-md-6">
+            
+            <ul class="site-footer-links">
+                <li><a href="http://www.dominodatalab.com/contact-us/">Contact</a></li>
+                <li><a href="http://www.dominodatalab.com/careers/">Jobs</a></li>
+                <li><a href="http://www.dominodatalab.com/privacy-policy/">Privacy</a></li>
+                <li><a href="http://www.dominodatalab.com/terms/">Terms</a></li>
+                <li><a href="http://www.dominodatalab.com/security/">Security</a></li>
+            </ul>
+            
+            <p><small>&copy; 2018 Domino Data Lab, Inc.</small></p>
+        </div>
+
+        
+    </div>
+</div>
+
+
+
+
+        </div>
+        
+
+
+        
+
+
+
+
+    
+
+
+        
+          
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"errorBeacon":"bam.nr-data.net","licenseKey":"12b5f993e7","agent":"","beacon":"bam.nr-data.net","applicationTime":3,"applicationID":"17454705","transactionName":"MgQAYhRQChBZU0MKDgtOLFMSRR0nUUNHAhUGCQdESX8BF0xJcwoSFQAWVQ5UFg==","queueTime":0}</script>
+        
+
+
+        
+    </body>
+</html>
+
+
+
+
+2018-10-18 09:54:45,646 PDT DEBUG DefaultManagedHttpClientConnection - http-outgoing-0: Close connection
+2018-10-18 09:54:45,648 PDT DEBUG MainClientExec - Connection discarded
+2018-10-18 09:54:45,648 PDT DEBUG PoolingHttpClientConnectionManager - Connection released: [id: 0][route: {s}->https://app.dominodatalab.com:443][total kept alive: 0; route allocated: 0 of 10; total allocated: 0 of 30]
+2018-10-18 09:54:45,649 PDT ERROR DefaultTransport - HTTP exception: Code: 404, Error: Not Found, headers: Map(Transfer-Encoding -> List(chunked), Server -> List(nginx), X-Frame-Options -> List(DENY), Play-Processing-Time -> List(4), Connection -> List(keep-alive), Cache-Control -> List(no-cache, no-store, must-revalidate, max-age=0), Content-Type -> List(text/html; charset=utf-8), Date -> List(Thu, 18 Oct 2018 16:54:45 GMT), Set-Cookie -> List(PLAY_SESSION=e7fbc3ed78f03d2fc5bd539747983cb61558a4b0-csrfToken=9d3e7be123a785ac5f9e8739ff60071e703603d4-1539881685605-7275446e03b271ca7dd8f3ae; Path=/; Secure; HTTPOnly)), Body: 
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+
+<!--[if lte IE 9]>
+  <html class="support-banner-container">
+<![endif]-->
+<!--[if !IE]><!-->
+  <html>
+<!--<![endif]-->
+    
+
+<head>
+    <title>Not Found - Domino</title>
+    <meta charset="utf-8">
+
+
+    <meta name="google" content="notranslate">
+    <meta property="og:image" content="/assets/images/domino_logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+      
+<script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"VQQGUV5aABABU1VXAwYHUw=="};window.NREUM||(NREUM={}),__nr_require=function(t,n,e){function r(e){if(!n[e]){var o=n[e]={exports:{}};t[e][0].call(o.exports,function(n){var o=t[e][1][n];return r(o||n)},o,o.exports)}return n[e].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<e.length;o++)r(e[o]);return r}({1:[function(t,n,e){function r(t){try{s.console&&console.log(t)}catch(n){}}var o,i=t("ee"),a=t(16),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,n,e){r(e.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,n){return t}).join(", ")))},{}],2:[function(t,n,e){function r(t,n,e,r,s){try{p?p-=1:o(s||new UncaughtException(t,n,e),!0)}catch(f){try{i("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,n,e){this.message=t||"Uncaught error with no additional information",this.sourceURL=n,this.line=e}function o(t,n){var e=n?null:c.now();i("err",[t,e])}var i=t("handle"),a=t(17),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,l="nr@seenError",p=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(8),t(7),"addEventListener"in window&&t(5),c.xhrWrappable&&t(9),d=!0)}s.on("fn-start",function(t,n,e){d&&(p+=1)}),s.on("fn-err",function(t,n,e){d&&!e[l]&&(f(e,l,function(){return!0}),this.thrown=!0,o(e))}),s.on("fn-end",function(){d&&!this.thrown&&p>0&&(p-=1)}),s.on("internal-error",function(t){i("ierr",[t,c.now(),!0])})},{}],3:[function(t,n,e){t("loader").features.ins=!0},{}],4:[function(t,n,e){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(8),s=t(7),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",l="resource",p="-start",h="-end",m="fn"+p,v="fn"+h,w="bstTimer",y="pushState",g=t("loader");g.features.stn=!0,t(6);var b=NREUM.o.EV;o.on(m,function(t,n){var e=t[0];e instanceof b&&(this.bstStart=g.now())}),o.on(v,function(t,n){var e=t[0];e instanceof b&&i("bst",[e,n,this.bstStart,g.now()])}),a.on(m,function(t,n,e){this.bstStart=g.now(),this.bstType=e}),a.on(v,function(t,n){i(w,[n,this.bstStart,g.now(),this.bstType])}),s.on(m,function(){this.bstStart=g.now()}),s.on(v,function(t,n){i(w,[n,this.bstStart,g.now(),"requestAnimationFrame"])}),o.on(y+p,function(t){this.time=g.now(),this.startPath=location.pathname+location.hash}),o.on(y+h,function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,{passive:!0}),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],5:[function(t,n,e){function r(t){for(var n=t;n&&!n.hasOwnProperty(u);)n=Object.getPrototypeOf(n);n&&o(n)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,n){return t[1]}var a=t("ee").get("events"),s=t(19)(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";n.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,n){var e=t[1],r=c(e,"nr@wrapped",function(){function t(){if("function"==typeof e.handleEvent)return e.handleEvent.apply(e,arguments)}var n={object:t,"function":e}[typeof e];return n?s(n,"fn-",null,n.name||"anonymous"):e});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],6:[function(t,n,e){var r=t("ee").get("history"),o=t(19)(r);n.exports=r,o.inPlace(window.history,["pushState","replaceState"],"-")},{}],7:[function(t,n,e){var r=t("ee").get("raf"),o=t(19)(r),i="equestAnimationFrame";n.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],8:[function(t,n,e){function r(t,n,e){t[0]=a(t[0],"fn-",null,e)}function o(t,n,e){this.method=e,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,e)}var i=t("ee").get("timer"),a=t(19)(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";n.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],9:[function(t,n,e){function r(t,n){d.inPlace(n,["onreadystatechange"],"fn-",s)}function o(){var t=this,n=u.context(t);t.readyState>3&&!n.resolved&&(n.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,y,"fn-",s)}function i(t){g.push(t),h&&(x?x.then(a):v?v(a):(E=-E,O.data=E))}function a(){for(var t=0;t<g.length;t++)r([],g[t]);g.length&&(g=[])}function s(t,n){return n}function c(t,n){for(var e in t)n[e]=t[e];return n}t(5);var f=t("ee"),u=f.get("xhr"),d=t(19)(u),l=NREUM.o,p=l.XHR,h=l.MO,m=l.PR,v=l.SI,w="readystatechange",y=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],g=[];n.exports=u;var b=window.XMLHttpRequest=function(t){var n=new p(t);try{u.emit("new-xhr",[n],n),n.addEventListener(w,o,!1)}catch(e){try{u.emit("internal-error",[e])}catch(r){}}return n};if(c(p,b),b.prototype=p.prototype,d.inPlace(b.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,n){r(t,n),i(n)}),u.on("open-xhr-start",r),h){var x=m&&m.resolve();if(!v&&!m){var E=1,O=document.createTextNode(E);new h(a).observe(O,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===w||a()})},{}],10:[function(t,n,e){function r(t){var n=this.params,e=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<d;r++)t.removeEventListener(u[r],this.listener,!1);if(!n.aborted){if(e.duration=a.now()-this.startTime,4===t.readyState){n.status=t.status;var i=o(t,this.lastSize);if(i&&(e.rxSize=i),this.sameOrigin){var c=t.getResponseHeader("X-NewRelic-App-Data");c&&(n.cat=c.split(", ").pop())}}else n.status=0;e.cbTime=this.cbTime,f.emit("xhr-done",[t],t),s("xhr",[n,e,this.startTime])}}}function o(t,n){var e=t.responseType;if("json"===e&&null!==n)return n;var r="arraybuffer"===e||"blob"===e||"json"===e?t.response:t.responseText;return h(r)}function i(t,n){var e=c(n),r=t.params;r.host=e.hostname+":"+e.port,r.pathname=e.pathname,t.sameOrigin=e.sameOrigin}var a=t("loader");if(a.xhrWrappable){var s=t("handle"),c=t(11),f=t("ee"),u=["load","error","abort","timeout"],d=u.length,l=t("id"),p=t(14),h=t(13),m=window.XMLHttpRequest;a.features.xhr=!0,t(9),f.on("new-xhr",function(t){var n=this;n.totalCbs=0,n.called=0,n.cbTime=0,n.end=r,n.ended=!1,n.xhrGuids={},n.lastSize=null,p&&(p>34||p<10)||window.opera||t.addEventListener("progress",function(t){n.lastSize=t.loaded},!1)}),f.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),f.on("open-xhr-end",function(t,n){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&n.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),f.on("send-xhr-start",function(t,n){var e=this.metrics,r=t[0],o=this;if(e&&r){var i=h(r);i&&(e.txSize=i)}this.startTime=a.now(),this.listener=function(t){try{"abort"===t.type&&(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof n.onload))&&o.end(n)}catch(e){try{f.emit("internal-error",[e])}catch(r){}}};for(var s=0;s<d;s++)n.addEventListener(u[s],this.listener,!1)}),f.on("xhr-cb-time",function(t,n,e){this.cbTime+=t,n?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof e.onload||this.end(e)}),f.on("xhr-load-added",function(t,n){var e=""+l(t)+!!n;this.xhrGuids&&!this.xhrGuids[e]&&(this.xhrGuids[e]=!0,this.totalCbs+=1)}),f.on("xhr-load-removed",function(t,n){var e=""+l(t)+!!n;this.xhrGuids&&this.xhrGuids[e]&&(delete this.xhrGuids[e],this.totalCbs-=1)}),f.on("addEventListener-end",function(t,n){n instanceof m&&"load"===t[0]&&f.emit("xhr-load-added",[t[1],t[2]],n)}),f.on("removeEventListener-end",function(t,n){n instanceof m&&"load"===t[0]&&f.emit("xhr-load-removed",[t[1],t[2]],n)}),f.on("fn-start",function(t,n,e){n instanceof m&&("onload"===e&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),f.on("fn-end",function(t,n){this.xhrCbStart&&f.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,n],n)})}},{}],11:[function(t,n,e){n.exports=function(t){var n=document.createElement("a"),e=window.location,r={};n.href=t,r.port=n.port;var o=n.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=n.hostname||e.hostname,r.pathname=n.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!n.protocol||":"===n.protocol||n.protocol===e.protocol,a=n.hostname===document.domain&&n.port===e.port;return r.sameOrigin=i&&(!n.hostname||a),r}},{}],12:[function(t,n,e){function r(){}function o(t,n,e){return function(){return i(t,[f.now()].concat(s(arguments)),n?null:this,e),n?void 0:this}}var i=t("handle"),a=t(16),s=t(17),c=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",p=l+"ixn-";a(d,function(t,n){u[n]=o(l+n,!0,"api")}),u.addPageAction=o(l+"addPageAction",!0),u.setCurrentRouteName=o(l+"routeName",!0),n.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,n){var e={},r=this,o="function"==typeof n;return i(p+"tracer",[f.now(),t,e],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],e),o)try{return n.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],e),t}finally{c.emit("fn-end",[f.now()],e)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,n){h[n]=o(p+n)}),newrelic.noticeError=function(t){"string"==typeof t&&(t=new Error(t)),i("err",[t,f.now()])}},{}],13:[function(t,n,e){n.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(n){return}}}},{}],14:[function(t,n,e){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),n.exports=r},{}],15:[function(t,n,e){function r(t,n){if(!o)return!1;if(t!==o)return!1;if(!n)return!0;if(!i)return!1;for(var e=i.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==e[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var s=navigator.userAgent,c=s.match(a);c&&s.indexOf("Chrome")===-1&&s.indexOf("Chromium")===-1&&(o="Safari",i=c[1])}n.exports={agent:o,version:i,match:r}},{}],16:[function(t,n,e){function r(t,n){var e=[],r="",i=0;for(r in t)o.call(t,r)&&(e[i]=n(r,t[r]),i+=1);return e}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],17:[function(t,n,e){function r(t,n,e){n||(n=0),"undefined"==typeof e&&(e=t?t.length:0);for(var r=-1,o=e-n||0,i=Array(o<0?0:o);++r<o;)i[r]=t[n+r];return i}n.exports=r},{}],18:[function(t,n,e){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],19:[function(t,n,e){function r(t){return!(t&&t instanceof Function&&t.apply&&!t[a])}var o=t("ee"),i=t(17),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;n.exports=function(t,n){function e(t,n,e,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof e?e(r,a):e||{}}catch(f){l([f,"",[r,a,o],s])}u(n+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(d){throw u(n+"err",[r,a,d],s),d}finally{u(n+"end",[r,a,c],s)}}return r(t)?t:(n||(n=""),nrWrapper[a]=t,d(t,nrWrapper),nrWrapper)}function f(t,n,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<n.length;c++)s=n[c],a=t[s],r(a)||(t[s]=e(a,f?s+o:o,i,s))}function u(e,r,o){if(!c||n){var i=c;c=!0;try{t.emit(e,r,o,n)}catch(a){l([a,e,r,o])}c=i}}function d(t,n){if(Object.defineProperty&&Object.keys)try{var e=Object.keys(t);return e.forEach(function(e){Object.defineProperty(n,e,{get:function(){return t[e]},set:function(n){return t[e]=n,n}})}),n}catch(r){l([r])}for(var o in t)s.call(t,o)&&(n[o]=t[o]);return n}function l(n){try{t.emit("internal-error",n)}catch(e){}}return t||(t=o),e.inPlace=f,e.flag=a,e}},{}],ee:[function(t,n,e){function r(){}function o(t){function n(t){return t&&t instanceof r?t:t?c(t,s,i):i()}function e(e,r,o,i){if(!l.aborted||i){t&&t(e,r,o);for(var a=n(o),s=m(e),c=s.length,f=0;f<c;f++)s[f].apply(a,r);var d=u[g[e]];return d&&d.push([b,e,r,a]),a}}function p(t,n){y[t]=m(t).concat(n)}function h(t,n){var e=y[t];if(e)for(var r=0;r<e.length;r++)e[r]===n&&e.splice(r,1)}function m(t){return y[t]||[]}function v(t){return d[t]=d[t]||o(e)}function w(t,n){f(t,function(t,e){n=n||"feature",g[e]=n,n in u||(u[n]=[])})}var y={},g={},b={on:p,addEventListener:p,removeEventListener:h,emit:e,get:v,listeners:m,context:n,buffer:w,abort:a,aborted:!1};return b}function i(){return new r}function a(){(u.api||u.feature)&&(l.aborted=!0,u=l.backlog={})}var s="nr@context",c=t("gos"),f=t(16),u={},d={},l=n.exports=o();l.backlog=u},{}],gos:[function(t,n,e){function r(t,n,e){if(o.call(t,n))return t[n];var r=e();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(t,n,e){function r(t,n,e,r){o.buffer([t],r),o.emit(t,n,e)}var o=t("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(t,n,e){function r(t){var n=typeof t;return!t||"object"!==n&&"function"!==n?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");n.exports=r},{}],loader:[function(t,n,e){function r(){if(!E++){var t=x.info=NREUM.info,n=p.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&n))return u.abort();f(g,function(n,e){t[n]||(t[n]=e)}),c("mark",["onload",a()+x.offset],null,"api");var e=p.createElement("script");e.src="https://"+t.agent,n.parentNode.insertBefore(e,n)}}function o(){"complete"===p.readyState&&i()}function i(){c("mark",["domContent",a()+x.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(s=Math.max((new Date).getTime(),s))-x.offset}var s=(new Date).getTime(),c=t("handle"),f=t(16),u=t("ee"),d=t(15),l=window,p=l.document,h="addEventListener",m="attachEvent",v=l.XMLHttpRequest,w=v&&v.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:v,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var y=""+location,g={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1099.min.js"},b=v&&w&&w[h]&&!/CriOS/.test(navigator.userAgent),x=n.exports={offset:s,now:a,origin:y,features:{},xhrWrappable:b,userAgent:d};t(12),p[h]?(p[h]("DOMContentLoaded",i,!1),l[h]("load",r,!1)):(p[m]("onreadystatechange",o),l[m]("onload",r)),c("mark",["firstbyte",s],null,"api");var E=0,O=t(18)},{}]},{},["loader",2,10,4,3]);</script>
+    
+    <link rel="shortcut icon" type="image/png" href="/assets/images/favicon.png?v3">
+
+    
+    
+        <script src="//cdn.optimizely.com/js/2853210246.js"></script>
+    
+
+
+    
+      <script src="/assets/thirdparty/jquery-1.10.2.min.js"></script>
+      <script src="/assets/thirdparty/jquery.form.min.js"></script>
+
+      <script src="/assets/thirdparty/bootstrap/js/bootstrap.min.js"></script>
+      <script src="/assets/thirdparty/underscore.min.js"></script>
+    
+
+    <script src="/assets/javascripts/domino.js?c=72e45e002a71e87d257c63c88fa8d33047ca114a" type="text/javascript"></script>
+    <script src="/assets/thirdparty/jquery.noty.packaged.min.js"></script>
+    <script src="/assets/javascripts/common/util/userAlert.js?c=72e45e002a71e87d257c63c88fa8d33047ca114a" type="text/javascript"></script>
+    <script src="/assets/thirdparty/moment.min.js"></script>
+    <script src="/assets/javascripts/common/util.js?c=72e45e002a71e87d257c63c88fa8d33047ca114a" type="text/javascript"></script>
+    <script src="/assets/javascripts/common/widgets/contentEditable.js?c=72e45e002a71e87d257c63c88fa8d33047ca114a" type="text/javascript"></script>
+
+
+    <!-- select2 -->
+    <script src="/assets/thirdparty/select2.full.min.js"></script>
+    <link rel="stylesheet" media="all" href="/assets/thirdparty/select2.min.css">
+
+    <!-- Replace Bootstrap with Flatly -->
+    <link rel="stylesheet" media="screen" href="/assets/thirdparty/bootstrap/css/bootstrap.min.css">
+    
+
+    <!-- typeahead extra -->
+    <script src="/assets/thirdparty/typeahead.min.js"></script>
+    <link rel="stylesheet" media="all" href="/assets/thirdparty/typeahead-bootstrap.css">
+
+
+    <link rel="stylesheet" media="all" href="/assets/thirdparty/jquery.atwho.min.css">
+    <script src="/assets/thirdparty/jquery.caret.min.js"></script>
+    <script src="/assets/thirdparty/jquery.atwho.min.js"></script>
+
+    <!-- autofocus for modal content -->
+    <script src="/assets/javascripts/common/views/autofocus.js?c=72e45e002a71e87d257c63c88fa8d33047ca114a" type="text/javascript"></script>
+
+    <link rel="stylesheet" media="all" href="/assets/thirdparty/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" media="all" href="/assets/thirdparty/ss-gizmo/ss-gizmo.css">
+    <link rel="stylesheet" media="all" href="/assets/stylesheets/sass-bootstrap-domino.min.css">
+    <link rel="stylesheet" media="all" href="/assets/stylesheets/webapp.css">
+
+    <!-- Data Tables -->
+    <link rel="stylesheet" type="text/css" href="/assets/thirdparty/datatables/datatables.css"/>
+    <script type="text/javascript" src="/assets/thirdparty/datatables/datatables.min.js"></script>
+
+    <!-- google code prettify -->
+    <link rel="stylesheet" media="all" href="/assets/thirdparty/google-code-prettify/prettify.css">
+
+    <!-- ReactComponents -->
+    <script type="text/javascript" src="/assets/react/js/f94eab22ab3b3533251f.manifest.js"></script>
+    <script type="text/javascript" src="/assets/react/js/f94eab22ab3b3533251f.vendor.js"></script>
+    <link rel="stylesheet" media="all" type="text/css" href="/assets/react/css/f94eab22ab3b3533251f.ReactComponents.css">
+    <script type="text/javascript" src="/assets/react/js/f94eab22ab3b3533251f.ReactComponents.js"></script>
+
+    
+    <script>
+    
+        var thirdPartyRoot = '/assets/thirdparty/';
+
+        var require = {
+            shim: {
+                'underscore': {
+                    exports: '_'
+                },
+                'backbone': {
+                    deps: ['underscore'],
+                    exports: 'Backbone'
+                },
+                'remaining' : {
+                    exports: 'remaining'
+                },
+                'backbone_paginator': {
+                    deps: ['backbone', 'underscore'],
+                    exports: 'Backbone.Paginator'
+                },
+                'backgrid' : {
+                    deps: ['backbone', 'underscore'],
+                    exports: 'Backgrid'
+                } ,
+                'backgrid_filter' : {
+                    deps: ['backgrid', 'lunr'],
+                    exports: 'BackgridFilter'
+                },
+                'noty' : {
+                    exports: 'noty'
+                },
+                'validator' : {
+                    exports: 'validator'
+                },
+                'userAlert' : {
+                    exports: 'UserAlert'
+                },
+                'userAlertUtils': {
+                    exports: 'UserAlertUtils'
+                },
+                'highcharts': {
+                    exports: 'Highcharts'
+                }
+            },
+
+            baseUrl: '/assets/javascripts',
+
+            paths: {
+                common:             '/assets/javascripts/common',
+                thirdparty :        thirdPartyRoot,
+                backstretch:        thirdPartyRoot + 'jquery.backstretch.min',
+                backgrid:           thirdPartyRoot + 'backgrid/backgrid.min',
+                backgrid_filter:    thirdPartyRoot + 'backgrid/extensions/filter/backgrid-filter',
+                lunr:               thirdPartyRoot + 'lunr.min',
+                underscore:         thirdPartyRoot + 'underscore.min',
+                backbone:           thirdPartyRoot + 'backbone-min',
+                validator:          thirdPartyRoot + 'bootstrap/js/bootstrap-validator',
+                moment:             thirdPartyRoot + 'moment.min',
+                remaining:          thirdPartyRoot + 'remaining',
+                backbone_paginator: thirdPartyRoot + 'backbone.paginator.min',
+                userAlert:          '/assets/javascripts/common/util/userAlert',
+                noty:               thirdPartyRoot + 'jquery.noty.packaged.min',
+                highcharts:         thirdPartyRoot + 'highcharts'
+            }
+        };
+    
+    </script>
+
+    
+    
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-43833030-1', 'auto');
+
+      // send Optimizely data into GA
+      window.optimizely = window.optimizely || [];
+      window.optimizely.push("activateUniversalAnalytics");
+
+      ga('send', 'pageview');
+
+    </script>
+    
+
+
+        <!-- Suppressing IE11's tile configuration -->
+    <meta name="msapplication-config" content="none" />
+
+    
+
+
+
+
+  <script type="text/javascript">
+  window.MIXPANEL_CUSTOM_LIB_URL = "/assets/javascripts/mixpanel-browser/mixpanel.min.js";
+  (function(e,a){if(!a.__SV){var b=window;try{var c,l,i,j=b.location,g=j.hash;c=function(a,b){return(l=a.match(RegExp(b+"=([^&]*)")))?l[1]:null};g&&c(g,"state")&&(i=JSON.parse(decodeURIComponent(c(g,"state"))),"mpeditor"===i.action&&(b.sessionStorage.setItem("_mpcehash",g),history.replaceState(i.desiredHash||"",e.title,j.pathname+j.search)))}catch(m){}var k,h;window.mixpanel=a;a._i=[];a.init=function(b,c,f){function e(b,a){var c=a.split(".");2==c.length&&(b=b[c[0]],a=c[1]);b[a]=function(){b.push([a].concat(Array.prototype.slice.call(arguments,
+  0)))}}var d=a;"undefined"!==typeof f?d=a[f]=[]:f="mixpanel";d.people=d.people||[];d.toString=function(b){var a="mixpanel";"mixpanel"!==f&&(a+="."+f);b||(a+=" (stub)");return a};d.people.toString=function(){return d.toString(1)+".people (stub)"};k="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config reset people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+  for(h=0;h<k.length;h++)e(d,k[h]);a._i.push([b,c,f])};a.__SV=1.2;b=e.createElement("script");b.type="text/javascript";b.async=!0;b.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";c=e.getElementsByTagName("script")[0];c.parentNode.insertBefore(b,c)}})(document,window.mixpanel||[]);
+  mixpanel.init("a8873acdc08507d2ac6f95399536cc32", {cross_subdomain_cookie:false});
+
+
+  mixpanel.register_once({ "Domino Version": "3.1.0", "Domino Build Number": "897e279a-3b12-4de0-96fb-63b067081316", "Domino Build Git Commit": "72e45e002a71e87d257c63c88fa8d33047ca114a", "stage": "prod" });
+    
+  mixpanel.track('Viewed page', {'Page': 'Not Found'});
+    
+  </script>
+
+
+    
+    
+    
+
+    <script>
+    $(function() {
+      window.UserAlert.flashMessages();
+    });
+    </script>
+
+    
+
+    
+        
+                <script>/*<![CDATA[*/ window.zEmbed || function(e, t){var n, o, d, i, s, a=[], r=document.createElement("iframe"); window.zEmbed=function(){a.push(arguments)}, window.zE=window.zE || window.zEmbed, r.src="javascript:false", r.title="", r.role="presentation", (r.frameElement || r).style.cssText="display: none", d=document.getElementsByTagName("script"), d=d[d.length - 1], d.parentNode.insertBefore(r, d), i=r.contentWindow, s=i.document; try{o=s}catch (e){n=document.domain, r.src='javascript:var d=document.open();d.domain="' + n + '";void(0);', o=s}o.open()._l=function(){var o=this.createElement("script"); n && (this.domain=n), o.id="js-iframe-async", o.src=e, this.t=+new Date, this.zendeskHost=t, this.zEQueue=a, this.body.appendChild(o)}, o.write('<body onload="document._l();">'), o.close()}("https://assets.zendesk.com/embeddable_framework/main.js", "dominoup.zendesk.com"); /*]]>*/</script><script>zE(function(){zE.identify({name: window.intercomSettings.name, email: window.intercomSettings.email});});</script><script>window.intercomSettings.hide_default_launcher=true; Intercom('boot', window.intercomSettings)</script><script type="text/javascript">(function() {var walkme = document.createElement('script'); walkme.type = 'text/javascript'; walkme.async = true; walkme.src = 'https://cdn.walkme.com/users/274a1297004e4b8aa687bb9b7b3366ff/test/walkme_274a1297004e4b8aa687bb9b7b3366ff_https.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(walkme, s); window._walkmeConfig = {smartLoad:true}; })();</script>
+            
+    
+
+
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- by putting the message content in its own script tag, we avoid issues that arise when the content has quotation marks  -->
+
+
+<script>
+/**
+* Render timestamps with clients locale.
+*/
+
+$(function() {
+    window.domino = window.domino || {};
+
+    window.domino.utils = window.domino.utils || {};
+
+    window.domino.utils.defaultTimestampFormat  = window.domino.utils.defaultTimestampFormat  || "MMM DD, YYYY @ hh:mm a";
+
+    window.domino.utils.renderTimestamps = window.domino.utils.renderTimestamps || function renderTimestamps() {
+        $(".timestamp").each(function (index, element) {
+            var $element = $(element);
+            var timestamp = $element.data('millis');
+
+            var format = window.domino.utils.defaultTimestampFormat;
+
+            if ($element.data('format')) {
+                format = $element.data('format');
+            }
+
+            var renderedTimestamp = moment(timestamp).format(format);
+            $element.html(renderedTimestamp);
+        });
+    }
+
+    window.domino.utils.renderTimestamps();
+
+    window.domino.utils.updateLocationOnTabClicked = window.domino.utils.updateLocationOnTabClicked || function() {
+        $('[role=tablist] a').on('shown.bs.tab', function (e) {
+            if(history.pushState) {
+                history.pushState(null, null, e.target.hash);
+            }
+            else {
+                location.hash = e.target.hash;
+            }
+        })
+    };
+
+    window.domino.utils.selectNavigationTabFromUrl = window.domino.utils.selectNavigationTabFromUrl || function() {
+        var hash = window.location.hash;
+        if (hash) {
+            $("[role=tablist] a[href$='" + hash + "']").tab('show') ;
+        }
+    };
+
+    window.domino.utils.selectNavigationTabFromUrl();
+    window.domino.utils.updateLocationOnTabClicked();
+
+    window.addEventListener("hashchange", window.domino.utils.selectNavigationTabFromUrl, false);
+});
+</script>
+
+
+    
+
+    <!-- This class will add and override bootstrap looks -->
+    <body class="domino-webapp ">
+      
+          
+    
+        
+
+
+
+<!--[if lte IE 10]>
+  <div class="support-banner">
+    <strong>This version of Internet Explorer is not currently supported.</strong>
+    We recommend you use another modern browser.
+  </div>
+<![endif]-->
+
+<nav class="navbar navbar-default navbar-fixed-top webapp-navbar nav-alternate" role="navigation">
+
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="container-fluid">
+
+            <!-- Includes the logo and navigation to the overview page -->
+        <div class="navbar-header alt">
+          <a class="navbar-logo" href="http://www.dominodatalab.com">
+            <img src="/assets/images/logos/webapp-navbar-logo.svg"/>
+          </a>
+        </div>
+
+
+        <!-- project path + section path + section main action buttons -->
+        <div class="no-collapse">
+
+          
+
+          
+          <ul class="nav navbar-nav navbar-left">
+            <li><a class="data-set-nav" href="/dataSets/overview">Data</a></li>
+            <li>
+              <a href="http://www.dominodatalab.com">
+                Projects
+              </a>
+            </li>
+            
+            
+            
+            
+          </ul>
+          
+          <script>
+              $(function() {
+                 mixpanel.track_links('.data-set-nav', "Clicked Data Nav Item");
+              });
+          </script>
+          
+        
+
+          
+          <!-- Align the navigation to the right -->
+          <ul class="nav navbar-nav navbar-right nav-utility noauth">
+              
+              
+                      
+                          <li>
+                              <a class="btn btn-success btn-sm" href="https://app.dominodatalab.com/signup" class="username">
+                                  <span>Sign Up</span>
+                              </a>
+                          </li>
+                      
+                      <li>
+                          <a target="_blank" href="http://support.dominodatalab.com"><span>Help</span></a>
+                      </li>
+                      <li>
+                          <a class="logout-btn" href="/login"><span>Log In</span></a>
+                      </li>
+                  
+          </ul>
+        </div>
+    </div>
+</nav>
+
+    
+
+        
+
+        
+        <!-- Container fluid needs to wrap the webapp -->
+        <div class=" container  no-webapp">
+        
+          
+
+            
+    <div class="container-fluid set-padding">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>404: The page you were looking for couldn't be found.</h1>
+
+                <p>Please <a href="mailto:support@dominodatalab.com">contact us</a> if you need any support.</p>
+            </div>
+        </div>
+
+
+    </div>
+
+
+            
+          
+
+        
+        </div>
+        
+
+        
+        <div class="container no-webapp">
+            
+
+
+<div class="footer ">
+    
+    <div class="row mark-container">
+        <div class="col-md-6">
+            
+            <ul class="site-footer-links">
+                <li><a href="http://www.dominodatalab.com/contact-us/">Contact</a></li>
+                <li><a href="http://www.dominodatalab.com/careers/">Jobs</a></li>
+                <li><a href="http://www.dominodatalab.com/privacy-policy/">Privacy</a></li>
+                <li><a href="http://www.dominodatalab.com/terms/">Terms</a></li>
+                <li><a href="http://www.dominodatalab.com/security/">Security</a></li>
+            </ul>
+            
+            <p><small>&copy; 2018 Domino Data Lab, Inc.</small></p>
+        </div>
+
+        
+    </div>
+</div>
+
+
+
+
+        </div>
+        
+
+
+        
+
+
+
+
+    
+
+
+        
+          
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"errorBeacon":"bam.nr-data.net","licenseKey":"12b5f993e7","agent":"","beacon":"bam.nr-data.net","applicationTime":3,"applicationID":"17454705","transactionName":"MgQAYhRQChBZU0MKDgtOLFMSRR0nUUNHAhUGCQdESX8BF0xJcwoSFQAWVQ5UFg==","queueTime":0}</script>
+        
+
+
+        
+    </body>
+</html>
+
+
+
+ body: 
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+
+<!--[if lte IE 9]>
+  <html class="support-banner-container">
+<![endif]-->
+<!--[if !IE]><!-->
+  <html>
+<!--<![endif]-->
+    
+
+<head>
+    <title>Not Found - Domino</title>
+    <meta charset="utf-8">
+
+
+    <meta name="google" content="notranslate">
+    <meta property="og:image" content="/assets/images/domino_logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+      
+<script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"VQQGUV5aABABU1VXAwYHUw=="};window.NREUM||(NREUM={}),__nr_require=function(t,n,e){function r(e){if(!n[e]){var o=n[e]={exports:{}};t[e][0].call(o.exports,function(n){var o=t[e][1][n];return r(o||n)},o,o.exports)}return n[e].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<e.length;o++)r(e[o]);return r}({1:[function(t,n,e){function r(t){try{s.console&&console.log(t)}catch(n){}}var o,i=t("ee"),a=t(16),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,n,e){r(e.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,n){return t}).join(", ")))},{}],2:[function(t,n,e){function r(t,n,e,r,s){try{p?p-=1:o(s||new UncaughtException(t,n,e),!0)}catch(f){try{i("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,n,e){this.message=t||"Uncaught error with no additional information",this.sourceURL=n,this.line=e}function o(t,n){var e=n?null:c.now();i("err",[t,e])}var i=t("handle"),a=t(17),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,l="nr@seenError",p=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(8),t(7),"addEventListener"in window&&t(5),c.xhrWrappable&&t(9),d=!0)}s.on("fn-start",function(t,n,e){d&&(p+=1)}),s.on("fn-err",function(t,n,e){d&&!e[l]&&(f(e,l,function(){return!0}),this.thrown=!0,o(e))}),s.on("fn-end",function(){d&&!this.thrown&&p>0&&(p-=1)}),s.on("internal-error",function(t){i("ierr",[t,c.now(),!0])})},{}],3:[function(t,n,e){t("loader").features.ins=!0},{}],4:[function(t,n,e){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(8),s=t(7),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",l="resource",p="-start",h="-end",m="fn"+p,v="fn"+h,w="bstTimer",y="pushState",g=t("loader");g.features.stn=!0,t(6);var b=NREUM.o.EV;o.on(m,function(t,n){var e=t[0];e instanceof b&&(this.bstStart=g.now())}),o.on(v,function(t,n){var e=t[0];e instanceof b&&i("bst",[e,n,this.bstStart,g.now()])}),a.on(m,function(t,n,e){this.bstStart=g.now(),this.bstType=e}),a.on(v,function(t,n){i(w,[n,this.bstStart,g.now(),this.bstType])}),s.on(m,function(){this.bstStart=g.now()}),s.on(v,function(t,n){i(w,[n,this.bstStart,g.now(),"requestAnimationFrame"])}),o.on(y+p,function(t){this.time=g.now(),this.startPath=location.pathname+location.hash}),o.on(y+h,function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,{passive:!0}),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],5:[function(t,n,e){function r(t){for(var n=t;n&&!n.hasOwnProperty(u);)n=Object.getPrototypeOf(n);n&&o(n)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,n){return t[1]}var a=t("ee").get("events"),s=t(19)(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";n.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,n){var e=t[1],r=c(e,"nr@wrapped",function(){function t(){if("function"==typeof e.handleEvent)return e.handleEvent.apply(e,arguments)}var n={object:t,"function":e}[typeof e];return n?s(n,"fn-",null,n.name||"anonymous"):e});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],6:[function(t,n,e){var r=t("ee").get("history"),o=t(19)(r);n.exports=r,o.inPlace(window.history,["pushState","replaceState"],"-")},{}],7:[function(t,n,e){var r=t("ee").get("raf"),o=t(19)(r),i="equestAnimationFrame";n.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],8:[function(t,n,e){function r(t,n,e){t[0]=a(t[0],"fn-",null,e)}function o(t,n,e){this.method=e,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,e)}var i=t("ee").get("timer"),a=t(19)(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";n.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],9:[function(t,n,e){function r(t,n){d.inPlace(n,["onreadystatechange"],"fn-",s)}function o(){var t=this,n=u.context(t);t.readyState>3&&!n.resolved&&(n.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,y,"fn-",s)}function i(t){g.push(t),h&&(x?x.then(a):v?v(a):(E=-E,O.data=E))}function a(){for(var t=0;t<g.length;t++)r([],g[t]);g.length&&(g=[])}function s(t,n){return n}function c(t,n){for(var e in t)n[e]=t[e];return n}t(5);var f=t("ee"),u=f.get("xhr"),d=t(19)(u),l=NREUM.o,p=l.XHR,h=l.MO,m=l.PR,v=l.SI,w="readystatechange",y=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],g=[];n.exports=u;var b=window.XMLHttpRequest=function(t){var n=new p(t);try{u.emit("new-xhr",[n],n),n.addEventListener(w,o,!1)}catch(e){try{u.emit("internal-error",[e])}catch(r){}}return n};if(c(p,b),b.prototype=p.prototype,d.inPlace(b.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,n){r(t,n),i(n)}),u.on("open-xhr-start",r),h){var x=m&&m.resolve();if(!v&&!m){var E=1,O=document.createTextNode(E);new h(a).observe(O,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===w||a()})},{}],10:[function(t,n,e){function r(t){var n=this.params,e=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<d;r++)t.removeEventListener(u[r],this.listener,!1);if(!n.aborted){if(e.duration=a.now()-this.startTime,4===t.readyState){n.status=t.status;var i=o(t,this.lastSize);if(i&&(e.rxSize=i),this.sameOrigin){var c=t.getResponseHeader("X-NewRelic-App-Data");c&&(n.cat=c.split(", ").pop())}}else n.status=0;e.cbTime=this.cbTime,f.emit("xhr-done",[t],t),s("xhr",[n,e,this.startTime])}}}function o(t,n){var e=t.responseType;if("json"===e&&null!==n)return n;var r="arraybuffer"===e||"blob"===e||"json"===e?t.response:t.responseText;return h(r)}function i(t,n){var e=c(n),r=t.params;r.host=e.hostname+":"+e.port,r.pathname=e.pathname,t.sameOrigin=e.sameOrigin}var a=t("loader");if(a.xhrWrappable){var s=t("handle"),c=t(11),f=t("ee"),u=["load","error","abort","timeout"],d=u.length,l=t("id"),p=t(14),h=t(13),m=window.XMLHttpRequest;a.features.xhr=!0,t(9),f.on("new-xhr",function(t){var n=this;n.totalCbs=0,n.called=0,n.cbTime=0,n.end=r,n.ended=!1,n.xhrGuids={},n.lastSize=null,p&&(p>34||p<10)||window.opera||t.addEventListener("progress",function(t){n.lastSize=t.loaded},!1)}),f.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),f.on("open-xhr-end",function(t,n){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&n.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),f.on("send-xhr-start",function(t,n){var e=this.metrics,r=t[0],o=this;if(e&&r){var i=h(r);i&&(e.txSize=i)}this.startTime=a.now(),this.listener=function(t){try{"abort"===t.type&&(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof n.onload))&&o.end(n)}catch(e){try{f.emit("internal-error",[e])}catch(r){}}};for(var s=0;s<d;s++)n.addEventListener(u[s],this.listener,!1)}),f.on("xhr-cb-time",function(t,n,e){this.cbTime+=t,n?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof e.onload||this.end(e)}),f.on("xhr-load-added",function(t,n){var e=""+l(t)+!!n;this.xhrGuids&&!this.xhrGuids[e]&&(this.xhrGuids[e]=!0,this.totalCbs+=1)}),f.on("xhr-load-removed",function(t,n){var e=""+l(t)+!!n;this.xhrGuids&&this.xhrGuids[e]&&(delete this.xhrGuids[e],this.totalCbs-=1)}),f.on("addEventListener-end",function(t,n){n instanceof m&&"load"===t[0]&&f.emit("xhr-load-added",[t[1],t[2]],n)}),f.on("removeEventListener-end",function(t,n){n instanceof m&&"load"===t[0]&&f.emit("xhr-load-removed",[t[1],t[2]],n)}),f.on("fn-start",function(t,n,e){n instanceof m&&("onload"===e&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),f.on("fn-end",function(t,n){this.xhrCbStart&&f.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,n],n)})}},{}],11:[function(t,n,e){n.exports=function(t){var n=document.createElement("a"),e=window.location,r={};n.href=t,r.port=n.port;var o=n.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=n.hostname||e.hostname,r.pathname=n.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!n.protocol||":"===n.protocol||n.protocol===e.protocol,a=n.hostname===document.domain&&n.port===e.port;return r.sameOrigin=i&&(!n.hostname||a),r}},{}],12:[function(t,n,e){function r(){}function o(t,n,e){return function(){return i(t,[f.now()].concat(s(arguments)),n?null:this,e),n?void 0:this}}var i=t("handle"),a=t(16),s=t(17),c=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",p=l+"ixn-";a(d,function(t,n){u[n]=o(l+n,!0,"api")}),u.addPageAction=o(l+"addPageAction",!0),u.setCurrentRouteName=o(l+"routeName",!0),n.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,n){var e={},r=this,o="function"==typeof n;return i(p+"tracer",[f.now(),t,e],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],e),o)try{return n.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],e),t}finally{c.emit("fn-end",[f.now()],e)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,n){h[n]=o(p+n)}),newrelic.noticeError=function(t){"string"==typeof t&&(t=new Error(t)),i("err",[t,f.now()])}},{}],13:[function(t,n,e){n.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(n){return}}}},{}],14:[function(t,n,e){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),n.exports=r},{}],15:[function(t,n,e){function r(t,n){if(!o)return!1;if(t!==o)return!1;if(!n)return!0;if(!i)return!1;for(var e=i.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==e[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var s=navigator.userAgent,c=s.match(a);c&&s.indexOf("Chrome")===-1&&s.indexOf("Chromium")===-1&&(o="Safari",i=c[1])}n.exports={agent:o,version:i,match:r}},{}],16:[function(t,n,e){function r(t,n){var e=[],r="",i=0;for(r in t)o.call(t,r)&&(e[i]=n(r,t[r]),i+=1);return e}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],17:[function(t,n,e){function r(t,n,e){n||(n=0),"undefined"==typeof e&&(e=t?t.length:0);for(var r=-1,o=e-n||0,i=Array(o<0?0:o);++r<o;)i[r]=t[n+r];return i}n.exports=r},{}],18:[function(t,n,e){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],19:[function(t,n,e){function r(t){return!(t&&t instanceof Function&&t.apply&&!t[a])}var o=t("ee"),i=t(17),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;n.exports=function(t,n){function e(t,n,e,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof e?e(r,a):e||{}}catch(f){l([f,"",[r,a,o],s])}u(n+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(d){throw u(n+"err",[r,a,d],s),d}finally{u(n+"end",[r,a,c],s)}}return r(t)?t:(n||(n=""),nrWrapper[a]=t,d(t,nrWrapper),nrWrapper)}function f(t,n,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<n.length;c++)s=n[c],a=t[s],r(a)||(t[s]=e(a,f?s+o:o,i,s))}function u(e,r,o){if(!c||n){var i=c;c=!0;try{t.emit(e,r,o,n)}catch(a){l([a,e,r,o])}c=i}}function d(t,n){if(Object.defineProperty&&Object.keys)try{var e=Object.keys(t);return e.forEach(function(e){Object.defineProperty(n,e,{get:function(){return t[e]},set:function(n){return t[e]=n,n}})}),n}catch(r){l([r])}for(var o in t)s.call(t,o)&&(n[o]=t[o]);return n}function l(n){try{t.emit("internal-error",n)}catch(e){}}return t||(t=o),e.inPlace=f,e.flag=a,e}},{}],ee:[function(t,n,e){function r(){}function o(t){function n(t){return t&&t instanceof r?t:t?c(t,s,i):i()}function e(e,r,o,i){if(!l.aborted||i){t&&t(e,r,o);for(var a=n(o),s=m(e),c=s.length,f=0;f<c;f++)s[f].apply(a,r);var d=u[g[e]];return d&&d.push([b,e,r,a]),a}}function p(t,n){y[t]=m(t).concat(n)}function h(t,n){var e=y[t];if(e)for(var r=0;r<e.length;r++)e[r]===n&&e.splice(r,1)}function m(t){return y[t]||[]}function v(t){return d[t]=d[t]||o(e)}function w(t,n){f(t,function(t,e){n=n||"feature",g[e]=n,n in u||(u[n]=[])})}var y={},g={},b={on:p,addEventListener:p,removeEventListener:h,emit:e,get:v,listeners:m,context:n,buffer:w,abort:a,aborted:!1};return b}function i(){return new r}function a(){(u.api||u.feature)&&(l.aborted=!0,u=l.backlog={})}var s="nr@context",c=t("gos"),f=t(16),u={},d={},l=n.exports=o();l.backlog=u},{}],gos:[function(t,n,e){function r(t,n,e){if(o.call(t,n))return t[n];var r=e();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(t,n,e){function r(t,n,e,r){o.buffer([t],r),o.emit(t,n,e)}var o=t("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(t,n,e){function r(t){var n=typeof t;return!t||"object"!==n&&"function"!==n?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");n.exports=r},{}],loader:[function(t,n,e){function r(){if(!E++){var t=x.info=NREUM.info,n=p.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&n))return u.abort();f(g,function(n,e){t[n]||(t[n]=e)}),c("mark",["onload",a()+x.offset],null,"api");var e=p.createElement("script");e.src="https://"+t.agent,n.parentNode.insertBefore(e,n)}}function o(){"complete"===p.readyState&&i()}function i(){c("mark",["domContent",a()+x.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(s=Math.max((new Date).getTime(),s))-x.offset}var s=(new Date).getTime(),c=t("handle"),f=t(16),u=t("ee"),d=t(15),l=window,p=l.document,h="addEventListener",m="attachEvent",v=l.XMLHttpRequest,w=v&&v.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:v,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var y=""+location,g={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1099.min.js"},b=v&&w&&w[h]&&!/CriOS/.test(navigator.userAgent),x=n.exports={offset:s,now:a,origin:y,features:{},xhrWrappable:b,userAgent:d};t(12),p[h]?(p[h]("DOMContentLoaded",i,!1),l[h]("load",r,!1)):(p[m]("onreadystatechange",o),l[m]("onload",r)),c("mark",["firstbyte",s],null,"api");var E=0,O=t(18)},{}]},{},["loader",2,10,4,3]);</script>
+    
+    <link rel="shortcut icon" type="image/png" href="/assets/images/favicon.png?v3">
+
+    
+    
+        <script src="//cdn.optimizely.com/js/2853210246.js"></script>
+    
+
+
+    
+      <script src="/assets/thirdparty/jquery-1.10.2.min.js"></script>
+      <script src="/assets/thirdparty/jquery.form.min.js"></script>
+
+      <script src="/assets/thirdparty/bootstrap/js/bootstrap.min.js"></script>
+      <script src="/assets/thirdparty/underscore.min.js"></script>
+    
+
+    <script src="/assets/javascripts/domino.js?c=72e45e002a71e87d257c63c88fa8d33047ca114a" type="text/javascript"></script>
+    <script src="/assets/thirdparty/jquery.noty.packaged.min.js"></script>
+    <script src="/assets/javascripts/common/util/userAlert.js?c=72e45e002a71e87d257c63c88fa8d33047ca114a" type="text/javascript"></script>
+    <script src="/assets/thirdparty/moment.min.js"></script>
+    <script src="/assets/javascripts/common/util.js?c=72e45e002a71e87d257c63c88fa8d33047ca114a" type="text/javascript"></script>
+    <script src="/assets/javascripts/common/widgets/contentEditable.js?c=72e45e002a71e87d257c63c88fa8d33047ca114a" type="text/javascript"></script>
+
+
+    <!-- select2 -->
+    <script src="/assets/thirdparty/select2.full.min.js"></script>
+    <link rel="stylesheet" media="all" href="/assets/thirdparty/select2.min.css">
+
+    <!-- Replace Bootstrap with Flatly -->
+    <link rel="stylesheet" media="screen" href="/assets/thirdparty/bootstrap/css/bootstrap.min.css">
+    
+
+    <!-- typeahead extra -->
+    <script src="/assets/thirdparty/typeahead.min.js"></script>
+    <link rel="stylesheet" media="all" href="/assets/thirdparty/typeahead-bootstrap.css">
+
+
+    <link rel="stylesheet" media="all" href="/assets/thirdparty/jquery.atwho.min.css">
+    <script src="/assets/thirdparty/jquery.caret.min.js"></script>
+    <script src="/assets/thirdparty/jquery.atwho.min.js"></script>
+
+    <!-- autofocus for modal content -->
+    <script src="/assets/javascripts/common/views/autofocus.js?c=72e45e002a71e87d257c63c88fa8d33047ca114a" type="text/javascript"></script>
+
+    <link rel="stylesheet" media="all" href="/assets/thirdparty/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" media="all" href="/assets/thirdparty/ss-gizmo/ss-gizmo.css">
+    <link rel="stylesheet" media="all" href="/assets/stylesheets/sass-bootstrap-domino.min.css">
+    <link rel="stylesheet" media="all" href="/assets/stylesheets/webapp.css">
+
+    <!-- Data Tables -->
+    <link rel="stylesheet" type="text/css" href="/assets/thirdparty/datatables/datatables.css"/>
+    <script type="text/javascript" src="/assets/thirdparty/datatables/datatables.min.js"></script>
+
+    <!-- google code prettify -->
+    <link rel="stylesheet" media="all" href="/assets/thirdparty/google-code-prettify/prettify.css">
+
+    <!-- ReactComponents -->
+    <script type="text/javascript" src="/assets/react/js/f94eab22ab3b3533251f.manifest.js"></script>
+    <script type="text/javascript" src="/assets/react/js/f94eab22ab3b3533251f.vendor.js"></script>
+    <link rel="stylesheet" media="all" type="text/css" href="/assets/react/css/f94eab22ab3b3533251f.ReactComponents.css">
+    <script type="text/javascript" src="/assets/react/js/f94eab22ab3b3533251f.ReactComponents.js"></script>
+
+    
+    <script>
+    
+        var thirdPartyRoot = '/assets/thirdparty/';
+
+        var require = {
+            shim: {
+                'underscore': {
+                    exports: '_'
+                },
+                'backbone': {
+                    deps: ['underscore'],
+                    exports: 'Backbone'
+                },
+                'remaining' : {
+                    exports: 'remaining'
+                },
+                'backbone_paginator': {
+                    deps: ['backbone', 'underscore'],
+                    exports: 'Backbone.Paginator'
+                },
+                'backgrid' : {
+                    deps: ['backbone', 'underscore'],
+                    exports: 'Backgrid'
+                } ,
+                'backgrid_filter' : {
+                    deps: ['backgrid', 'lunr'],
+                    exports: 'BackgridFilter'
+                },
+                'noty' : {
+                    exports: 'noty'
+                },
+                'validator' : {
+                    exports: 'validator'
+                },
+                'userAlert' : {
+                    exports: 'UserAlert'
+                },
+                'userAlertUtils': {
+                    exports: 'UserAlertUtils'
+                },
+                'highcharts': {
+                    exports: 'Highcharts'
+                }
+            },
+
+            baseUrl: '/assets/javascripts',
+
+            paths: {
+                common:             '/assets/javascripts/common',
+                thirdparty :        thirdPartyRoot,
+                backstretch:        thirdPartyRoot + 'jquery.backstretch.min',
+                backgrid:           thirdPartyRoot + 'backgrid/backgrid.min',
+                backgrid_filter:    thirdPartyRoot + 'backgrid/extensions/filter/backgrid-filter',
+                lunr:               thirdPartyRoot + 'lunr.min',
+                underscore:         thirdPartyRoot + 'underscore.min',
+                backbone:           thirdPartyRoot + 'backbone-min',
+                validator:          thirdPartyRoot + 'bootstrap/js/bootstrap-validator',
+                moment:             thirdPartyRoot + 'moment.min',
+                remaining:          thirdPartyRoot + 'remaining',
+                backbone_paginator: thirdPartyRoot + 'backbone.paginator.min',
+                userAlert:          '/assets/javascripts/common/util/userAlert',
+                noty:               thirdPartyRoot + 'jquery.noty.packaged.min',
+                highcharts:         thirdPartyRoot + 'highcharts'
+            }
+        };
+    
+    </script>
+
+    
+    
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-43833030-1', 'auto');
+
+      // send Optimizely data into GA
+      window.optimizely = window.optimizely || [];
+      window.optimizely.push("activateUniversalAnalytics");
+
+      ga('send', 'pageview');
+
+    </script>
+    
+
+
+        <!-- Suppressing IE11's tile configuration -->
+    <meta name="msapplication-config" content="none" />
+
+    
+
+
+
+
+  <script type="text/javascript">
+  window.MIXPANEL_CUSTOM_LIB_URL = "/assets/javascripts/mixpanel-browser/mixpanel.min.js";
+  (function(e,a){if(!a.__SV){var b=window;try{var c,l,i,j=b.location,g=j.hash;c=function(a,b){return(l=a.match(RegExp(b+"=([^&]*)")))?l[1]:null};g&&c(g,"state")&&(i=JSON.parse(decodeURIComponent(c(g,"state"))),"mpeditor"===i.action&&(b.sessionStorage.setItem("_mpcehash",g),history.replaceState(i.desiredHash||"",e.title,j.pathname+j.search)))}catch(m){}var k,h;window.mixpanel=a;a._i=[];a.init=function(b,c,f){function e(b,a){var c=a.split(".");2==c.length&&(b=b[c[0]],a=c[1]);b[a]=function(){b.push([a].concat(Array.prototype.slice.call(arguments,
+  0)))}}var d=a;"undefined"!==typeof f?d=a[f]=[]:f="mixpanel";d.people=d.people||[];d.toString=function(b){var a="mixpanel";"mixpanel"!==f&&(a+="."+f);b||(a+=" (stub)");return a};d.people.toString=function(){return d.toString(1)+".people (stub)"};k="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config reset people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+  for(h=0;h<k.length;h++)e(d,k[h]);a._i.push([b,c,f])};a.__SV=1.2;b=e.createElement("script");b.type="text/javascript";b.async=!0;b.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";c=e.getElementsByTagName("script")[0];c.parentNode.insertBefore(b,c)}})(document,window.mixpanel||[]);
+  mixpanel.init("a8873acdc08507d2ac6f95399536cc32", {cross_subdomain_cookie:false});
+
+
+  mixpanel.register_once({ "Domino Version": "3.1.0", "Domino Build Number": "897e279a-3b12-4de0-96fb-63b067081316", "Domino Build Git Commit": "72e45e002a71e87d257c63c88fa8d33047ca114a", "stage": "prod" });
+    
+  mixpanel.track('Viewed page', {'Page': 'Not Found'});
+    
+  </script>
+
+
+    
+    
+    
+
+    <script>
+    $(function() {
+      window.UserAlert.flashMessages();
+    });
+    </script>
+
+    
+
+    
+        
+                <script>/*<![CDATA[*/ window.zEmbed || function(e, t){var n, o, d, i, s, a=[], r=document.createElement("iframe"); window.zEmbed=function(){a.push(arguments)}, window.zE=window.zE || window.zEmbed, r.src="javascript:false", r.title="", r.role="presentation", (r.frameElement || r).style.cssText="display: none", d=document.getElementsByTagName("script"), d=d[d.length - 1], d.parentNode.insertBefore(r, d), i=r.contentWindow, s=i.document; try{o=s}catch (e){n=document.domain, r.src='javascript:var d=document.open();d.domain="' + n + '";void(0);', o=s}o.open()._l=function(){var o=this.createElement("script"); n && (this.domain=n), o.id="js-iframe-async", o.src=e, this.t=+new Date, this.zendeskHost=t, this.zEQueue=a, this.body.appendChild(o)}, o.write('<body onload="document._l();">'), o.close()}("https://assets.zendesk.com/embeddable_framework/main.js", "dominoup.zendesk.com"); /*]]>*/</script><script>zE(function(){zE.identify({name: window.intercomSettings.name, email: window.intercomSettings.email});});</script><script>window.intercomSettings.hide_default_launcher=true; Intercom('boot', window.intercomSettings)</script><script type="text/javascript">(function() {var walkme = document.createElement('script'); walkme.type = 'text/javascript'; walkme.async = true; walkme.src = 'https://cdn.walkme.com/users/274a1297004e4b8aa687bb9b7b3366ff/test/walkme_274a1297004e4b8aa687bb9b7b3366ff_https.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(walkme, s); window._walkmeConfig = {smartLoad:true}; })();</script>
+            
+    
+
+
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- by putting the message content in its own script tag, we avoid issues that arise when the content has quotation marks  -->
+
+
+<script>
+/**
+* Render timestamps with clients locale.
+*/
+
+$(function() {
+    window.domino = window.domino || {};
+
+    window.domino.utils = window.domino.utils || {};
+
+    window.domino.utils.defaultTimestampFormat  = window.domino.utils.defaultTimestampFormat  || "MMM DD, YYYY @ hh:mm a";
+
+    window.domino.utils.renderTimestamps = window.domino.utils.renderTimestamps || function renderTimestamps() {
+        $(".timestamp").each(function (index, element) {
+            var $element = $(element);
+            var timestamp = $element.data('millis');
+
+            var format = window.domino.utils.defaultTimestampFormat;
+
+            if ($element.data('format')) {
+                format = $element.data('format');
+            }
+
+            var renderedTimestamp = moment(timestamp).format(format);
+            $element.html(renderedTimestamp);
+        });
+    }
+
+    window.domino.utils.renderTimestamps();
+
+    window.domino.utils.updateLocationOnTabClicked = window.domino.utils.updateLocationOnTabClicked || function() {
+        $('[role=tablist] a').on('shown.bs.tab', function (e) {
+            if(history.pushState) {
+                history.pushState(null, null, e.target.hash);
+            }
+            else {
+                location.hash = e.target.hash;
+            }
+        })
+    };
+
+    window.domino.utils.selectNavigationTabFromUrl = window.domino.utils.selectNavigationTabFromUrl || function() {
+        var hash = window.location.hash;
+        if (hash) {
+            $("[role=tablist] a[href$='" + hash + "']").tab('show') ;
+        }
+    };
+
+    window.domino.utils.selectNavigationTabFromUrl();
+    window.domino.utils.updateLocationOnTabClicked();
+
+    window.addEventListener("hashchange", window.domino.utils.selectNavigationTabFromUrl, false);
+});
+</script>
+
+
+    
+
+    <!-- This class will add and override bootstrap looks -->
+    <body class="domino-webapp ">
+      
+          
+    
+        
+
+
+
+<!--[if lte IE 10]>
+  <div class="support-banner">
+    <strong>This version of Internet Explorer is not currently supported.</strong>
+    We recommend you use another modern browser.
+  </div>
+<![endif]-->
+
+<nav class="navbar navbar-default navbar-fixed-top webapp-navbar nav-alternate" role="navigation">
+
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="container-fluid">
+
+            <!-- Includes the logo and navigation to the overview page -->
+        <div class="navbar-header alt">
+          <a class="navbar-logo" href="http://www.dominodatalab.com">
+            <img src="/assets/images/logos/webapp-navbar-logo.svg"/>
+          </a>
+        </div>
+
+
+        <!-- project path + section path + section main action buttons -->
+        <div class="no-collapse">
+
+          
+
+          
+          <ul class="nav navbar-nav navbar-left">
+            <li><a class="data-set-nav" href="/dataSets/overview">Data</a></li>
+            <li>
+              <a href="http://www.dominodatalab.com">
+                Projects
+              </a>
+            </li>
+            
+            
+            
+            
+          </ul>
+          
+          <script>
+              $(function() {
+                 mixpanel.track_links('.data-set-nav', "Clicked Data Nav Item");
+              });
+          </script>
+          
+        
+
+          
+          <!-- Align the navigation to the right -->
+          <ul class="nav navbar-nav navbar-right nav-utility noauth">
+              
+              
+                      
+                          <li>
+                              <a class="btn btn-success btn-sm" href="https://app.dominodatalab.com/signup" class="username">
+                                  <span>Sign Up</span>
+                              </a>
+                          </li>
+                      
+                      <li>
+                          <a target="_blank" href="http://support.dominodatalab.com"><span>Help</span></a>
+                      </li>
+                      <li>
+                          <a class="logout-btn" href="/login"><span>Log In</span></a>
+                      </li>
+                  
+          </ul>
+        </div>
+    </div>
+</nav>
+
+    
+
+        
+
+        
+        <!-- Container fluid needs to wrap the webapp -->
+        <div class=" container  no-webapp">
+        
+          
+
+            
+    <div class="container-fluid set-padding">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>404: The page you were looking for couldn't be found.</h1>
+
+                <p>Please <a href="mailto:support@dominodatalab.com">contact us</a> if you need any support.</p>
+            </div>
+        </div>
+
+
+    </div>
+
+
+            
+          
+
+        
+        </div>
+        
+
+        
+        <div class="container no-webapp">
+            
+
+
+<div class="footer ">
+    
+    <div class="row mark-container">
+        <div class="col-md-6">
+            
+            <ul class="site-footer-links">
+                <li><a href="http://www.dominodatalab.com/contact-us/">Contact</a></li>
+                <li><a href="http://www.dominodatalab.com/careers/">Jobs</a></li>
+                <li><a href="http://www.dominodatalab.com/privacy-policy/">Privacy</a></li>
+                <li><a href="http://www.dominodatalab.com/terms/">Terms</a></li>
+                <li><a href="http://www.dominodatalab.com/security/">Security</a></li>
+            </ul>
+            
+            <p><small>&copy; 2018 Domino Data Lab, Inc.</small></p>
+        </div>
+
+        
+    </div>
+</div>
+
+
+
+
+        </div>
+        
+
+
+        
+
+
+
+
+    
+
+
+        
+          
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"errorBeacon":"bam.nr-data.net","licenseKey":"12b5f993e7","agent":"","beacon":"bam.nr-data.net","applicationTime":3,"applicationID":"17454705","transactionName":"MgQAYhRQChBZU0MKDgtOLFMSRR0nUUNHAhUGCQdESX8BF0xJcwoSFQAWVQ5UFg==","queueTime":0}</script>
+        
+
+
+        
+    </body>
+</html>
+
+
+
+
+2018-10-18 09:54:45,685 PDT DEBUG FS - readpipe [git, --version],/usr/local/bin
+2018-10-18 09:54:45,695 PDT DEBUG FS - readpipe may return 'git version 2.14.2'
+2018-10-18 09:54:45,695 PDT DEBUG FS - remaining output:
+
+2018-10-18 09:54:45,695 PDT DEBUG FS - readpipe [git, config, --system, --edit],/usr/local/bin
+2018-10-18 09:54:45,704 PDT DEBUG FS - readpipe may return '/usr/local/etc/gitconfig'
+2018-10-18 09:54:45,704 PDT DEBUG FS - remaining output:
+
+2018-10-18 09:54:45,716 PDT  INFO ProjectControllerProxy - getting git host from https://app.dominodatalab.com/gitRepoUri/mirkoklukas/kdimgrid
+2018-10-18 09:54:45,717 PDT DEBUG DefaultTransport - Issuing request to https://app.dominodatalab.com/gitRepoUri/mirkoklukas/kdimgrid (full request = ApacheHttpClientRequest(https://app.dominodatalab.com/gitRepoUri/mirkoklukas/kdimgrid,GET,Map(),Map(User-Agent -> domino-cli/3.1.0, X-Domino-Api-Key -> [API key redacted]),1 minute,1 minute,true,EmptyBody,domino.common.util.http.HttpService@4e928fbf))
+2018-10-18 09:54:45,717 PDT DEBUG RequestAddCookies - CookieSpec selected: standard
+2018-10-18 09:54:45,717 PDT DEBUG RequestAddCookies - Cookie [version: 0][name: PLAY_SESSION][value: e7fbc3ed78f03d2fc5bd539747983cb61558a4b0-csrfToken=9d3e7be123a785ac5f9e8739ff60071e703603d4-1539881685605-7275446e03b271ca7dd8f3ae][domain: app.dominodatalab.com][path: /][expiry: null] match [(secure)app.dominodatalab.com:443/gitRepoUri/mirkoklukas/kdimgrid]
+2018-10-18 09:54:45,717 PDT DEBUG RequestAuthCache - Auth cache not set in the context
+2018-10-18 09:54:45,718 PDT DEBUG PoolingHttpClientConnectionManager - Connection request: [route: {s}->https://app.dominodatalab.com:443][total kept alive: 0; route allocated: 0 of 10; total allocated: 0 of 30]
+2018-10-18 09:54:45,718 PDT DEBUG PoolingHttpClientConnectionManager - Connection leased: [id: 1][route: {s}->https://app.dominodatalab.com:443][total kept alive: 0; route allocated: 1 of 10; total allocated: 1 of 30]
+2018-10-18 09:54:45,718 PDT DEBUG MainClientExec - Opening connection {s}->https://app.dominodatalab.com:443
+2018-10-18 09:54:45,718 PDT DEBUG DefaultHttpClientConnectionOperator - Connecting to app.dominodatalab.com/54.148.109.138:443
+2018-10-18 09:54:45,718 PDT DEBUG SSLConnectionSocketFactory - Connecting socket to app.dominodatalab.com/54.148.109.138:443 with timeout 60000
+2018-10-18 09:54:45,750 PDT DEBUG SSLConnectionSocketFactory - Enabled protocols: [TLSv1, TLSv1.1, TLSv1.2]
+2018-10-18 09:54:45,750 PDT DEBUG SSLConnectionSocketFactory - Enabled cipher suites:[TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256, TLS_RSA_WITH_AES_128_CBC_SHA256, TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256, TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256, TLS_DHE_RSA_WITH_AES_128_CBC_SHA256, TLS_DHE_DSS_WITH_AES_128_CBC_SHA256, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_RSA_WITH_AES_128_CBC_SHA, TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDH_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_DSS_WITH_AES_128_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256, TLS_RSA_WITH_AES_128_GCM_SHA256, TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256, TLS_DHE_RSA_WITH_AES_128_GCM_SHA256, TLS_DHE_DSS_WITH_AES_128_GCM_SHA256, TLS_ECDHE_ECDSA_WITH_3DES_EDE_CBC_SHA, TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA, SSL_RSA_WITH_3DES_EDE_CBC_SHA, TLS_ECDH_ECDSA_WITH_3DES_EDE_CBC_SHA, TLS_ECDH_RSA_WITH_3DES_EDE_CBC_SHA, SSL_DHE_RSA_WITH_3DES_EDE_CBC_SHA, SSL_DHE_DSS_WITH_3DES_EDE_CBC_SHA, TLS_EMPTY_RENEGOTIATION_INFO_SCSV]
+2018-10-18 09:54:45,751 PDT DEBUG SSLConnectionSocketFactory - Starting handshake
+2018-10-18 09:54:45,786 PDT DEBUG SSLConnectionSocketFactory - Secure session established
+2018-10-18 09:54:45,786 PDT DEBUG SSLConnectionSocketFactory -  negotiated protocol: TLSv1.2
+2018-10-18 09:54:45,786 PDT DEBUG SSLConnectionSocketFactory -  negotiated cipher suite: TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+2018-10-18 09:54:45,786 PDT DEBUG SSLConnectionSocketFactory -  peer principal: CN=*.dominodatalab.com
+2018-10-18 09:54:45,786 PDT DEBUG SSLConnectionSocketFactory -  peer alternative names: [*.dominodatalab.com, *.app.dominodatalab.com, dominodatalab.com]
+2018-10-18 09:54:45,786 PDT DEBUG SSLConnectionSocketFactory -  issuer principal: CN=Amazon, OU=Server CA 1B, O=Amazon, C=US
+2018-10-18 09:54:45,786 PDT DEBUG DefaultHttpClientConnectionOperator - Connection established 172.16.190.171:52654<->54.148.109.138:443
+2018-10-18 09:54:45,787 PDT DEBUG DefaultManagedHttpClientConnection - http-outgoing-1: set socket timeout to 60000
+2018-10-18 09:54:45,787 PDT DEBUG MainClientExec - Executing request GET /gitRepoUri/mirkoklukas/kdimgrid HTTP/1.1
+2018-10-18 09:54:45,787 PDT DEBUG MainClientExec - Target auth state: UNCHALLENGED
+2018-10-18 09:54:45,787 PDT DEBUG MainClientExec - Proxy auth state: UNCHALLENGED
+2018-10-18 09:54:45,787 PDT DEBUG headers - http-outgoing-1 >> GET /gitRepoUri/mirkoklukas/kdimgrid HTTP/1.1
+2018-10-18 09:54:45,787 PDT DEBUG headers - http-outgoing-1 >> User-Agent: domino-cli/3.1.0
+2018-10-18 09:54:45,787 PDT DEBUG headers - http-outgoing-1 >> X-Domino-Api-Key: 36vSuOgse0tjNhcxpYGeaVZbFwziFl1Ux5HFFr8WKWu5gYWQHTPa0SwOPQUB8nLw
+2018-10-18 09:54:45,787 PDT DEBUG headers - http-outgoing-1 >> X-Requested-With: domino.common.util.http.HttpService
+2018-10-18 09:54:45,787 PDT DEBUG headers - http-outgoing-1 >> Host: app.dominodatalab.com
+2018-10-18 09:54:45,787 PDT DEBUG headers - http-outgoing-1 >> Connection: Keep-Alive
+2018-10-18 09:54:45,787 PDT DEBUG headers - http-outgoing-1 >> Cookie: PLAY_SESSION=e7fbc3ed78f03d2fc5bd539747983cb61558a4b0-csrfToken=9d3e7be123a785ac5f9e8739ff60071e703603d4-1539881685605-7275446e03b271ca7dd8f3ae
+2018-10-18 09:54:45,787 PDT DEBUG headers - http-outgoing-1 >> Accept-Encoding: gzip,deflate
+2018-10-18 09:54:45,835 PDT DEBUG headers - http-outgoing-1 << HTTP/1.1 200 OK
+2018-10-18 09:54:45,835 PDT DEBUG headers - http-outgoing-1 << Server: nginx
+2018-10-18 09:54:45,835 PDT DEBUG headers - http-outgoing-1 << Date: Thu, 18 Oct 2018 16:54:45 GMT
+2018-10-18 09:54:45,835 PDT DEBUG headers - http-outgoing-1 << Content-Type: text/plain; charset=utf-8
+2018-10-18 09:54:45,836 PDT DEBUG headers - http-outgoing-1 << Transfer-Encoding: chunked
+2018-10-18 09:54:45,836 PDT DEBUG headers - http-outgoing-1 << Connection: keep-alive
+2018-10-18 09:54:45,836 PDT DEBUG headers - http-outgoing-1 << Cache-Control: no-cache, no-store, must-revalidate, max-age=0
+2018-10-18 09:54:45,836 PDT DEBUG headers - http-outgoing-1 << Play-Processing-Time: 9
+2018-10-18 09:54:45,836 PDT DEBUG headers - http-outgoing-1 << X-Frame-Options: DENY
+2018-10-18 09:54:45,836 PDT DEBUG headers - http-outgoing-1 << Content-Security-Policy: frame-ancestors 'none'
+2018-10-18 09:54:45,836 PDT DEBUG headers - http-outgoing-1 << Content-Encoding: gzip
+2018-10-18 09:54:45,836 PDT DEBUG MainClientExec - Connection can be kept alive indefinitely
+2018-10-18 09:54:45,837 PDT DEBUG DefaultManagedHttpClientConnection - http-outgoing-1: Close connection
+2018-10-18 09:54:45,837 PDT DEBUG MainClientExec - Connection discarded
+2018-10-18 09:54:45,837 PDT DEBUG PoolingHttpClientConnectionManager - Connection released: [id: 1][route: {s}->https://app.dominodatalab.com:443][total kept alive: 0; route allocated: 0 of 10; total allocated: 0 of 30]
+2018-10-18 09:54:45,837 PDT DEBUG ProjectControllerProxy - response from server: https://git.dominoup.com:443/projectrepos/5b99/5b996df8e4b02513bedf3868.git
+2018-10-18 09:54:45,839 PDT  INFO CLIFileSyncClient - checking whether remote (https://git.dominoup.com:443/projectrepos/5b99/5b996df8e4b02513bedf3868.git) needs to be upgraded to match new desired url (https://git.dominoup.com:443/projectrepos/5b99/5b996df8e4b02513bedf3868.git)
+2018-10-18 09:54:45,844 PDT  INFO CLIFileSyncClient - Running in cloud mode, so using AnonymousS3BlobStore
+2018-10-18 09:54:45,863 PDT TRACE FileSyncClient - Starting upload...
+2018-10-18 09:54:45,951 PDT TRACE CLIFileSyncProgressListener - starting hash computation for 94
+2018-10-18 09:54:45,987 PDT TRACE CLIFileSyncProgressListener - computing hash for unique_hypercube_size.py
+2018-10-18 09:54:45,987 PDT TRACE CLIFileSyncProgressListener - computing hash for paths/reconstruct_45150.pdf
+2018-10-18 09:54:45,987 PDT TRACE CLIFileSyncProgressListener - computing hash for paths/reconstruct_58451.pdf
+2018-10-18 09:54:45,987 PDT TRACE CLIFileSyncProgressListener - computing hash for jupyter/Notes.ipynb
+2018-10-18 09:54:45,987 PDT TRACE CLIFileSyncProgressListener - computing hash for paths/reconstruct_341.pdf
+2018-10-18 09:54:45,987 PDT TRACE CLIFileSyncProgressListener - computing hash for jupyter/Capacity graphs - with phase resolution.ipynb
+2018-10-18 09:54:45,987 PDT TRACE CLIFileSyncProgressListener - computing hash for paths/reconstruct_1424.pdf
+2018-10-18 09:54:45,987 PDT TRACE CLIFileSyncProgressListener - computing hash for paths/reconstruct_32035.pdf
+2018-10-18 09:54:46,000 PDT TRACE CLIFileSyncProgressListener - computed hash for jupyter/Notes.ipynb
+2018-10-18 09:54:46,000 PDT TRACE CLIFileSyncProgressListener - computed hash for paths/reconstruct_45150.pdf
+2018-10-18 09:54:46,001 PDT TRACE CLIFileSyncProgressListener - computed hash for paths/reconstruct_32035.pdf
+2018-10-18 09:54:46,000 PDT TRACE CLIFileSyncProgressListener - computed hash for unique_hypercube_size.py
+2018-10-18 09:54:46,001 PDT TRACE CLIFileSyncProgressListener - computing hash for paths/reconstruct_24666.pdf
+2018-10-18 09:54:46,001 PDT TRACE CLIFileSyncProgressListener - computed hash for paths/reconstruct_58451.pdf
+2018-10-18 09:54:46,001 PDT TRACE CLIFileSyncProgressListener - computing hash for jupyter/Module-distance graph.ipynb
+2018-10-18 09:54:46,001 PDT TRACE CLIFileSyncProgressListener - computing hash for paths/reconstruct_76280.pdf
+2018-10-18 09:54:46,001 PDT TRACE CLIFileSyncProgressListener - computing hash for results/cap_data.p
+2018-10-18 09:54:46,001 PDT TRACE CLIFileSyncProgressListener - computed hash for paths/reconstruct_341.pdf
+2018-10-18 09:54:46,001 PDT TRACE CLIFileSyncProgressListener - computing hash for jupyter/.ipynb_checkpoints/Explaining the structure of the k-m-graph-checkpoint.ipynb
+2018-10-18 09:54:46,002 PDT TRACE CLIFileSyncProgressListener - computing hash for dominostats.json
+2018-10-18 09:54:46,001 PDT TRACE CLIFileSyncProgressListener - computed hash for paths/reconstruct_1424.pdf
+2018-10-18 09:54:46,002 PDT TRACE CLIFileSyncProgressListener - computed hash for dominostats.json
+2018-10-18 09:54:46,002 PDT TRACE CLIFileSyncProgressListener - computing hash for create_reconstructed_paths_2.py
+2018-10-18 09:54:46,002 PDT TRACE CLIFileSyncProgressListener - computing hash for paths/reconstruct_76451.pdf
+2018-10-18 09:54:46,002 PDT TRACE CLIFileSyncProgressListener - computed hash for jupyter/.ipynb_checkpoints/Explaining the structure of the k-m-graph-checkpoint.ipynb
+2018-10-18 09:54:46,004 PDT TRACE CLIFileSyncProgressListener - computed hash for create_reconstructed_paths_2.py
+2018-10-18 09:54:46,004 PDT TRACE CLIFileSyncProgressListener - computing hash for results/cap_data_m6_k4_t50_shuff_A__2018-08-30_12:43:54.p
+2018-10-18 09:54:46,004 PDT TRACE CLIFileSyncProgressListener - computed hash for results/cap_data.p
+2018-10-18 09:54:46,004 PDT TRACE CLIFileSyncProgressListener - computing hash for jupyter/.ipynb_checkpoints/Visualize P-checkpoint.ipynb
+2018-10-18 09:54:46,006 PDT TRACE CLIFileSyncProgressListener - computed hash for paths/reconstruct_24666.pdf
+2018-10-18 09:54:46,006 PDT TRACE CLIFileSyncProgressListener - computing hash for paths/reconstruct_29602.pdf
+2018-10-18 09:54:46,007 PDT TRACE CLIFileSyncProgressListener - computed hash for paths/reconstruct_76280.pdf
+2018-10-18 09:54:46,007 PDT TRACE CLIFileSyncProgressListener - computing hash for jupyter/.ipynb_checkpoints/Playground-checkpoint.ipynb
+2018-10-18 09:54:46,008 PDT TRACE CLIFileSyncProgressListener - computed hash for paths/reconstruct_76451.pdf
+2018-10-18 09:54:46,008 PDT TRACE CLIFileSyncProgressListener - computing hash for histogram.pdf
+2018-10-18 09:54:46,012 PDT TRACE CLIFileSyncProgressListener - computed hash for histogram.pdf
+2018-10-18 09:54:46,012 PDT TRACE CLIFileSyncProgressListener - computed hash for paths/reconstruct_29602.pdf
+2018-10-18 09:54:46,012 PDT TRACE CLIFileSyncProgressListener - computing hash for jupyter/cap_separate_sharey.tiff
+2018-10-18 09:54:46,012 PDT TRACE CLIFileSyncProgressListener - computing hash for jupyter/Visualize P.ipynb
+2018-10-18 09:54:46,015 PDT TRACE CLIFileSyncProgressListener - computed hash for jupyter/Capacity graphs - with phase resolution.ipynb
+2018-10-18 09:54:46,015 PDT TRACE CLIFileSyncProgressListener - computing hash for results/cap_data_m6_k4_t50_uni_scales__2018-08-29_16:16:57.p
+2018-10-18 09:54:46,020 PDT TRACE CLIFileSyncProgressListener - computed hash for jupyter/.ipynb_checkpoints/Playground-checkpoint.ipynb
+2018-10-18 09:54:46,020 PDT TRACE CLIFileSyncProgressListener - computing hash for paths/reconstruct_27720.pdf
+2018-10-18 09:54:46,027 PDT TRACE CLIFileSyncProgressListener - computed hash for paths/reconstruct_27720.pdf
+2018-10-18 09:54:46,027 PDT TRACE CLIFileSyncProgressListener - computing hash for jupyter/Capacity data - with varying phase resolution.ipynb
+2018-10-18 09:54:46,029 PDT TRACE CLIFileSyncProgressListener - computed hash for jupyter/Module-distance graph.ipynb
+2018-10-18 09:54:46,029 PDT TRACE CLIFileSyncProgressListener - computing hash for paths/reconstruct_24950.pdf
+2018-10-18 09:54:46,031 PDT TRACE CLIFileSyncProgressListener - computed hash for jupyter/Capacity data - with varying phase resolution.ipynb
+2018-10-18 09:54:46,031 PDT TRACE CLIFileSyncProgressListener - computing hash for jupyter/Compute number of codes for unit cube .ipynb
+2018-10-18 09:54:46,032 PDT TRACE CLIFileSyncProgressListener - computed hash for results/cap_data_m6_k4_t50_shuff_A__2018-08-30_12:43:54.p
+2018-10-18 09:54:46,032 PDT TRACE CLIFileSyncProgressListener - computed hash for jupyter/.ipynb_checkpoints/Visualize P-checkpoint.ipynb
+2018-10-18 09:54:46,032 PDT TRACE CLIFileSyncProgressListener - computing hash for paths/reconstruct_18410.pdf
+2018-10-18 09:54:46,033 PDT TRACE CLIFileSyncProgressListener - computing hash for paths/reconstruct_87758.pdf
+2018-10-18 09:54:46,033 PDT TRACE CLIFileSyncProgressListener - computed hash for paths/reconstruct_24950.pdf
+2018-10-18 09:54:46,034 PDT TRACE CLIFileSyncProgressListener - computing hash for paths/reconstruct_45783.pdf
+2018-10-18 09:54:46,037 PDT TRACE CLIFileSyncProgressListener - computed hash for jupyter/Visualize P.ipynb
+2018-10-18 09:54:46,037 PDT TRACE CLIFileSyncProgressListener - computing hash for paths/reconstruct_72813.pdf
+2018-10-18 09:54:46,037 PDT TRACE CLIFileSyncProgressListener - computed hash for paths/reconstruct_18410.pdf
+2018-10-18 09:54:46,037 PDT TRACE CLIFileSyncProgressListener - computing hash for jupyter/Capacity graphs .ipynb
+2018-10-18 09:54:46,038 PDT TRACE CLIFileSyncProgressListener - computed hash for paths/reconstruct_87758.pdf
+2018-10-18 09:54:46,038 PDT TRACE CLIFileSyncProgressListener - computing hash for paths/reconstruct_62105.pdf
+2018-10-18 09:54:46,039 PDT TRACE CLIFileSyncProgressListener - computed hash for paths/reconstruct_45783.pdf
+2018-10-18 09:54:46,039 PDT TRACE CLIFileSyncProgressListener - computing hash for paths/reconstruct_46023.pdf
+2018-10-18 09:54:46,042 PDT TRACE CLIFileSyncProgressListener - computed hash for paths/reconstruct_72813.pdf
+2018-10-18 09:54:46,042 PDT TRACE CLIFileSyncProgressListener - computed hash for paths/reconstruct_62105.pdf
+2018-10-18 09:54:46,042 PDT TRACE CLIFileSyncProgressListener - computing hash for paths/reconstruct_38485.pdf
+2018-10-18 09:54:46,042 PDT TRACE CLIFileSyncProgressListener - computing hash for paths/reconstruct_69028.pdf
+2018-10-18 09:54:46,044 PDT TRACE CLIFileSyncProgressListener - computed hash for paths/reconstruct_46023.pdf
+2018-10-18 09:54:46,045 PDT TRACE CLIFileSyncProgressListener - computing hash for jupyter/.ipynb_checkpoints/Untitled-checkpoint.ipynb
+2018-10-18 09:54:46,045 PDT TRACE CLIFileSyncProgressListener - computed hash for results/cap_data_m6_k4_t50_uni_scales__2018-08-29_16:16:57.p
+2018-10-18 09:54:46,045 PDT TRACE CLIFileSyncProgressListener - computing hash for utils.py
+2018-10-18 09:54:46,046 PDT TRACE CLIFileSyncProgressListener - computed hash for utils.py
+2018-10-18 09:54:46,046 PDT TRACE CLIFileSyncProgressListener - computing hash for jupyter/.ipynb_checkpoints/Compute number of codes for unit cube -checkpoint.ipynb
+2018-10-18 09:54:46,046 PDT TRACE CLIFileSyncProgressListener - computed hash for jupyter/.ipynb_checkpoints/Compute number of codes for unit cube -checkpoint.ipynb
+2018-10-18 09:54:46,046 PDT TRACE CLIFileSyncProgressListener - computing hash for paths/reconstruct_15536.pdf
+2018-10-18 09:54:46,047 PDT TRACE CLIFileSyncProgressListener - computed hash for paths/reconstruct_69028.pdf
+2018-10-18 09:54:46,047 PDT TRACE CLIFileSyncProgressListener - computing hash for jupyter/.ipynb_checkpoints/Capacity data - with varying phase resolution-checkpoint.ipynb
+2018-10-18 09:54:46,047 PDT TRACE CLIFileSyncProgressListener - computed hash for paths/reconstruct_38485.pdf
+2018-10-18 09:54:46,050 PDT TRACE CLIFileSyncProgressListener - computed hash for jupyter/.ipynb_checkpoints/Capacity data - with varying phase resolution-checkpoint.ipynb
+2018-10-18 09:54:46,050 PDT TRACE CLIFileSyncProgressListener - computing hash for jupyter/.ipynb_checkpoints/Capacity graphs -checkpoint.ipynb
+2018-10-18 09:54:46,051 PDT TRACE CLIFileSyncProgressListener - computed hash for paths/reconstruct_15536.pdf
+2018-10-18 09:54:46,051 PDT TRACE CLIFileSyncProgressListener - computing hash for paths/reconstruct_65178.pdf
+2018-10-18 09:54:46,054 PDT TRACE CLIFileSyncProgressListener - computed hash for paths/reconstruct_65178.pdf
+2018-10-18 09:54:46,054 PDT TRACE CLIFileSyncProgressListener - computing hash for jupyter/.ipynb_checkpoints/Notes-checkpoint.ipynb
+2018-10-18 09:54:46,055 PDT TRACE CLIFileSyncProgressListener - computed hash for jupyter/.ipynb_checkpoints/Notes-checkpoint.ipynb
+2018-10-18 09:54:46,055 PDT TRACE CLIFileSyncProgressListener - computed hash for jupyter/.ipynb_checkpoints/Untitled-checkpoint.ipynb
+2018-10-18 09:54:46,055 PDT TRACE CLIFileSyncProgressListener - computing hash for paths/reconstruct.pdf
+2018-10-18 09:54:46,055 PDT TRACE CLIFileSyncProgressListener - computing hash for paths/reconstruct_78865.pdf
+2018-10-18 09:54:46,056 PDT TRACE CLIFileSyncProgressListener - computed hash for paths/reconstruct.pdf
+2018-10-18 09:54:46,056 PDT TRACE CLIFileSyncProgressListener - computed hash for paths/reconstruct_78865.pdf
+2018-10-18 09:54:46,056 PDT TRACE CLIFileSyncProgressListener - computing hash for paths/reconstruct_68552.pdf
+2018-10-18 09:54:46,056 PDT TRACE CLIFileSyncProgressListener - computing hash for paths/reconstruct_70554.pdf
+2018-10-18 09:54:46,056 PDT TRACE CLIFileSyncProgressListener - computed hash for jupyter/Compute number of codes for unit cube .ipynb
+2018-10-18 09:54:46,057 PDT TRACE CLIFileSyncProgressListener - computing hash for results/temp.p
+2018-10-18 09:54:46,057 PDT TRACE CLIFileSyncProgressListener - computed hash for paths/reconstruct_68552.pdf
+2018-10-18 09:54:46,057 PDT TRACE CLIFileSyncProgressListener - computed hash for paths/reconstruct_70554.pdf
+2018-10-18 09:54:46,057 PDT TRACE CLIFileSyncProgressListener - computing hash for jupyter/Visualize A.ipynb
+2018-10-18 09:54:46,058 PDT TRACE CLIFileSyncProgressListener - computing hash for paths/reconstruct_77180.pdf
+2018-10-18 09:54:46,058 PDT TRACE CLIFileSyncProgressListener - computed hash for results/temp.p
+2018-10-18 09:54:46,058 PDT TRACE CLIFileSyncProgressListener - computing hash for paths/reconstruct_15078.pdf
+2018-10-18 09:54:46,059 PDT TRACE CLIFileSyncProgressListener - computed hash for paths/reconstruct_77180.pdf
+2018-10-18 09:54:46,059 PDT TRACE CLIFileSyncProgressListener - computing hash for jupyter/.ipynb_checkpoints/Capacity graphs - with phase resolution-checkpoint.ipynb
+2018-10-18 09:54:46,059 PDT TRACE CLIFileSyncProgressListener - computed hash for jupyter/Visualize A.ipynb
+2018-10-18 09:54:46,059 PDT TRACE CLIFileSyncProgressListener - computing hash for results/cap_data_m6_k4_t20_shuff_A__2018-08-30_12:48:48.p
+2018-10-18 09:54:46,061 PDT TRACE CLIFileSyncProgressListener - computed hash for paths/reconstruct_15078.pdf
+2018-10-18 09:54:46,061 PDT TRACE CLIFileSyncProgressListener - computing hash for jupyter/Capacity data.ipynb
+2018-10-18 09:54:46,062 PDT TRACE CLIFileSyncProgressListener - computed hash for jupyter/Capacity graphs .ipynb
+2018-10-18 09:54:46,062 PDT TRACE CLIFileSyncProgressListener - computed hash for jupyter/Capacity data.ipynb
+2018-10-18 09:54:46,062 PDT TRACE CLIFileSyncProgressListener - computed hash for results/cap_data_m6_k4_t20_shuff_A__2018-08-30_12:48:48.p
+2018-10-18 09:54:46,062 PDT TRACE CLIFileSyncProgressListener - computing hash for results/temp_phr.p
+2018-10-18 09:54:46,062 PDT TRACE CLIFileSyncProgressListener - computing hash for jupyter/.ipynb_checkpoints/Capacity data-checkpoint.ipynb
+2018-10-18 09:54:46,063 PDT TRACE CLIFileSyncProgressListener - computed hash for jupyter/.ipynb_checkpoints/Capacity graphs - with phase resolution-checkpoint.ipynb
+2018-10-18 09:54:46,063 PDT TRACE CLIFileSyncProgressListener - computed hash for jupyter/.ipynb_checkpoints/Capacity data-checkpoint.ipynb
+2018-10-18 09:54:46,063 PDT TRACE CLIFileSyncProgressListener - computing hash for paths/reconstruct_20489.pdf
+2018-10-18 09:54:46,063 PDT TRACE CLIFileSyncProgressListener - computing hash for paths/reconstruct_67171.pdf
+2018-10-18 09:54:46,064 PDT TRACE CLIFileSyncProgressListener - computed hash for results/temp_phr.p
+2018-10-18 09:54:46,064 PDT TRACE CLIFileSyncProgressListener - computing hash for jupyter/Capacity computations.ipynb
+2018-10-18 09:54:46,064 PDT TRACE CLIFileSyncProgressListener - computed hash for paths/reconstruct_20489.pdf
+2018-10-18 09:54:46,064 PDT TRACE CLIFileSyncProgressListener - computed hash for paths/reconstruct_67171.pdf
+2018-10-18 09:54:46,064 PDT TRACE CLIFileSyncProgressListener - computing hash for results/cap_data_m6_k4_t20_shuff_A__2018-08-30_12:57:28.p
+2018-10-18 09:54:46,064 PDT TRACE CLIFileSyncProgressListener - computing hash for paths/reconstruct_10125.pdf
+2018-10-18 09:54:46,065 PDT TRACE CLIFileSyncProgressListener - computed hash for jupyter/Capacity computations.ipynb
+2018-10-18 09:54:46,065 PDT TRACE CLIFileSyncProgressListener - computing hash for results/cap_data_m6_k4_t20_dec_A__2018-08-29_17:31:04.p
+2018-10-18 09:54:46,065 PDT TRACE CLIFileSyncProgressListener - computed hash for jupyter/.ipynb_checkpoints/Capacity graphs -checkpoint.ipynb
+2018-10-18 09:54:46,065 PDT TRACE CLIFileSyncProgressListener - computing hash for results/cap_data_m6_k4_t20___2018-08-15_14:50:36.p
+2018-10-18 09:54:46,066 PDT TRACE CLIFileSyncProgressListener - computed hash for paths/reconstruct_10125.pdf
+2018-10-18 09:54:46,066 PDT TRACE CLIFileSyncProgressListener - computing hash for jupyter/cap_separate_sharey.png
+2018-10-18 09:54:46,066 PDT TRACE CLIFileSyncProgressListener - computed hash for results/cap_data_m6_k4_t20_shuff_A__2018-08-30_12:57:28.p
+2018-10-18 09:54:46,066 PDT TRACE CLIFileSyncProgressListener - computing hash for .dominoresults
+2018-10-18 09:54:46,066 PDT TRACE CLIFileSyncProgressListener - computed hash for .dominoresults
+2018-10-18 09:54:46,066 PDT TRACE CLIFileSyncProgressListener - computed hash for results/cap_data_m6_k4_t20_dec_A__2018-08-29_17:31:04.p
+2018-10-18 09:54:46,067 PDT TRACE CLIFileSyncProgressListener - computed hash for results/cap_data_m6_k4_t20___2018-08-15_14:50:36.p
+2018-10-18 09:54:46,067 PDT TRACE CLIFileSyncProgressListener - computing hash for results/cap_data_m6_k4_t20_dec_A__2018-08-29_17:18:13.p
+2018-10-18 09:54:46,067 PDT TRACE CLIFileSyncProgressListener - computing hash for create_reconstructed_paths.py
+2018-10-18 09:54:46,068 PDT TRACE CLIFileSyncProgressListener - computed hash for create_reconstructed_paths.py
+2018-10-18 09:54:46,068 PDT TRACE CLIFileSyncProgressListener - computing hash for paths/reconstruct_82997.pdf
+2018-10-18 09:54:46,068 PDT TRACE CLIFileSyncProgressListener - computed hash for results/cap_data_m6_k4_t20_dec_A__2018-08-29_17:18:13.p
+2018-10-18 09:54:46,068 PDT TRACE CLIFileSyncProgressListener - computing hash for results/cap_data_m6_k4_t20_shuff_A__2018-08-30_12:41:34.p
+2018-10-18 09:54:46,069 PDT TRACE CLIFileSyncProgressListener - computed hash for jupyter/cap_separate_sharey.png
+2018-10-18 09:54:46,069 PDT TRACE CLIFileSyncProgressListener - computing hash for .dominoignore
+2018-10-18 09:54:46,070 PDT TRACE CLIFileSyncProgressListener - computed hash for .dominoignore
+2018-10-18 09:54:46,070 PDT TRACE CLIFileSyncProgressListener - computing hash for results/cap_data_m6_k4_t50___2018-08-15_15:08:06.p
+2018-10-18 09:54:46,081 PDT TRACE CLIFileSyncProgressListener - computed hash for paths/reconstruct_82997.pdf
+2018-10-18 09:54:46,081 PDT TRACE CLIFileSyncProgressListener - computing hash for results/temp_phr_cloud.p
+2018-10-18 09:54:46,082 PDT TRACE CLIFileSyncProgressListener - computed hash for results/cap_data_m6_k4_t20_shuff_A__2018-08-30_12:41:34.p
+2018-10-18 09:54:46,082 PDT TRACE CLIFileSyncProgressListener - computing hash for jupyter/Untitled.ipynb
+2018-10-18 09:54:46,083 PDT TRACE CLIFileSyncProgressListener - computed hash for results/cap_data_m6_k4_t50___2018-08-15_15:08:06.p
+2018-10-18 09:54:46,083 PDT TRACE CLIFileSyncProgressListener - computing hash for jupyter/.ipynb_checkpoints/Capacity computations-checkpoint.ipynb
+2018-10-18 09:54:46,084 PDT TRACE CLIFileSyncProgressListener - computed hash for jupyter/.ipynb_checkpoints/Capacity computations-checkpoint.ipynb
+2018-10-18 09:54:46,084 PDT TRACE CLIFileSyncProgressListener - computing hash for paths/reconstruct_98999.pdf
+2018-10-18 09:54:46,085 PDT TRACE CLIFileSyncProgressListener - computed hash for jupyter/Untitled.ipynb
+2018-10-18 09:54:46,085 PDT TRACE CLIFileSyncProgressListener - computing hash for jupyter/.ipynb_checkpoints/Module-distance graph-checkpoint.ipynb
+2018-10-18 09:54:46,085 PDT TRACE CLIFileSyncProgressListener - computed hash for paths/reconstruct_98999.pdf
+2018-10-18 09:54:46,085 PDT TRACE CLIFileSyncProgressListener - computing hash for paths/reconstruct_51431.pdf
+2018-10-18 09:54:46,086 PDT TRACE CLIFileSyncProgressListener - computed hash for paths/reconstruct_51431.pdf
+2018-10-18 09:54:46,086 PDT TRACE CLIFileSyncProgressListener - computing hash for results/cap_data_m12_k6_t1_shuff_A__2018-09-06_14:16:59.p
+2018-10-18 09:54:46,087 PDT TRACE CLIFileSyncProgressListener - computed hash for jupyter/.ipynb_checkpoints/Module-distance graph-checkpoint.ipynb
+2018-10-18 09:54:46,087 PDT TRACE CLIFileSyncProgressListener - computing hash for paths/reconstruct_66293.pdf
+2018-10-18 09:54:46,087 PDT TRACE CLIFileSyncProgressListener - computed hash for results/cap_data_m12_k6_t1_shuff_A__2018-09-06_14:16:59.p
+2018-10-18 09:54:46,087 PDT TRACE CLIFileSyncProgressListener - computing hash for results/temp_cloud.p
+2018-10-18 09:54:46,088 PDT TRACE CLIFileSyncProgressListener - computed hash for paths/reconstruct_66293.pdf
+2018-10-18 09:54:46,088 PDT TRACE CLIFileSyncProgressListener - computing hash for paths/reconstruct_30579.pdf
+2018-10-18 09:54:46,091 PDT TRACE CLIFileSyncProgressListener - computed hash for results/temp_phr_cloud.p
+2018-10-18 09:54:46,091 PDT TRACE CLIFileSyncProgressListener - computing hash for paths/reconstruct_21131.pdf
+2018-10-18 09:54:46,097 PDT TRACE CLIFileSyncProgressListener - computed hash for paths/reconstruct_30579.pdf
+2018-10-18 09:54:46,097 PDT TRACE CLIFileSyncProgressListener - computing hash for paths/reconstruct_57235.pdf
+2018-10-18 09:54:46,098 PDT TRACE CLIFileSyncProgressListener - computed hash for results/temp_cloud.p
+2018-10-18 09:54:46,097 PDT TRACE CLIFileSyncProgressListener - computed hash for paths/reconstruct_21131.pdf
+2018-10-18 09:54:46,098 PDT TRACE CLIFileSyncProgressListener - computing hash for results/cap_data_2.p
+2018-10-18 09:54:46,098 PDT TRACE CLIFileSyncProgressListener - computing hash for jupyter/Playground.ipynb
+2018-10-18 09:54:46,099 PDT TRACE CLIFileSyncProgressListener - computed hash for paths/reconstruct_57235.pdf
+2018-10-18 09:54:46,099 PDT TRACE CLIFileSyncProgressListener - computing hash for paths/reconstruct_70502.pdf
+2018-10-18 09:54:46,099 PDT TRACE CLIFileSyncProgressListener - computed hash for results/cap_data_2.p
+2018-10-18 09:54:46,099 PDT TRACE CLIFileSyncProgressListener - computing hash for jupyter/.ipynb_checkpoints/Visualize A-checkpoint.ipynb
+2018-10-18 09:54:46,099 PDT TRACE CLIFileSyncProgressListener - computed hash for jupyter/.ipynb_checkpoints/Visualize A-checkpoint.ipynb
+2018-10-18 09:54:46,099 PDT TRACE CLIFileSyncProgressListener - computed hash for jupyter/Playground.ipynb
+2018-10-18 09:54:46,100 PDT TRACE CLIFileSyncProgressListener - computing hash for paths/reconstruct_56903.pdf
+2018-10-18 09:54:46,100 PDT TRACE CLIFileSyncProgressListener - computing hash for results/cap_data_0.p
+2018-10-18 09:54:46,100 PDT TRACE CLIFileSyncProgressListener - computed hash for paths/reconstruct_70502.pdf
+2018-10-18 09:54:46,100 PDT TRACE CLIFileSyncProgressListener - computing hash for paths/reconstruct_79435.pdf
+2018-10-18 09:54:46,100 PDT TRACE CLIFileSyncProgressListener - computed hash for paths/reconstruct_56903.pdf
+2018-10-18 09:54:46,101 PDT TRACE CLIFileSyncProgressListener - computed hash for paths/reconstruct_79435.pdf
+2018-10-18 09:54:46,101 PDT TRACE CLIFileSyncProgressListener - computed hash for results/cap_data_0.p
+2018-10-18 09:54:46,101 PDT TRACE CLIFileSyncProgressListener - computing hash for paths/reconstruct_69002.pdf
+2018-10-18 09:54:46,102 PDT TRACE CLIFileSyncProgressListener - computed hash for paths/reconstruct_69002.pdf
+2018-10-18 09:54:46,119 PDT TRACE CLIFileSyncProgressListener - computed hash for jupyter/cap_separate_sharey.tiff
+2018-10-18 09:54:46,119 PDT TRACE CLIFileSyncProgressListener - computing hash for test.py
+2018-10-18 09:54:46,120 PDT TRACE CLIFileSyncProgressListener - computed hash for test.py
+2018-10-18 09:54:46,121 PDT TRACE CLIFileSyncProgressListener - finished hash computation
+2018-10-18 09:54:46,121 PDT TRACE CLIFileSyncProgressListener - hash computation complete 169ms
+2018-10-18 09:54:46,127 PDT TRACE FileStructureRepo - Staging structure. Current branch = master, head commit ID = Some(AnyObjectId[d949b4126322b3a8e84c17b99ad487db32a379a5]).
+2018-10-18 09:54:50,195 PDT DEBUG PoolingHttpClientConnectionManager - Closing expired connections
+2018-10-18 09:54:50,195 PDT DEBUG PoolingHttpClientConnectionManager - Closing connections idle longer than 30 SECONDS
+2018-10-18 09:54:51,372 PDT DEBUG FileStructureRepo - Staging structure complete. Head advanced to commit ID = Some(AnyObjectId[1b8238e6211d27bdb4cee48117b2cd4a231655f2]).
+2018-10-18 09:54:51,375 PDT TRACE FileStructureRepoSynchronizer - Upload starting...
+2018-10-18 09:54:51,393 PDT TRACE FileStructureRepoSynchronizer - Asserting repo is safe to operate.  repo state = SAFE, isClean = true, isSafe = true, currentBranch = master.
+2018-10-18 09:54:51,421 PDT DEBUG FileStructureRepoSynchronizer - Local paths:
+	unique_hypercube_size.py -> FileSignature(1539881458000,5333,Sha1(1b5d3755222e0e795354ed2486ae1ce4f5eebce0))
+	jupyter/.ipynb_checkpoints/Explaining the structure of the k-m-graph-checkpoint.ipynb -> FileSignature(1532544234000,168007,Sha1(69b5b6ae4d1f3cf57043fa03747046f785d96f8f))
+	paths/reconstruct_1424.pdf -> FileSignature(1539711047000,16691,Sha1(c48081c56150237d844902264cf8475480085f8d))
+	create_reconstructed_paths_2.py -> FileSignature(1539711047000,4397,Sha1(61eb0cdf08b393c2f4ff30f3b417087a6b714832))
+	results/cap_data_m6_k4_t50_shuff_A__2018-08-30_12:43:54.p -> FileSignature(1539711047000,118446,Sha1(00abb9d8ac4a7a9a16455238e9c46e89e90eaaee))
+	paths/reconstruct_45150.pdf -> FileSignature(1539711047000,17574,Sha1(0edc6ecbaab33ee2bf9f52df8ff72f8f025d88cf))
+	paths/reconstruct_76280.pdf -> FileSignature(1539711047000,21017,Sha1(6c35a35a1f667d87144b53f9eb52e5770ff8b4d0))
+	jupyter/.ipynb_checkpoints/Playground-checkpoint.ipynb -> FileSignature(1539820305000,48503,Sha1(6ab1387ebd36fb3d2d5720f8f96e300ce78a24cd))
+	paths/reconstruct_27720.pdf -> FileSignature(1539711047000,22137,Sha1(cac60e8f07c6d759d3304aa7cea582da858d2657))
+	jupyter/Capacity data - with varying phase resolution.ipynb -> FileSignature(1539711047000,10793,Sha1(1953f2c96790a5380b7e3ab4ab558a450f952a5f))
+	jupyter/Compute number of codes for unit cube .ipynb -> FileSignature(1539711047000,368038,Sha1(3f8305ef4b90610b1dd73a121e8bf5317b579939))
+	paths/reconstruct_32035.pdf -> FileSignature(1539711047000,17420,Sha1(5ca6833b2ac0f7dee2c2f27c7c62340394910dc9))
+	paths/reconstruct_24666.pdf -> FileSignature(1539711047000,17951,Sha1(5fc596c81b08ed7633a1c275eeafcc65ac53f09e))
+	paths/reconstruct_29602.pdf -> FileSignature(1539711047000,17445,Sha1(a931ea6191d8799a8481ac265208c827d70e3ee0))
+	jupyter/Visualize P.ipynb -> FileSignature(1539729293000,101463,Sha1(ecb1190005283987284dd570bdf0cd9077eb5c2a))
+	paths/reconstruct_72813.pdf -> FileSignature(1539711047000,16280,Sha1(77e7a36d1481bcb7963cebc9967554b44ec660bf))
+	paths/reconstruct_38485.pdf -> FileSignature(1539711047000,21038,Sha1(84a5d3e7633a2a610b01c00d1dccb29f83724d36))
+	paths/reconstruct_341.pdf -> FileSignature(1539711047000,18578,Sha1(f4ecfe31e4d2e8b85464b160994e68daeb766bc3))
+	dominostats.json -> FileSignature(1539711047000,0,Sha1(da39a3ee5e6b4b0d3255bfef95601890afd80709))
+	paths/reconstruct_76451.pdf -> FileSignature(1539711047000,21952,Sha1(ac349c27b32518ad9b41095069aed4dbb4262133))
+	histogram.pdf -> FileSignature(1539711047000,6647,Sha1(9d726f51a6706fe88176d243e14642a830c69c1f))
+	jupyter/cap_separate_sharey.tiff -> FileSignature(1539722225000,9572990,Sha1(b4f9b41824732cafb6cc45a663a57ccb89dc9411))
+	test.py -> FileSignature(1539824375000,1214,Sha1(165cace164283e4fb06cb8cd417ef1d0475d8e02))
+	jupyter/Capacity graphs - with phase resolution.ipynb -> FileSignature(1539711047000,100592,Sha1(ffc14284a820a6bfe5960adaff59bda2f134b2dd))
+	results/cap_data_m6_k4_t50_uni_scales__2018-08-29_16:16:57.p -> FileSignature(1539711047000,113787,Sha1(7cc30b23b15af06a479e013bef5cc486c75d7085))
+	utils.py -> FileSignature(1539715366000,982,Sha1(74dc5b417c4b7a5752a5e1d4f49569ed689232e0))
+	jupyter/.ipynb_checkpoints/Compute number of codes for unit cube -checkpoint.ipynb -> FileSignature(1534375768000,368038,Sha1(3f8305ef4b90610b1dd73a121e8bf5317b579939))
+	paths/reconstruct_15536.pdf -> FileSignature(1539711047000,17198,Sha1(348346e03a66b8408314138d3b6c918e8f4d6a62))
+	paths/reconstruct_65178.pdf -> FileSignature(1539711047000,20364,Sha1(0ad381d801e986c75108d40606148e288772b4ce))
+	jupyter/.ipynb_checkpoints/Notes-checkpoint.ipynb -> FileSignature(1534363274000,1164,Sha1(a0e36e571ddd068b10dac188930cf695ad1873ee))
+	paths/reconstruct.pdf -> FileSignature(1539711047000,19036,Sha1(5932d6f6590e83ffc5e4de32f4773fed7febbe80))
+	paths/reconstruct_68552.pdf -> FileSignature(1539711047000,18303,Sha1(9de3e33a2efe5547696e7a90e41ef595cfb5923f))
+	jupyter/Visualize A.ipynb -> FileSignature(1539711047000,51395,Sha1(d3d04c375b3129762192db03fb06619a6d7fd78a))
+	results/cap_data_m6_k4_t20_shuff_A__2018-08-30_12:48:48.p -> FileSignature(1539711047000,49095,Sha1(d9a6b5db900cca91ee049adda12f58719be80c41))
+	jupyter/.ipynb_checkpoints/Capacity data-checkpoint.ipynb -> FileSignature(1539722581000,13650,Sha1(19d87e69ad93145ff19c75fb871d95bd74ae4743))
+	paths/reconstruct_67171.pdf -> FileSignature(1539711047000,16723,Sha1(b18ed8274f20420f517e7c1dba8a8f37e4a2c4b6))
+	results/cap_data_m6_k4_t20_shuff_A__2018-08-30_12:57:28.p -> FileSignature(1539711047000,49363,Sha1(9463c5a75c0776fe4d3b30869d2a03e4636e20ce))
+	.dominoresults -> FileSignature(1534287276000,313,Sha1(21dd498c2501c732b021ce2f28133e8c6d108f75))
+	results/cap_data_m6_k4_t20_dec_A__2018-08-29_17:18:13.p -> FileSignature(1539711047000,59725,Sha1(c981d348c8db1f8eeb3dd97b966582505fec02cb))
+	results/cap_data_m6_k4_t20_shuff_A__2018-08-30_12:41:34.p -> FileSignature(1539711047000,49899,Sha1(599932300678282f80270f54533690d500cfb7e3))
+	jupyter/Untitled.ipynb -> FileSignature(1539711047000,104572,Sha1(0a293198ac43b404b75f8a4592e572f9e8f1f6cf))
+	jupyter/.ipynb_checkpoints/Module-distance graph-checkpoint.ipynb -> FileSignature(1539298606000,99827,Sha1(c2da4fd821058d4108fd05de583b0e00598c198e))
+	paths/reconstruct_66293.pdf -> FileSignature(1539711047000,22741,Sha1(b59be00f8f95fb1328d31eb084b9082fd50f4fde))
+	paths/reconstruct_30579.pdf -> FileSignature(1539711047000,47263,Sha1(517d3d333ae04f067135c7efb781585795163edf))
+	paths/reconstruct_57235.pdf -> FileSignature(1539711047000,19011,Sha1(5fa5bbc68f71b3f12144a9451750912c7d9c5572))
+	paths/reconstruct_70502.pdf -> FileSignature(1539711047000,23786,Sha1(80c5e9a402cdce9696e45402485e4bdf21025db8))
+	paths/reconstruct_79435.pdf -> FileSignature(1539711047000,18762,Sha1(9416f4e97afe73dab764e3f2ebe11fca4a3ae48f))
+	paths/reconstruct_58451.pdf -> FileSignature(1539711047000,20553,Sha1(928367e3f6798277b3d78de542904d82ecba710b))
+	results/cap_data.p -> FileSignature(1539711047000,9927,Sha1(f45604fe7e3c63454927ce9b5f51b3a423cf4130))
+	jupyter/.ipynb_checkpoints/Visualize P-checkpoint.ipynb -> FileSignature(1539729293000,101463,Sha1(ecb1190005283987284dd570bdf0cd9077eb5c2a))
+	paths/reconstruct_18410.pdf -> FileSignature(1539711047000,17297,Sha1(7b6e29239f849f462a89c55bb09637f1055fc324))
+	jupyter/Capacity graphs .ipynb -> FileSignature(1539722253000,1043490,Sha1(dbc3efd0e4f383dd17c5565b23e4152786474062))
+	results/temp.p -> FileSignature(1539813746000,18988,Sha1(9bb8dd45aca8eecc3d0f7430fbd4362a848bf210))
+	paths/reconstruct_15078.pdf -> FileSignature(1539711047000,19344,Sha1(389238f14a0f29a4256836f265aba50ea58814be))
+	jupyter/Capacity data.ipynb -> FileSignature(1539722581000,13650,Sha1(19d87e69ad93145ff19c75fb871d95bd74ae4743))
+	results/temp_phr.p -> FileSignature(1539711047000,37684,Sha1(77488b3121343155de9e8d319364f96ec95d6570))
+	jupyter/Capacity computations.ipynb -> FileSignature(1539881537000,61887,Sha1(1b0e5632cf7277ed4f62f01a634f9e9f3e2e1be6))
+	results/cap_data_m6_k4_t20_dec_A__2018-08-29_17:31:04.p -> FileSignature(1539711047000,48824,Sha1(be910d2fd046e4da7b6773d61e2e9db88b371984))
+	paths/reconstruct_87758.pdf -> FileSignature(1539711047000,19480,Sha1(ba5882745c44f07040c3cf2fd2227996acca58fb))
+	paths/reconstruct_62105.pdf -> FileSignature(1539711047000,14864,Sha1(b83766152b24f0536272d5881d5e71057b4388d4))
+	paths/reconstruct_69028.pdf -> FileSignature(1539711047000,18480,Sha1(8758cab3255eb315b603ba9c691c7233378d5507))
+	jupyter/.ipynb_checkpoints/Capacity data - with varying phase resolution-checkpoint.ipynb -> FileSignature(1536862419000,10793,Sha1(1953f2c96790a5380b7e3ab4ab558a450f952a5f))
+	jupyter/.ipynb_checkpoints/Capacity graphs -checkpoint.ipynb -> FileSignature(1539722253000,1043490,Sha1(dbc3efd0e4f383dd17c5565b23e4152786474062))
+	results/cap_data_m6_k4_t20___2018-08-15_14:50:36.p -> FileSignature(1539711047000,48717,Sha1(5beab3a9d5a0545b2c5206ef128c722b70ff6de3))
+	create_reconstructed_paths.py -> FileSignature(1539711047000,5480,Sha1(2042ae04869093cf159f48d94d39e05f22870fc7))
+	paths/reconstruct_82997.pdf -> FileSignature(1539711047000,19003,Sha1(0f05132c5b7755cdbd3a1bb902172d77a00e3d7c))
+	results/temp_phr_cloud.p -> FileSignature(1539711047000,1049334,Sha1(766be48dc94d7010dedddffd4cb5b2425ce9bb28))
+	paths/reconstruct_21131.pdf -> FileSignature(1539711047000,15749,Sha1(26e8b9765b1afb95495ffe20160d3aa5239172b6))
+	jupyter/Playground.ipynb -> FileSignature(1539820305000,48503,Sha1(6ab1387ebd36fb3d2d5720f8f96e300ce78a24cd))
+	paths/reconstruct_56903.pdf -> FileSignature(1539711047000,17656,Sha1(b79d004bc623a89f6cc98ed004e938937995cb99))
+	jupyter/Notes.ipynb -> FileSignature(1539711047000,1158,Sha1(4df25c0b3daf0ce6632f7b87a485bf308b84c36b))
+	jupyter/Module-distance graph.ipynb -> FileSignature(1539711047000,112073,Sha1(770705f11bb9d716069cfd006efbb9aae8187aec))
+	paths/reconstruct_24950.pdf -> FileSignature(1539711047000,18898,Sha1(d5234c58bf96f8a8230d87c732b81c570642a618))
+	paths/reconstruct_45783.pdf -> FileSignature(1539711047000,16453,Sha1(675b428abf4e8b83e1e104a482a634be52441726))
+	paths/reconstruct_46023.pdf -> FileSignature(1539711047000,18245,Sha1(b1f0c61d895d399750add3c226451128c607d3b3))
+	jupyter/.ipynb_checkpoints/Untitled-checkpoint.ipynb -> FileSignature(1539302745000,104572,Sha1(0a293198ac43b404b75f8a4592e572f9e8f1f6cf))
+	paths/reconstruct_78865.pdf -> FileSignature(1539711047000,18603,Sha1(c7d484b183656013fc852f74ca55a3548e197d61))
+	paths/reconstruct_70554.pdf -> FileSignature(1539711047000,18714,Sha1(f859239f05d329ca1274ac875ed31a648930abed))
+	paths/reconstruct_77180.pdf -> FileSignature(1539711047000,19025,Sha1(fc6842e34647846e3ff3f71dc89fa72205f3fab0))
+	jupyter/.ipynb_checkpoints/Capacity graphs - with phase resolution-checkpoint.ipynb -> FileSignature(1536879294000,100592,Sha1(9fadfee5a3a363f64fafae071b0587813dbe5b69))
+	paths/reconstruct_20489.pdf -> FileSignature(1539711047000,18813,Sha1(25418cb426e384e46f61332ed051a5d3eb6d723d))
+	paths/reconstruct_10125.pdf -> FileSignature(1539711047000,15705,Sha1(b72d6ce280abb8fec0aa10c6a837a7f7a919ae55))
+	jupyter/cap_separate_sharey.png -> FileSignature(1539813862000,238944,Sha1(7eef0bec59da9f27016303a5230c85afe7ba75e3))
+	.dominoignore -> FileSignature(1534287276000,529,Sha1(22dc2360167ce3a72572c9ee386d8de0f4f7c8f7))
+	results/cap_data_m6_k4_t50___2018-08-15_15:08:06.p -> FileSignature(1539711047000,115448,Sha1(338d3af1f97b606098a9c77ea2edd9ad647bcbaa))
+	jupyter/.ipynb_checkpoints/Capacity computations-checkpoint.ipynb -> FileSignature(1539881428000,62309,Sha1(5060ba9941a7c57f55ca4cf318761e8e9438bf30))
+	paths/reconstruct_98999.pdf -> FileSignature(1539711047000,21814,Sha1(50b2969f1d9485c32db52d086b36c71707086597))
+	paths/reconstruct_51431.pdf -> FileSignature(1539711047000,18799,Sha1(9f9cda29f02a5c952a69b792d92275a948c8e5e4))
+	results/cap_data_m12_k6_t1_shuff_A__2018-09-06_14:16:59.p -> FileSignature(1539711047000,17759,Sha1(db890c1c1ea10c3909a48835e6a6234c40efc859))
+	results/temp_cloud.p -> FileSignature(1539711047000,240978,Sha1(e967814c5e37c81e5880abcf8fd97a46ed247adf))
+	results/cap_data_2.p -> FileSignature(1539711047000,9969,Sha1(d3597ee9405d93f16b47d478acdf2b5ff23d8136))
+	jupyter/.ipynb_checkpoints/Visualize A-checkpoint.ipynb -> FileSignature(1535659003000,54351,Sha1(6885e1df1e8570ee1e6ce027a5b9037277765394))
+	results/cap_data_0.p -> FileSignature(1539711047000,78606,Sha1(7ae872321bf8235cf06ca9dd952fba289986b959))
+	paths/reconstruct_69002.pdf -> FileSignature(1539711047000,18941,Sha1(1d6749c5eecb24d4a49f58cff3aace1f528c1c45))
+2018-10-18 09:54:51,423 PDT TRACE FileStructureRepo - Starting fetch: master = Some(AnyObjectId[1b8238e6211d27bdb4cee48117b2cd4a231655f2]), refs/remotes/origin/master = Some(AnyObjectId[d949b4126322b3a8e84c17b99ad487db32a379a5]).
+2018-10-18 09:54:51,921 PDT DEBUG PacketLineIn - git< # service=git-upload-pack
+2018-10-18 09:54:51,921 PDT DEBUG PacketLineIn - git< 0000
+2018-10-18 09:54:51,927 PDT DEBUG PacketLineIn - git< 28793d8cf28cb1394bb5ab2b52d8ba49c3a7f253 HEAD multi_ack thin-pack side-band side-band-64k ofs-delta shallow no-progress include-tag multi_ack_detailed no-done symref=HEAD:refs/heads/master agent=git/1.9.1
+2018-10-18 09:54:51,927 PDT DEBUG PacketLineIn - git< 28793d8cf28cb1394bb5ab2b52d8ba49c3a7f253 refs/heads/master
+2018-10-18 09:54:51,927 PDT DEBUG PacketLineIn - git< 0000
+2018-10-18 09:54:51,937 PDT DEBUG PacketLineOut - git> want 28793d8cf28cb1394bb5ab2b52d8ba49c3a7f253 no-progress include-tag ofs-delta multi_ack_detailed no-done thin-pack side-band-64k agent=JGit/3.1.0
+
+2018-10-18 09:54:51,937 PDT DEBUG PacketLineOut - git> 0000
+2018-10-18 09:54:51,938 PDT DEBUG PacketLineOut - git> have 1b8238e6211d27bdb4cee48117b2cd4a231655f2
+
+2018-10-18 09:54:51,939 PDT DEBUG PacketLineOut - git> have d949b4126322b3a8e84c17b99ad487db32a379a5
+
+2018-10-18 09:54:51,939 PDT DEBUG PacketLineOut - git> have 18286064cb3a72e5e15db86c2a650cc5f826451b
+
+2018-10-18 09:54:51,940 PDT DEBUG PacketLineOut - git> have 3d1719d189eaa65958d85db76c34522043def716
+
+2018-10-18 09:54:51,940 PDT DEBUG PacketLineOut - git> have a132c8d4cf867d7946bccbe0df699576a4e269d2
+
+2018-10-18 09:54:51,940 PDT DEBUG PacketLineOut - git> done
+
+2018-10-18 09:54:52,071 PDT DEBUG PacketLineIn - git< ACK d949b4126322b3a8e84c17b99ad487db32a379a5 common
+2018-10-18 09:54:52,071 PDT DEBUG PacketLineIn - git< ACK 18286064cb3a72e5e15db86c2a650cc5f826451b common
+2018-10-18 09:54:52,072 PDT DEBUG PacketLineIn - git< ACK 3d1719d189eaa65958d85db76c34522043def716 common
+2018-10-18 09:54:52,072 PDT DEBUG PacketLineIn - git< ACK a132c8d4cf867d7946bccbe0df699576a4e269d2 common
+2018-10-18 09:54:52,072 PDT DEBUG PacketLineIn - git< ACK a132c8d4cf867d7946bccbe0df699576a4e269d2
+2018-10-18 09:54:52,125 PDT TRACE FileStructureRepo - Fetch complete: master = Some(AnyObjectId[1b8238e6211d27bdb4cee48117b2cd4a231655f2]), refs/remotes/origin/master = Some(AnyObjectId[28793d8cf28cb1394bb5ab2b52d8ba49c3a7f253]).
+2018-10-18 09:54:52,126 PDT TRACE FileStructureRepo - Fetch result = TrackingRefUpdate[refs/heads/master -> refs/remotes/origin/master (forced) d949b41..28793d8]
+2018-10-18 09:54:52,126 PDT  WARN FileStructureRepoSynchronizer - Upload failed: working directory was out of date. fetchResult=Some(FAST_FORWARD) workingDirectory=/Users/mklukas/nta/htmresearch/projects/kdimgrid/.domino/repo
+2018-10-18 09:54:52,127 PDT DEBUG FileSyncClient - Push result: Failed: domino.common.sync.FileStructureRepo$StaleWorkingDirectory$: Working directory was out of date
+2018-10-18 09:54:52,129 PDT  INFO UploadCommand - Upload failed: Failed: domino.common.sync.FileStructureRepo$StaleWorkingDirectory$: Working directory was out of date
+2018-10-18 09:56:52,232 PDT  INFO Domino - ================================================================================
+2018-10-18 09:56:52,237 PDT  INFO Domino - Starting client. BuildInfo=name: common-core, version: 3.1.0, scalaVersion: 2.11.11, sbtVersion: 0.13.15, buildNumber: 897e279a-3b12-4de0-96fb-63b067081316, gitCommit: 72e45e002a71e87d257c63c88fa8d33047ca114a, buildTime: 2018-10-12T22:02:53Z
+2018-10-18 09:56:52,237 PDT DEBUG Domino - CWD = /Users/mklukas/nta/htmresearch/projects/kdimgrid
+2018-10-18 09:56:52,237 PDT  INFO Domino - executing command: help upload

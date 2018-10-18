@@ -27,7 +27,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from htmresearch_core.experimental import computeGridUniquenessHypercube
-
+from scipy.stats import ortho_group
 
 
 
@@ -85,41 +85,71 @@ def create_random_A(m, k, S):
     return A
 
 
+def create_random_P(m, k, S):
+      P_ = np.zeros((m,k,k))
+      P  = np.zeros((m,2,k))
+      for i in range(m):
+        P_[i, 0, 0] = 1.
+        P_[i, 1, 1] = 1.
+
+        for j in range(2,k):
+          P_[i,:,j] = np.random.normal(k)
+          P_[i,:,j] = P_[i,j]/np.linalg.norm(P_[i,j])
+
+        P_[i] = P_[i]
+
+
+        Q = ortho_group.rvs(k)
+        # Q = np.eye(k)
+        # Q[:2,:2] = ortho_group.rvs(2)
+        P[i] =  np.dot( np.linalg.inv( S[i]*P_[i] ), Q)[:2] 
+
+      return P
+
+
+def create_B(m, theta=np.pi/3.):
+    B = np.zeros((m,2,2))
+    for i in range(m):
+      B[i] = np.array([
+          [np.cos(0.), np.cos(theta)],
+          [np.sin(0.), np.sin(theta)]
+        ])
+    return B
+
+
+
+
 
 def doRandomModuleExperiment(ms, ks, scales, phase_resolution = 0.2, action_tensor = None):
 
-
-
-  
-    
   A = np.zeros((len(scales), 2, max(ks)), dtype="float")
   
-  if action_tensor == None:
-    A = create_random_A(len(scales), max(ks), scales)
-  else: 
-    A = action_tensor
-  
-  # for iModule, s in enumerate(scales):
-    # for iDim in xrange(max(ks)):
-      # a  = np.random.randn(2)
-      # a /= np.linalg.norm(a)
-      # A[iModule,:,iDim] = a / s
 
+
+  P = create_random_P(len(scales), max(ks), scales)
+  B = create_B(len(scales), np.pi/3.)
   results = {}
 
   for m in ms:
     for k in ks:
-      print m, k
+      # print "m={}   k={}".format(m, k)
       A_ = A[:m,:,:k]
       # A_ = create_block_A(m, k, scales)
       # A_ = create_random_A_shuffled(m,k,scales)
       # A_ = create_random_A_normal(m, k)
-      result = computeGridUniquenessHypercube(A_, phase_resolution, 0.5)
+
+      # ...(domainToPlaneByModule_,
+      #     latticeBasisByModule_,
+      #     readoutResolution, 0.5) 
+      P_ = P[:m,:,:k]
+      B_ = B[:m]
+      # result = computeGridUniquenessHypercube(A_, phase_resolution, 0.5)
+      result = computeGridUniquenessHypercube(P_,B_, phase_resolution, 0.5)
       results[(m, k)] = result[0]
 
 
 
-  return A, results
+  return P, results
 
 
 def experiment1(m_max = 3, k_max = 3, numTrials = 10):
