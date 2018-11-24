@@ -58,22 +58,44 @@ def evolve(W, b, s, A=1., dt=0.05, tau=3., f=relu):
     return s_
 
 
+def run_can(T, W, B, s_0, dt=0.05, tau=3., f=relu):
 
-
-def run_can(T, W, B, S, dt=0.05, tau=3., f=relu, ):
-
-
-
+    n = W.shape[0]
+    S = np.zeros((T,n))
+    S[0] = s_0
     for t in range(1,T):
         s = S[t-1]
-        b = B[t-1]
-        # b += eventhandler[events[t-1]](s)
-        
+        b = B[t-1]        
         Ws = np.dot(W,s)
         ds  = ( f(Ws + b ) - s/tau )*dt
-        s_  = s + ds
+        S[t] = s + ds
 
-        S[t] = s_
+    return S
+
+
+
+
+
+
+def compute_movement_effect(s, v, theta):
+    n = len(s)**0.5
+    R = np.array([[np.cos(-theta) , - np.sin(-theta)],
+                    [np.sin(-theta) ,   np.cos(-theta)]])
+
+    speed = np.sqrt(np.sum(v**2))
+    v_can = np.dot(R, v)
+    shift =  v_can/.3
+    shift = shift.astype(int)
+
+    b = np.roll(s, shift=shift)
+
+    return b
+
+
+
+
+
+
 
 
 

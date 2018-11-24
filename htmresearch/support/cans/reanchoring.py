@@ -35,6 +35,26 @@ def create_recurrent_weights_1d(n, d):
     return W
 
 
+def create_recurrent_weights_2d(n, d):
+    X = np.mgrid[0:d:d/n, 0:d:d/n].reshape(2,-1).T
+
+    J = W_zero
+    # D = X.reshape((n,1)) - X.reshape((1,n))
+    # D = np.absolute(D)
+    # D = np.minimum(d - D, D)
+
+    D = np.zeros((n, n))
+    for i in range(n):
+        for j in range(n):
+                dij = np.absolute(X[i] - X[j])
+                D[i,j] = np.minimum(d - dij, dij )
+
+
+    W = J(D)
+    np.fill_diagonal(W, 0.0)
+    return W
+
+
 class GridModule1d(object):
     def __init__(self, num_cells, diameter, vel_gain):
         self.num_cells = num_cells
